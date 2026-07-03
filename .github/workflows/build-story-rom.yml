@@ -1,0 +1,71 @@
+name: Build Story ROM
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_id:
+        description: Build UUID from Story Builder
+        required: true
+      hack_title:
+        description: Hack title
+        required: true
+      rom_game_code:
+        description: ROM game code (e.g. BPEE)
+        required: false
+        default: BPEE
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout story-builder
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Load story package
+        id: story
+        run: |
+          PKG="build-requests/${{ inputs.build_id }}/story-package.json"
+          if [ ! -f "$PKG" ]; then
+            echo "::error::Story package not found at $PKG"
+            exit 1
+          fi
+          cp "$PKG" story-package.json
+          echo "Scenes: $(node -e "console.log(JSON.parse(require('fs').readFileSync('story-package.json')).scenes.length)")"
+
+      - name: Checkout pokeemerald-expansion
+        uses: actions/checkout@v4
+        with:
+          repository: rh-hideout/pokeemerald-expansion
+          path: hack/pokeemerald-expansion
+
+      - name: Apply story to source
+        run: node scripts/apply-story.mjs story-package.json hack/pokeemerald-expansion
+
+      - name: Install devkitARM
+        uses: devkitpro/devkitpro-action@v1
+
+      - name: Build ROM
+        working-directory: hack/pokeemerald-expansion
+        run: |
+          git submodule update --init --recursive || true
+          make tools -j$(nproc) || true
+          make -j$(nproc)
+
+      - name: Upload ROM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: story-rom-${{ inputs.build_id }}
+          path: hack/pokeemerald-expansion/pokeemerald.gba
+          retention-days: 14
+
+      - name: Summary
+        run: |
+          echo "## Story ROM build complete" >> $GITHUB_STEP_SUMMARY
+          echo "- **Build ID:** ${{ inputs.build_id }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Title:** ${{ inputs.hack_title }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Game code:** ${{ inputs.rom_game_code }}" >> $GITHUB_STEP_SUMMARY
+          echo "Download the \`story-rom-${{ inputs.build_id }}\` artifact from this workflow run." >> $GITHUB_STEP_SUMMARY
