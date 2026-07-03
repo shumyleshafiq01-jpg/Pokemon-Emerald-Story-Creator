@@ -14,6 +14,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { applyStructuralHacks } from "./structural-hacks.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -96,6 +97,10 @@ if (report.applied.length === 0) {
   );
   process.exit(1);
 }
+
+// Gameplay changes ride along with the dialogue pass (invoked here rather than
+// as a separate workflow step: the CI token cannot modify workflow files).
+applyStructuralHacks(expansionRoot);
 
 // ---------------------------------------------------------------------------
 
