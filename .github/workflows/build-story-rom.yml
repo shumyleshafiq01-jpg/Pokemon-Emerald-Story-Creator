@@ -17,7 +17,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
+    env:
+      GAME_VERSION: EMERALD
 
     steps:
       - name: Checkout story-builder
@@ -41,25 +43,62 @@ jobs:
         with:
           repository: rh-hideout/pokeemerald-expansion
           path: hack/pokeemerald-expansion
+          submodules: recursive
 
       - name: Apply story to source
         run: node scripts/apply-story.mjs story-package.json hack/pokeemerald-expansion
 
-      - name: Install devkitARM
-        uses: devkitpro/devkitpro-action@v1
+      - name: Install ARM toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            binutils-arm-none-eabi \
+            gcc-arm-none-eabi \
+            libnewlib-arm-none-eabi \
+            libpng-dev \
+            python3 \
+            build-essential
+
+      - name: Cache host build tools
+        uses: actions/cache@v4
+        with:
+          path: |
+            hack/pokeemerald-expansion/tools/bin2c/bin2c
+            hack/pokeemerald-expansion/tools/gbafix/gbafix
+            hack/pokeemerald-expansion/tools/gbagfx/gbagfx
+            hack/pokeemerald-expansion/tools/jsonproc/jsonproc
+            hack/pokeemerald-expansion/tools/mapjson/mapjson
+            hack/pokeemerald-expansion/tools/mid2agb/mid2agb
+            hack/pokeemerald-expansion/tools/preproc/preproc
+            hack/pokeemerald-expansion/tools/ramscrgen/ramscrgen
+            hack/pokeemerald-expansion/tools/rsfont/rsfont
+            hack/pokeemerald-expansion/tools/scaninc/scaninc
+            hack/pokeemerald-expansion/tools/trainerproc/trainerproc
+          key: expansion-tools-${{ runner.os }}-${{ hashFiles('hack/pokeemerald-expansion/tools/**') }}
 
       - name: Build ROM
         working-directory: hack/pokeemerald-expansion
+        run: make -j$(nproc) -O
+
+      - name: Locate ROM output
+        id: rom
+        working-directory: hack/pokeemerald-expansion
         run: |
-          git submodule update --init --recursive || true
-          make tools -j$(nproc) || true
-          make -j$(nproc)
+          if [ -f pokeemerald.gba ]; then
+            echo "path=pokeemerald.gba" >> "$GITHUB_OUTPUT"
+          elif [ -f build/emerald/pokeemerald.gba ]; then
+            echo "path=build/emerald/pokeemerald.gba" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::pokeemerald.gba not found after build"
+            find . -name "*.gba" -type f | head -20
+            exit 1
+          fi
 
       - name: Upload ROM artifact
         uses: actions/upload-artifact@v4
         with:
           name: story-rom-${{ inputs.build_id }}
-          path: hack/pokeemerald-expansion/pokeemerald.gba
+          path: hack/pokeemerald-expansion/${{ steps.rom.outputs.path }}
           retention-days: 14
 
       - name: Summary
