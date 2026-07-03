@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "hackTitle": "Pokemon Emerald: Saiyan Requiem",
+  "romGameCode": "BPEE",
+  "createdAt": "2026-07-03T19:40:15.887Z",
+  "overview": "DBZ x cosmic-horror total conversion. A dead Saiyan universe bleeds into Hoenn as the Hollowed; the Cell Syndicate harvests trainer ki to wake a sleeping god. Mentor: Prof. Gohan. Rival: Vegeta.",
+  "scenes": [
+    {
+      "id": "act1-01-truck-intro",
+      "title": "Arrival at the Dead Coast",
+      "map": "LittlerootTown",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "NARRATOR",
+          "line": "The scouter on the dashboard blinks once, reads a power level of zero, and quietly dies."
+        },
+        {
+          "speaker": "MOM",
+          "line": "We're here. Littleroot. Far from the crater, far from the war. Breathe, my little Saiyan."
+        },
+        {
+          "speaker": "MOM",
+          "line": "Whatever you felt on the sea... it's behind us now. It has to be."
+        }
+      ]
+    },
+    {
+      "id": "act1-02-clock-rival",
+      "title": "The Clock That Flinched",
+      "map": "LittlerootTown_BrendansHouse_2F",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "NARRATOR",
+          "line": "The clock hands twitch backward for a heartbeat, as if time itself flinched from something."
+        },
+        {
+          "speaker": "MOM",
+          "line": "Set it, sweetie. In this house, we decide when the hour comes. Not them."
+        }
+      ]
+    },
+    {
+      "id": "act1-03-route101-birch",
+      "title": "The Hollowed Soldier",
+      "map": "Route101",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "GOHAN",
+          "line": "HELP! It has my ki-reader! This thing isn't a Pokemon - it's Hollowed, it's been emptied out!"
+        },
+        {
+          "speaker": "GOHAN",
+          "line": "The bag! Grab a partner from my bag and fight - hurry, before it drains me to zero!"
+        },
+        {
+          "speaker": "GOHAN",
+          "line": "You saved me. That was no wild beast. It was a soldier, scooped hollow. We need to talk. Now."
+        }
+      ]
+    },
+    {
+      "id": "act1-04-rival-m",
+      "title": "Vegeta's Measure (male rival)",
+      "map": "Route103",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "VEGETA",
+          "line": "Stop. Your power level... it's laughable. But it's real. Real is rare in this dead place."
+        },
+        {
+          "speaker": "VEGETA",
+          "line": "Draw your partner. I'll measure what you are before the Syndicate does it with a blade."
+        },
+        {
+          "speaker": "VEGETA",
+          "line": "Tch. You climb fast. Faster than a normal should. That's either hope or a symptom."
+        },
+        {
+          "speaker": "GOHAN",
+          "line": "Enough, Vegeta. Route 102, then Petalburg. Norman is waiting - and he already knows what the child is."
+        }
+      ]
+    },
+    {
+      "id": "act1-04-rival-f",
+      "title": "Vegeta's Measure (female rival slot)",
+      "map": "Route103",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "VEGETA",
+          "line": "Stop. Your power level... it's laughable. But it's real. Real is rare in this dead place."
+        },
+        {
+          "speaker": "VEGETA",
+          "line": "Draw your partner. I'll measure what you are before the Syndicate does it with a blade."
+        },
+        {
+          "speaker": "VEGETA",
+          "line": "Tch. You climb fast. Faster than a normal should. That's either hope or a symptom."
+        },
+        {
+          "speaker": "GOHAN",
+          "line": "Enough, Vegeta. Route 102, then Petalburg. Norman is waiting - and he already knows what the child is."
+        }
+      ]
+    }
+  ],
+  "files": []
+}
