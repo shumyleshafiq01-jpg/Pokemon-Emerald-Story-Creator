@@ -1,5 +1,5 @@
 {
-  "_comment": "Maps Story Builder scene slugs -> REAL pokeemerald-expansion text labels to overwrite. The applier trusts ONLY this file, never the AI-supplied vanilla_event field (the AI hallucinates decomp symbol names). Every anchor here was grep-verified to exist in rh-hideout/pokeemerald-expansion. Extend this map to raise story coverage. 'anchors' may list several labels (e.g. May/Brendan gender variants); the scene's dialogue is distributed across the anchors in order.",
+  "_comment": "Maps Story Builder scene slugs -> REAL pokeemerald-expansion text labels to overwrite. The applier trusts ONLY this file, never the AI-supplied vanilla_event field. Every anchor was grep-verified in rh-hideout/pokeemerald-expansion. 'anchors' may list several labels; the scene's dialogue boxes are distributed across them in order, so list them in the order they play in-game (pre-battle box first, post-battle box last) to keep speakers on-screen when they talk.",
   "scenes": {
     "act1-01-truck-intro": {
       "file": "data/maps/LittlerootTown/scripts.inc",
@@ -14,13 +14,24 @@
     },
     "act1-03-route101-birch": {
       "file": "data/maps/Route101/scripts.inc",
-      "anchors": ["Route101_Text_YouSavedMe"]
+      "anchors": [
+        "Route101_Text_HelpMe",
+        "Route101_Text_PleaseHelp",
+        "Route101_Text_YouSavedMe"
+      ]
     },
-    "act1-04-route103-rival": {
+    "act1-04-rival-m": {
       "file": "data/maps/Route103/scripts.inc",
       "anchors": [
-        "Route103_Text_BrendanRoute103Pokemon",
-        "Route103_Text_MayRoute103Pokemon"
+        "Route103_Text_BrendanLetsBattle",
+        "Route103_Text_BrendanTimeToHeadBack"
+      ]
+    },
+    "act1-04-rival-f": {
+      "file": "data/maps/Route103/scripts.inc",
+      "anchors": [
+        "Route103_Text_MayLetsBattle",
+        "Route103_Text_MayTimeToHeadBack"
       ]
     }
   }
