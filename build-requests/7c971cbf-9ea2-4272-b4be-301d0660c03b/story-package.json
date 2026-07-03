@@ -1,0 +1,1613 @@
+{
+  "version": 1,
+  "hackTitle": "Pokémon Emerald: The Hollow Crown",
+  "romGameCode": "BPEE",
+  "createdAt": "2026-07-03T13:50:34.001Z",
+  "overview": "# Pokémon Emerald: The Hollow Crown\r\n\r\n## Elevator pitch\r\nYou arrive in Hoenn as ancient Johto relics begin surfacing beneath the region's soil. A corporate cult called the Null Syndicate hunts those relics to feed a sleeping horror called the Stillness, and your rival Kael knows their secrets because he once wore their uniform. Train like a fighter, seal what should never wake, and climb from Littleroot to Champion before Sovereign Null reshapes the world into silence.\r\n\r\n## Themes\r\n- Power earned through discipline and bonds, not stolen life force\r\n- History buried twice: Johto bells and Hoenn legends as one chained truth\r\n- Horror of erasure — bodies, names, and memory hollowed out for \"perfection\"\r\n\r\n## Protagonist\r\nDefault name follows player choice (Brendan/May). Backstory: family relocated from Olivine after your parent witnessed a \"hollow ship\" dredging the sea floor. Starting goal: settle in Littleroot, win badges, prove yourself to Gym Leader Norman (your father's friend). End goal: break the Null Syndicate's crown seals, restore the Brass Bell trinity, and deny Sovereign Null the Stillness.\r\n\r\n## Rival\r\n**Kael** — sharp, proud, obsessed with surpassing you. Early: cocky ex-trainer who left the Syndicate's youth program and hides a branded mark on his wrist. Mid: forced to cooperate when the Syndicate targets his sister in Slateport; grudging respect. Late: stands with you at Sootopolis, admits fear is not weakness, fights Null's lieutenant while you face the sovereign.\r\n\r\n## Antagonist / faction\r\n**The Null Syndicate** — merger of Devon poachers, renegade Silph tech, and Johto ruin delvers. Leader: **Sovereign Null** (humanoid, porcelain mask, Frieza-cold politeness), believes the Stillness will grant immortal \"perfect silence\" by consuming legendary essence. Player opposes them because they hollow Pokémon and people into empty vessels. **Team Magma and Team Aqua are fully replaced** — no weather teams; Mt Chimney and Seafloor Cavern are Syndicate excavation sites.\r\n\r\n## Legendaries\r\nGroudon and Kyogre appear as **Seal Keepers** bound at Sootopolis — required for plot climax but not catch-required. Rayquaza descends as **Sky Arbiter** when the Brass Bell shards resonate; story resolution uses Rayquaza to re-chain the Stillness, not a mandatory capture. Optional: player may battle/catch after story flag STILLNESS_SEALED.\r\n\r\n## Act structure\r\n\r\n| Act | Region progress | Main conflict |\r\n|-----|-----------------|----------------|\r\n| 1 | Littleroot → Stone Badge | Relocation, first Syndicate sighting, Devon theft |\r\n| 2 | → Knuckle Badge | Museum heist, power-scanner plot, Mt Chimney breach |\r\n| 3 | → Dynamo Badge | Norman's truth, Fortree spy, Mt Pyre bell shard |\r\n| 4 | → Heat Badge | Lilycove hideout, Mossdeep launch, cavern descent |\r\n| 5 | → Feather Badge | Sootopolis cataclysm, legendary re-sealing |\r\n| 6 | → Champion | Victory Road trials, Elite Four, homecoming |\r\n\r\n## New named NPCs\r\n| Name | Role | First scene file |\r\n|------|------|------------------|\r\n| Kael | Rival, ex-Syndicate | act1-02-clock-rival |\r\n| Sovereign Null | Antagonist | act2-06-mt-chimney-clash |\r\n| Elara Voss | Johto archaeologist | act2-02-slateport-museum |\r\n| Harrow | Null lieutenant | act2-06-mt-chimney-clash |\r\n| Sister Mira | Kael's sister, Slateport nurse | act2-02-slateport-museum |\r\n| Captain Jori | S.S. Tidal ally | act3-06-mossdeep-planning |\r\n| The Stillness | Eldritch sealed entity | act3-04-mt-pyre-lore |\r\n\r\n## Tone & content rating\r\nPG-13. Martial arts enthusiasm, cosmic horror undertones (hollow eyes, whispering ruins, body-husk imagery without gore). No explicit content. Frightening scenes use atmosphere and implication, not splatter.",
+  "scenes": [
+    {
+      "id": "act1-01-truck-intro",
+      "title": "Arrival in Littleroot",
+      "map": "LittlerootTown",
+      "vanillaEvent": "LittlerootTown_EventScript_Intro",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "NARRATOR",
+          "line": "The truck shudders over red Hoenn soil. In the mirror of a puddle, your reflection blinks a half-second late.",
+          "note": "horror beat, subtle"
+        },
+        {
+          "speaker": "MOM",
+          "line": "We're home, sweetie. Littleroot Town. Fresh air. Fresh start.",
+          "note": "warm, tired"
+        },
+        {
+          "speaker": "MOM",
+          "line": "Your father asked Norman to watch over us. That means you train hard, but not foolishly.",
+          "note": "foreshadow Norman"
+        },
+        {
+          "speaker": "MOM",
+          "line": "I know Olivine still feels close. Forget the hollow ships. Forget the bells that rang underwater.",
+          "note": "Johto hook"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        },
+        {
+          "speaker": "MOM",
+          "line": "Go on inside. I'll unpack. And if you hear whispering from the empty room—",
+          "note": "pause"
+        },
+        {
+          "speaker": "MOM",
+          "line": "—that's just the house settling.",
+          "note": "Mom lies kindly"
+        },
+        {
+          "speaker": "MOM",
+          "line": "Welcome to our new life.",
+          "note": "sets tone"
+        }
+      ],
+      "flags": [
+        "VAR_LITTLEROOT_INTRO_STATE"
+      ],
+      "rawBody": "\r\n# Scene: Arrival in Littleroot\r\n\r\n## Context\r\nThe moving truck arrives in Littleroot after the family fled Olivine's docks. Mom hides her anxiety behind warmth; a distant siren wails once and stops. Replaces vanilla truck intro and house entry. Player has no Pokémon yet.\r\n\r\n## Characters\r\n- MOM — welcomes player, hints at why they left Johto\r\n- PLAYER — silent protagonist\r\n- NARRATOR — optional truck bump\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| NARRATOR | The truck shudders over red Hoenn soil. In the mirror of a puddle, your reflection blinks a half-second late. | horror beat, subtle |\r\n| MOM | We're home, sweetie. Littleroot Town. Fresh air. Fresh start. | warm, tired |\r\n| MOM | Your father asked Norman to watch over us. That means you train hard, but not foolishly. | foreshadow Norman |\r\n| MOM | I know Olivine still feels close. Forget the hollow ships. Forget the bells that rang underwater. | Johto hook |\r\n| PLAYER | | silent |\r\n| MOM | Go on inside. I'll unpack. And if you hear whispering from the empty room— | pause |\r\n| MOM | —that's just the house settling. | Mom lies kindly |\r\n| MOM | Welcome to our new life. | sets tone |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_LITTLEROOT_INTRO_STATE = 1 when complete\r\n- Unlocks: house interior, clock scene\r\n\r\n## Implementation notes\r\nPlay truck arrival animation. Fade to player bedroom. Set global flag MOVED_TO_HOENN. Optional: one-frame static overlay on puddle reflection.\r\n"
+    },
+    {
+      "id": "act1-02-clock-rival",
+      "title": "Clock and the Neighbor",
+      "map": "LittlerootTown",
+      "vanillaEvent": "LittlerootTown_EventScript_SetClock",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "MOM",
+          "line": "Set the clock, dear. Time only moves forward if we tell it to.",
+          "note": "thematic"
+        },
+        {
+          "speaker": "MOM",
+          "line": "Our neighbors have a boy your age. Kael. Be polite."
+        },
+        {
+          "speaker": "KAEL",
+          "line": "You the import from Johto? Heard your family ran from the coast.",
+          "note": "confrontational"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Don't flinch. I left something worse than a bad town.",
+          "note": "Syndicate hint"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "They call it training. I call it branding.",
+          "note": "shows wrist later"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Professor Birch is outside Route 101. Probably dying of boredom. Or of something else.",
+          "note": "pushes player out"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Beat me when you're worth measuring.",
+          "note": "rivalry declared"
+        },
+        {
+          "speaker": "MOM (if Brendan)",
+          "line": "May's family said their son is intense. Be careful, Brendan.",
+          "note": "gender branch"
+        },
+        {
+          "speaker": "MOM (if May)",
+          "line": "Brendan's family said their son is intense. Be careful, May.",
+          "note": "gender branch"
+        }
+      ],
+      "flags": [
+        "VAR_LITTLEROOT_INTRO_STATE"
+      ],
+      "rawBody": "\r\n# Scene: Clock and the Neighbor\r\n\r\n## Context\r\nPlayer sets the wall clock, then visits the rival's house. Kael introduces himself with aggressive confidence and mentions \"the program\" he escaped. Replaces clock tutorial and rival house intro.\r\n\r\n## Characters\r\n- MOM — sends player to meet neighbor\r\n- KAEL — rival, first appearance\r\n- KAEL_MOM — brief, off-screen mention\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| MOM | Set the clock, dear. Time only moves forward if we tell it to. | thematic |\r\n| MOM | Our neighbors have a boy your age. Kael. Be polite. | |\r\n| KAEL | You the import from Johto? Heard your family ran from the coast. | confrontational |\r\n| PLAYER | | silent |\r\n| KAEL | Don't flinch. I left something worse than a bad town. | Syndicate hint |\r\n| KAEL | They call it training. I call it branding. | shows wrist later |\r\n| KAEL | Professor Birch is outside Route 101. Probably dying of boredom. Or of something else. | pushes player out |\r\n| KAEL | Beat me when you're worth measuring. | rivalry declared |\r\n| MOM (if Brendan) | May's family said their son is intense. Be careful, Brendan. | gender branch |\r\n| MOM (if May) | Brendan's family said their son is intense. Be careful, May. | gender branch |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_LITTLEROOT_INTRO_STATE = 2 when clock set\r\n- Sets FLAG_MET_KAEL = 1 after rival house visit\r\n- Unlocks: Route 101 north exit\r\n\r\n## Implementation notes\r\nClock UI tutorial unchanged. Rival sprite in bedroom or hallway. Kael dialogue differs slightly if player chose same starter type later (retroactive patch in act1-04).\r\n"
+    },
+    {
+      "id": "act1-03-route101-birch",
+      "title": "Route 101 — Birch and the Shaking Grass",
+      "map": "Route101",
+      "vanillaEvent": "Route101_EventScript_ProfBirchRescue",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "BIRCH",
+          "line": "Help! My data! My— the specimen is wrong!"
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "The Poochyena twitches in perfect intervals, like a metronome.",
+          "note": "horror"
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "In the bag! Quick! Take a Pokémon and fight!",
+          "note": "starter choice"
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "You did it. Its shadow stayed when it fled. That isn't normal.",
+          "note": "post-battle"
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "I'm Birch. Officially I study ecosystems. Unofficially I study what's eating them."
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "Come to my lab in Littleroot. I'll register your partner."
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "And listen— if anyone in a white mask asks about Johto bells, lie.",
+          "note": "Syndicate foreshadow"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "VAR_STARTER_CHOICE"
+      ],
+      "rawBody": "\r\n# Scene: Route 101 — Birch and the Shaking Grass\r\n\r\n## Context\r\nProfessor Birch is chased by a zigzagging Poochyena that moves wrong — eyes flat, no breath fog. Player takes starter from Birch's bag. Replaces vanilla Route 101 rescue. First battle is mandatory.\r\n\r\n## Characters\r\n- BIRCH — professor, panicked then grateful\r\n- PLAYER — silent\r\n- NARRATOR — Poochyena description\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| BIRCH | Help! My data! My— the specimen is wrong! | |\r\n| NARRATOR | The Poochyena twitches in perfect intervals, like a metronome. | horror |\r\n| BIRCH | In the bag! Quick! Take a Pokémon and fight! | starter choice |\r\n| BIRCH | You did it. Its shadow stayed when it fled. That isn't normal. | post-battle |\r\n| BIRCH | I'm Birch. Officially I study ecosystems. Unofficially I study what's eating them. | |\r\n| BIRCH | Come to my lab in Littleroot. I'll register your partner. | |\r\n| BIRCH | And listen— if anyone in a white mask asks about Johto bells, lie. | Syndicate foreshadow |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_STARTER_CHOICE = 1/2/3 by pick\r\n- Sets FLAG_BIRCH_RESCUE_COMPLETE = 1\r\n- Unlocks: Littleroot Lab registration, Route 103\r\n\r\n## Implementation notes\r\nStarter bag UI. Modified Poochyena AI aggressive. After battle, Poochyena flees north instead of KO fade. Birch follows to lab for dex handoff scene (vanilla lab script).\r\n"
+    },
+    {
+      "id": "act1-04-route103-rival",
+      "title": "Route 103 — First Measurement",
+      "map": "Route103",
+      "vanillaEvent": "Route103_EventScript_RivalBattle",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "KAEL",
+          "line": "Hold it. I need a number before the world gets noisy.",
+          "note": "DBZ power-scanner vibe"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Your stance is sloppy. Your Pokémon believes in you anyway. That's annoying."
+        },
+        {
+          "speaker": "KAEL",
+          "line": "…Tch. Fine. You're not hollow.",
+          "note": "if player wins"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Laugh while you can. The Syndicate counts everything."
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "Kael! I said friendly research, not gladiator cosplay.",
+          "note": "arrives after battle"
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "Both of you: Route 102, then Petalburg. Norman wants to meet our new trainer."
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Norman's real. Unlike the masks."
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "Player, don't lose to him twice in one week.",
+          "note": "light humor"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_RIVAL_ROUTE103"
+      ],
+      "rawBody": "\r\n# Scene: Route 103 — First Measurement\r\n\r\n## Context\r\nKael blocks the path to Oldale, calling this a \"baseline reading.\" First rival battle. Birch arrives after and sends both kids on a dex errand to Route 102. Replaces vanilla Route 103 rival fight.\r\n\r\n## Characters\r\n- KAEL — rival battle\r\n- BIRCH — post-battle exposition\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| KAEL | Hold it. I need a number before the world gets noisy. | DBZ power-scanner vibe |\r\n| KAEL | Your stance is sloppy. Your Pokémon believes in you anyway. That's annoying. | |\r\n| KAEL | …Tch. Fine. You're not hollow. | if player wins |\r\n| KAEL | Laugh while you can. The Syndicate counts everything. | |\r\n| BIRCH | Kael! I said friendly research, not gladiator cosplay. | arrives after battle |\r\n| BIRCH | Both of you: Route 102, then Petalburg. Norman wants to meet our new trainer. | |\r\n| KAEL | Norman's real. Unlike the masks. | |\r\n| BIRCH | Player, don't lose to him twice in one week. | light humor |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_RIVAL_ROUTE103 = 1\r\n- Unlocks: Route 102, Oldale Town access\r\n\r\n## Implementation notes\r\nRival party: starter + Lv2 Poochyena. Birch cutscene spawns after win/loss. Kael walks toward Oldale north gate.\r\n"
+    },
+    {
+      "id": "act1-05-petalburg-norman",
+      "title": "Petalburg — Norman and Wally",
+      "map": "PetalburgCity",
+      "vanillaEvent": "PetalburgCity_EventScript_WallyTutorial",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "NORMAN",
+          "line": "So you're the one my friend trusted Hoenn with. Stand straight.",
+          "note": "martial mentor"
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "I won't battle you today. Badges aren't medals. They're answers to hard questions."
+        },
+        {
+          "speaker": "WALLY",
+          "line": "Um… could you help me? I hear something in the grass… crying backward.",
+          "note": "horror hint"
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "Wally throws a Poké Ball. Ralts lands, then stares at empty air behind you."
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "Good. Sensitivity is a weapon if you train it.",
+          "note": "to Wally"
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "Player, Route 102 next. Petalburg Woods has been… disturbed."
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "Kael passed through scowling. Tell him the Gym doesn't fix what's broken inside.",
+          "note": "if Kael seen"
+        },
+        {
+          "speaker": "WALLY",
+          "line": "I'll get strong. For my family. For whatever is watching."
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "VAR_PETALBURG_STATE"
+      ],
+      "rawBody": "\r\n# Scene: Petalburg — Norman and Wally\r\n\r\n## Context\r\nNorman greets the player as an old friend of their parent and refuses the Gym battle until \"foundation is laid.\" Wally catches a Ralts with player's help — Ralts shivers at something unseen. Replaces Wally catching tutorial and Norman dialogue.\r\n\r\n## Characters\r\n- NORMAN — mentor figure, Gym Leader\r\n- WALLY — timid boy, first catch\r\n- KAEL — optional background cameo leaving city\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| NORMAN | So you're the one my friend trusted Hoenn with. Stand straight. | martial mentor |\r\n| NORMAN | I won't battle you today. Badges aren't medals. They're answers to hard questions. | |\r\n| WALLY | Um… could you help me? I hear something in the grass… crying backward. | horror hint |\r\n| NARRATOR | Wally throws a Poké Ball. Ralts lands, then stares at empty air behind you. | |\r\n| NORMAN | Good. Sensitivity is a weapon if you train it. | to Wally |\r\n| NORMAN | Player, Route 102 next. Petalburg Woods has been… disturbed. | |\r\n| NORMAN | Kael passed through scowling. Tell him the Gym doesn't fix what's broken inside. | if Kael seen |\r\n| WALLY | I'll get strong. For my family. For whatever is watching. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_PETALBURG_STATE = 1\r\n- Sets FLAG_WALLY_RALTS = 1\r\n- Unlocks: Petalburg Woods, Gym interior (decline battle)\r\n\r\n## Implementation notes\r\nWally battle tutorial optional skip. Ralts given to Wally via script. Norman blocks gym doors with \"Come back with one badge.\"\r\n"
+    },
+    {
+      "id": "act1-06-petalburg-woods",
+      "title": "Petalburg Woods — White Masks in Green",
+      "map": "PetalburgWoods",
+      "vanillaEvent": "PetalburgWoods_EventScript_TeamAquaGrunt",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "RESEARCHER",
+          "line": "Stop! That parcel is classified Devon—"
+        },
+        {
+          "speaker": "GRUNT",
+          "line": "Classified means useless until we peel it open.",
+          "note": "Syndicate voice"
+        },
+        {
+          "speaker": "GRUNT",
+          "line": "Life readings inside. Johto shard readings. Same song."
+        },
+        {
+          "speaker": "GRUNT_2",
+          "line": "Kid, you didn't see us. Walk away and keep your name.",
+          "note": "threat"
+        },
+        {
+          "speaker": "GRUNT",
+          "line": "…Or stay, and we'll measure how loud you scream.",
+          "note": "battle trigger"
+        },
+        {
+          "speaker": "GRUNT",
+          "line": "The Crown hungers. Rustboro warehouse. You'll be late.",
+          "note": "post-battle flee line"
+        },
+        {
+          "speaker": "RESEARCHER",
+          "line": "Thank you. Devon will hear of this. Take this Potion— please.",
+          "note": "item gift"
+        },
+        {
+          "speaker": "RESEARCHER",
+          "line": "They wore no Aqua colors. Something new is rooting here."
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_SYNDICATE_WOODS"
+      ],
+      "rawBody": "\r\n# Scene: Petalburg Woods — White Masks in Green\r\n\r\n## Context\r\nNull Syndicate grunts in white half-masks steal a Devon parcel from a researcher. They speak of \"hollow ratios\" and flee north. Replaces Team Aqua grunt encounter entirely.\r\n\r\n## Characters\r\n- RESEARCHER — Devon courier\r\n- GRUNT — Null Syndicate grunt\r\n- GRUNT_2 — backup\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| RESEARCHER | Stop! That parcel is classified Devon— | |\r\n| GRUNT | Classified means useless until we peel it open. | Syndicate voice |\r\n| GRUNT | Life readings inside. Johto shard readings. Same song. | |\r\n| GRUNT_2 | Kid, you didn't see us. Walk away and keep your name. | threat |\r\n| GRUNT | …Or stay, and we'll measure how loud you scream. | battle trigger |\r\n| GRUNT | The Crown hungers. Rustboro warehouse. You'll be late. | post-battle flee line |\r\n| RESEARCHER | Thank you. Devon will hear of this. Take this Potion— please. | item gift |\r\n| RESEARCHER | They wore no Aqua colors. Something new is rooting here. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_SYNDICATE_WOODS = 1\r\n- Unlocks: Route 104 north, Rustboro storyline hook\r\n\r\n## Implementation notes\r\nReplace Aqua grunt sprite with white-mask variant (palette swap). Battle: Lv6 Poochyena + Lv6 Nincada. Grunts exit toward Rustboro. Give Potion.\r\n"
+    },
+    {
+      "id": "act1-07-rustboro-roxanne",
+      "title": "Rustboro — Stone Badge and Stolen Research",
+      "map": "RustboroCity",
+      "vanillaEvent": "RustboroCity_EventScript_DevonCorp",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "ROXANNE",
+          "line": "Fossils teach patience. Syndicate thieves teach urgency. Which lesson do you bring?",
+          "note": "pre-battle"
+        },
+        {
+          "speaker": "ROXANNE",
+          "line": "Your strikes are honest. Take the Stone Badge.",
+          "note": "post-battle"
+        },
+        {
+          "speaker": "MR_STONE",
+          "line": "Our scanner detected a void signature in Petalburg Woods.",
+          "note": "Devon plot"
+        },
+        {
+          "speaker": "MR_STONE",
+          "line": "Null Syndicate agents stole the Hoenn-Johto cross index."
+        },
+        {
+          "speaker": "MR_STONE",
+          "line": "Deliver this letter to Steven in Dewford's granite caves.",
+          "note": "quest hook"
+        },
+        {
+          "speaker": "DEVON_EMPLOYEE",
+          "line": "Take HM Cut. Some paths must be opened, not wished open."
+        },
+        {
+          "speaker": "MR_STONE",
+          "line": "Roxanne trusts you. Don't waste trust. It's heavier than stone."
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "VAR_RUSTBORO_STATE"
+      ],
+      "rawBody": "\r\n# Scene: Rustboro — Stone Badge and Stolen Research\r\n\r\n## Context\r\nRoxanne's Gym grants the Stone Badge after a battle about \"foundations.\" Devon Corp reports a break-in; player receives HM Cut from employee. Mr. Stone asks player to deliver letter to Steven. Replaces Devon intro and Roxanne sequence.\r\n\r\n## Characters\r\n- ROXANNE — first Gym Leader\r\n- MR_STONE — Devon president\r\n- DEVON_EMPLOYEE — HM Cut gift\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| ROXANNE | Fossils teach patience. Syndicate thieves teach urgency. Which lesson do you bring? | pre-battle |\r\n| ROXANNE | Your strikes are honest. Take the Stone Badge. | post-battle |\r\n| MR_STONE | Our scanner detected a void signature in Petalburg Woods. | Devon plot |\r\n| MR_STONE | Null Syndicate agents stole the Hoenn-Johto cross index. | |\r\n| MR_STONE | Deliver this letter to Steven in Dewford's granite caves. | quest hook |\r\n| DEVON_EMPLOYEE | Take HM Cut. Some paths must be opened, not wished open. | |\r\n| MR_STONE | Roxanne trusts you. Don't waste trust. It's heavier than stone. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_RUSTBORO_STATE = 1 on badge\r\n- Sets FLAG_DEVON_LETTER = 1\r\n- Unlocks: Route 116, Mr. Briney boat later, Dewford letter quest\r\n\r\n## Implementation notes\r\nGym battle standard Roxanne team. Devon 2F scene triggers after badge. Letter item in bag. Cut given on 1F.\r\n"
+    },
+    {
+      "id": "act1-08-route116-tunnel",
+      "title": "Route 116 — The Whispering Tunnel",
+      "map": "RusturfTunnel",
+      "vanillaEvent": "RusturfTunnel_EventScript_ClearTunnel",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "MR_BRINEY",
+          "line": "My Peeko! The rock's humming wrong—"
+        },
+        {
+          "speaker": "GRUNT",
+          "line": "Back off. We're sampling resonance."
+        },
+        {
+          "speaker": "GRUNT",
+          "line": "This tunnel sings when blood's near. Want to hear?",
+          "note": "battle"
+        },
+        {
+          "speaker": "GRUNT",
+          "line": "Stillness hears you now. Run.",
+          "note": "flees"
+        },
+        {
+          "speaker": "SIGN",
+          "line": "UNOWN glyphs: BELL — SEAL — SKY",
+          "note": "inspectable"
+        },
+        {
+          "speaker": "MR_BRINEY",
+          "line": "You saved Peeko. I'll ferry you when you need the sea."
+        },
+        {
+          "speaker": "MR_BRINEY",
+          "line": "That mark… my wife saw similar in Johto, years ago.",
+          "note": "Johto tie"
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "Air from the crack tastes like copper and forgotten names.",
+          "note": "horror"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_TUNNEL_CLEARED"
+      ],
+      "rawBody": "\r\n# Scene: Route 116 — The Whispering Tunnel\r\n\r\n## Context\r\nPeeko the Wingull is trapped; player fights Syndicate grunt using sonic drill on the rock face. Tunnel clearing reveals Unown scratches and a cold draft. Replaces vanilla Peeko rescue / tunnel clear.\r\n\r\n## Characters\r\n- GRUNT — Syndicate drill operator\r\n- MR_BRINEY — Peeko owner\r\n- PLAYER — silent\r\n- SIGN — wall etching\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| MR_BRINEY | My Peeko! The rock's humming wrong— | |\r\n| GRUNT | Back off. We're sampling resonance. | |\r\n| GRUNT | This tunnel sings when blood's near. Want to hear? | battle |\r\n| GRUNT | Stillness hears you now. Run. | flees |\r\n| SIGN | UNOWN glyphs: BELL — SEAL — SKY | inspectable |\r\n| MR_BRINEY | You saved Peeko. I'll ferry you when you need the sea. | |\r\n| MR_BRINEY | That mark… my wife saw similar in Johto, years ago. | Johto tie |\r\n| NARRATOR | Air from the crack tastes like copper and forgotten names. | horror |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_TUNNEL_CLEARED = 1\r\n- Unlocks: Verdanturf access, Briney boat services\r\n\r\n## Implementation notes\r\nBreakable rocks script. Grunt battle Lv10 Aron. After clear, tunnel NPCs return. Sign is examine event.\r\n"
+    },
+    {
+      "id": "act2-01-dewford-brawly",
+      "title": "Dewford — Knuckle Badge and Granite Depths",
+      "map": "DewfordTown",
+      "vanillaEvent": "DewfordTown_EventScript_Gym",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "KAEL",
+          "line": "You again. I trained six hours. Don't bore me.",
+          "note": "rematch"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "…You're improving. That's worse for me.",
+          "note": "post-win"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "They took my squad mate. Left a smiling husk. I won't end like that.",
+          "note": "character beat"
+        },
+        {
+          "speaker": "BRAWLY",
+          "line": "I felt your battle through the floor. Good rhythm."
+        },
+        {
+          "speaker": "BRAWLY",
+          "line": "Empty your fear. Not your heart. Take the Knuckle Badge.",
+          "note": "post-gym"
+        },
+        {
+          "speaker": "STEVEN",
+          "line": "Letter from Mr. Stone? Then you know the Syndicate wants the Brass Bell map.",
+          "note": "cave scene"
+        },
+        {
+          "speaker": "STEVEN",
+          "line": "Johto's burned tower had three bells. Hoenn hid the third beneath Pyre.",
+          "note": "lore"
+        },
+        {
+          "speaker": "STEVEN",
+          "line": "Find Elara in Slateport Museum. She reads Unown the way others read weather.",
+          "note": "quest"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "VAR_DEWFORD_STATE"
+      ],
+      "rawBody": "\r\n# Scene: Dewford — Knuckle Badge and Granite Depths\r\n\r\n## Context\r\nBrawly trains fighters who \"empty the mind.\" Kael rematch in gym foyer — he lost someone to the Syndicate's \"hollow program.\" Steven's letter delivery unlocks cave access. Replaces Dewford Gym and Steven meet.\r\n\r\n## Characters\r\n- BRAWLY — Gym Leader\r\n- KAEL — rival rematch\r\n- STEVEN — Devon heir, lore drop\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| KAEL | You again. I trained six hours. Don't bore me. | rematch |\r\n| KAEL | …You're improving. That's worse for me. | post-win |\r\n| KAEL | They took my squad mate. Left a smiling husk. I won't end like that. | character beat |\r\n| BRAWLY | I felt your battle through the floor. Good rhythm. | |\r\n| BRAWLY | Empty your fear. Not your heart. Take the Knuckle Badge. | post-gym |\r\n| STEVEN | Letter from Mr. Stone? Then you know the Syndicate wants the Brass Bell map. | cave scene |\r\n| STEVEN | Johto's burned tower had three bells. Hoenn hid the third beneath Pyre. | lore |\r\n| STEVEN | Find Elara in Slateport Museum. She reads Unown the way others read weather. | quest |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_DEWFORD_STATE = 1 on badge\r\n- Sets FLAG_RIVAL_DEWFORD = 1\r\n- Sets FLAG_MET_STEVEN = 1\r\n- Unlocks: Route 109 boat, Slateport\r\n\r\n## Implementation notes\r\nRival battle before gym or after letter. Steven in Granite Cave 1F. Brawly gives badge + TM Bulk Up.\r\n"
+    },
+    {
+      "id": "act2-02-slateport-museum",
+      "title": "Slateport — Oceanic Museum Heist",
+      "map": "SlateportCity",
+      "vanillaEvent": "SlateportCity_EventScript_OceanicMuseum",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "ELARA",
+          "line": "These rubbings came from Ecruteak's ruins. Hoenn soil echoes them.",
+          "note": "exhibit"
+        },
+        {
+          "speaker": "GRUNT",
+          "line": "Hands off the display. The Crown owns history now.",
+          "note": "ambush"
+        },
+        {
+          "speaker": "MIRA",
+          "line": "People are collapsing! The gas smells like wet ash!"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Mira! I told you to stay away from my past!"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "The shard replica is bait. The real map is in the submarine blueprints.",
+          "note": "post-fight"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Stern's crew includes Syndicate shells. Stop them before dive tests."
+        },
+        {
+          "speaker": "MIRA",
+          "line": "Kael… your wrist brand is gone. Did it hurt?",
+          "note": "sibling scene"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Player. I owe you one. Just one. Don't spend it stupidly.",
+          "note": "alliance seed"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "VAR_SLATEPORT_MUSEUM"
+      ],
+      "rawBody": "\r\n# Scene: Slateport — Oceanic Museum Heist\r\n\r\n## Context\r\nElara Voss exhibits Johto brass rubbings. Syndicate agents gas the gallery and steal a bell shard replica. Kael's sister Mira treats coughing victims. Captain Stern's submarine plot is co-opted by Syndicate front. Replaces Captain Stern vanilla museum scenes.\r\n\r\n## Characters\r\n- ELARA — Johto archaeologist\r\n- MIRA — Kael's sister, nurse\r\n- KAEL — emotional beat\r\n- GRUNT — museum thief\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| ELARA | These rubbings came from Ecruteak's ruins. Hoenn soil echoes them. | exhibit |\r\n| GRUNT | Hands off the display. The Crown owns history now. | ambush |\r\n| MIRA | People are collapsing! The gas smells like wet ash! | |\r\n| KAEL | Mira! I told you to stay away from my past! | |\r\n| ELARA | The shard replica is bait. The real map is in the submarine blueprints. | post-fight |\r\n| ELARA | Stern's crew includes Syndicate shells. Stop them before dive tests. | |\r\n| MIRA | Kael… your wrist brand is gone. Did it hurt? | sibling scene |\r\n| KAEL | Player. I owe you one. Just one. Don't spend it stupidly. | alliance seed |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_SLATEPORT_MUSEUM = 1\r\n- Sets FLAG_MET_ELARA = 1\r\n- Unlocks: Team Aqua hideout slot → Syndicate warehouse in Slateport\r\n\r\n## Implementation notes\r\nIndoor battle 2 grunts Lv14. Gas event: NPCs slumped until talked. Elara joins as follower sprite to Stern's Shipyard.\r\n"
+    },
+    {
+      "id": "act2-03-route110-trick",
+      "title": "Route 110 — Trick House of Mirrors",
+      "map": "Route110",
+      "vanillaEvent": "Route110_EventScript_TrickHouse",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "TRICK_MASTER",
+          "line": "Welcome! Today's theme: WHO ARE YOU WITHOUT YOUR NAME?"
+        },
+        {
+          "speaker": "HOLLOW_NPC",
+          "line": "I am you. I am empty. Join us.",
+          "note": "horror mirror"
+        },
+        {
+          "speaker": "TRICK_MASTER",
+          "line": "Ignore the reflections! They're syndicate bait!",
+          "note": "mid-puzzle"
+        },
+        {
+          "speaker": "TRICK_MASTER",
+          "line": "You found my prize… and their scanner. Devon wants it destroyed.",
+          "note": "reward room"
+        },
+        {
+          "speaker": "TRICK_MASTER",
+          "line": "Take the TM Shock Wave. Shock the lies.",
+          "note": "item"
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "The scanner reads your party's bond as a single bright number.",
+          "note": "DBZ nod"
+        },
+        {
+          "speaker": "TRICK_MASTER",
+          "line": "Mauville next. Wattson hates silence. Literally.",
+          "note": "direction"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_TRICK_HOUSE_PUZZLE"
+      ],
+      "rawBody": "\r\n# Scene: Route 110 — Trick House of Mirrors\r\n\r\n## Context\r\nTrick Master invites player into a maze where mirrors show \"hollow\" versions of NPCs. Final room has a Syndicate power-scanner prototype disguised as a puzzle prize. Replaces Trick House reward sequence with plot device.\r\n\r\n## Characters\r\n- TRICK_MASTER — eccentric host\r\n- HOLLOW_NPC — mirror illusion\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| TRICK_MASTER | Welcome! Today's theme: WHO ARE YOU WITHOUT YOUR NAME? | |\r\n| HOLLOW_NPC | I am you. I am empty. Join us. | horror mirror |\r\n| TRICK_MASTER | Ignore the reflections! They're syndicate bait! | mid-puzzle |\r\n| TRICK_MASTER | You found my prize… and their scanner. Devon wants it destroyed. | reward room |\r\n| TRICK_MASTER | Take the TM Shock Wave. Shock the lies. | item |\r\n| NARRATOR | The scanner reads your party's bond as a single bright number. | DBZ nod |\r\n| TRICK_MASTER | Mauville next. Wattson hates silence. Literally. | direction |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_TRICK_HOUSE_PUZZLE = 1\r\n- Sets FLAG_DEVON_SCANNER = 1 (quest item)\r\n- Unlocks: Mauville City main arc\r\n\r\n## Implementation notes\r\nTrick House puzzles unchanged. Mirror NPCs use grayscale palette. Scanner item key for Wattson scene. TM reward as vanilla.\r\n"
+    },
+    {
+      "id": "act2-04-mauville-wattson",
+      "title": "Mauville — Dynamo Badge and the Living Grid",
+      "map": "MauvilleCity",
+      "vanillaEvent": "MauvilleCity_EventScript_Gym",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "WATTSON",
+          "line": "Wahahah! Feel the thunder! Feel your legs!",
+          "note": "pre-gym"
+        },
+        {
+          "speaker": "WATTSON",
+          "line": "Dynamo Badge! You conduct hope like lightning!",
+          "note": "post-gym"
+        },
+        {
+          "speaker": "HARROW",
+          "line": "Charming town. We needed darkness.",
+          "note": "blackout scene"
+        },
+        {
+          "speaker": "HARROW",
+          "line": "Sovereign Null sends greetings and a request: surrender the scanner."
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Two on one. I've done worse odds.",
+          "note": "joins player"
+        },
+        {
+          "speaker": "HARROW",
+          "line": "Ex-program dog. Still branded inside.",
+          "note": "taunt"
+        },
+        {
+          "speaker": "HARROW",
+          "line": "Mt Chimney next. The seal breaks there. Try to keep pace.",
+          "note": "flees"
+        },
+        {
+          "speaker": "WATTSON",
+          "line": "Route 111 north. Fallarbor's sky fell last night.",
+          "note": "quest"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "VAR_MAUVILLE_STATE"
+      ],
+      "rawBody": "\r\n# Scene: Mauville — Dynamo Badge and the Living Grid\r\n\r\n## Context\r\nWattson's Gym doubles as a power grid for Devon scanners. Citywide blackout is Syndicate sabotage. Player battles Wattson, then restores substation with rival help. Replaces Mauville Gym and Wattson dialogue.\r\n\r\n## Characters\r\n- WATTSON — electric Gym Leader\r\n- KAEL — brief cooperation\r\n- HARROW — Syndicate lieutenant intro (non-boss)\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| WATTSON | Wahahah! Feel the thunder! Feel your legs! | pre-gym |\r\n| WATTSON | Dynamo Badge! You conduct hope like lightning! | post-gym |\r\n| HARROW | Charming town. We needed darkness. | blackout scene |\r\n| HARROW | Sovereign Null sends greetings and a request: surrender the scanner. | |\r\n| KAEL | Two on one. I've done worse odds. | joins player |\r\n| HARROW | Ex-program dog. Still branded inside. | taunt |\r\n| HARROW | Mt Chimney next. The seal breaks there. Try to keep pace. | flees |\r\n| WATTSON | Route 111 north. Fallarbor's sky fell last night. | quest |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_MAUVILLE_STATE = 1\r\n- Sets FLAG_MET_HARROW = 1\r\n- Unlocks: Route 111 desert, Fallarbor meteor arc\r\n\r\n## Implementation notes\r\nGym battle standard. Post-badge event: city lights off. Double battle with Kael vs Harrow Lv20 team then Harrow teleports away.\r\n"
+    },
+    {
+      "id": "act2-05-fallarbor-meteor",
+      "title": "Fallarbor — The Fallen Bell Fragment",
+      "map": "FallarborTown",
+      "vanillaEvent": "FallarborTown_EventScript_Meteorite",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "COZMO",
+          "line": "The sky screamed. The stone sang when it landed.",
+          "note": "scared"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "This isn't meteoric iron. It's bell-brass from Johto's third tower."
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Syndicate drones circled but didn't land. They're afraid of something here."
+        },
+        {
+          "speaker": "SIGN",
+          "line": "WHEN BELL CRACKS STILLNESS WAKES"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Take the shard to Mt Pyre when you're ready. Not before Lavaridge's heat tests it."
+        },
+        {
+          "speaker": "COZMO",
+          "line": "Will the whispering stop?"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Only if brave people stop whispering back."
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_METEOR_SHARD"
+      ],
+      "rawBody": "\r\n# Scene: Fallarbor — The Fallen Bell Fragment\r\n\r\n## Context\r\nMeteor crash site holds not space rock but a brass fragment inscribed with Unown. Cozmo's father recontextualized as Elara's assistant; fragment needed for Mt Pyre later. Replaces Meteor Falls fetch quest intro.\r\n\r\n## Characters\r\n- ELARA — leads investigation\r\n- COZMO — shy boy, meteor witness\r\n- PLAYER — silent\r\n- SIGN — fragment inscription\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| COZMO | The sky screamed. The stone sang when it landed. | scared |\r\n| ELARA | This isn't meteoric iron. It's bell-brass from Johto's third tower. | |\r\n| ELARA | Syndicate drones circled but didn't land. They're afraid of something here. | |\r\n| SIGN | WHEN BELL CRACKS STILLNESS WAKES | |\r\n| ELARA | Take the shard to Mt Pyre when you're ready. Not before Lavaridge's heat tests it. | |\r\n| COZMO | Will the whispering stop? | |\r\n| ELARA | Only if brave people stop whispering back. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_METEOR_SHARD = 1\r\n- Item: BELL_SHARD in bag\r\n- Unlocks: Meteor Falls dungeon, Mt Chimney urgent\r\n\r\n## Implementation notes\r\nMeteor Falls 1F event. Shard is key item. Cozmo gives Star Piece sellable or quest keep.\r\n"
+    },
+    {
+      "id": "act2-06-mt-chimney-clash",
+      "title": "Mt Chimney — Breach the Seal Machine",
+      "map": "MtChimney",
+      "vanillaEvent": "MtChimney_EventScript_GroudonAwakening",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "SOVEREIGN_NULL",
+          "line": "Ah. Devon's little spark. You arrived with noise.",
+          "note": "Frieza tone"
+        },
+        {
+          "speaker": "SOVEREIGN_NULL",
+          "line": "We seek perfection: a world without screaming memory.",
+          "note": "motive"
+        },
+        {
+          "speaker": "SOVEREIGN_NULL",
+          "line": "The Stillness slept beneath Hoenn before your dragons had names.",
+          "note": "lore"
+        },
+        {
+          "speaker": "HARROW",
+          "line": "Boss, the drill hits magma seal in three minutes."
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Player! Keep them off the core!"
+        },
+        {
+          "speaker": "SOVEREIGN_NULL",
+          "line": "Your friend was ours. We polished him. He cracked. Pity.",
+          "note": "taunts Kael"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Groudon's pulse is a warning, not an invitation!",
+          "note": "radio"
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "The mountain exhales red light. For one heartbeat, every shadow has teeth.",
+          "note": "horror"
+        },
+        {
+          "speaker": "SOVEREIGN_NULL",
+          "line": "Enjoy this reprieve. Sootopolis is where crowns fit.",
+          "note": "retreat"
+        },
+        {
+          "speaker": "HARROW",
+          "line": "Next time I collect your voice.",
+          "note": "battle then flee"
+        }
+      ],
+      "flags": [
+        "FLAG_CHIMNEY_BREACH"
+      ],
+      "rawBody": "\r\n# Scene: Mt Chimney — Breach the Seal Machine\r\n\r\n## Context\r\nMajor setpiece replacing Magma/Aqua clash. Syndicate drills into volcanic seal point; Sovereign Null appears via holo then in person. Groudon does NOT fully awaken — only a pulse knocks back Syndicate. Player and Kael fight Harrow and grunts.\r\n\r\n## Characters\r\n- SOVEREIGN_NULL — antagonist first full appearance\r\n- HARROW — lieutenant battle\r\n- KAEL — ally battle\r\n- ELARA — radio support\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| SOVEREIGN_NULL | Ah. Devon's little spark. You arrived with noise. | Frieza tone |\r\n| SOVEREIGN_NULL | We seek perfection: a world without screaming memory. | motive |\r\n| SOVEREIGN_NULL | The Stillness slept beneath Hoenn before your dragons had names. | lore |\r\n| HARROW | Boss, the drill hits magma seal in three minutes. | |\r\n| KAEL | Player! Keep them off the core! | |\r\n| SOVEREIGN_NULL | Your friend was ours. We polished him. He cracked. Pity. | taunts Kael |\r\n| ELARA | Groudon's pulse is a warning, not an invitation! | radio |\r\n| NARRATOR | The mountain exhales red light. For one heartbeat, every shadow has teeth. | horror |\r\n| SOVEREIGN_NULL | Enjoy this reprieve. Sootopolis is where crowns fit. | retreat |\r\n| HARROW | Next time I collect your voice. | battle then flee |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_CHIMNEY_BREACH = 1\r\n- Sets FLAG_MET_SOVEREIGN_NULL = 1\r\n- Unlocks: Jagged Pass return, Lavaridge Gym\r\n\r\n## Implementation notes\r\nMulti battle: Kael partner vs 2 grunts, then solo vs Harrow Lv24. Cutscene earthquake. No Groudon catch. Null teleports with item Crown Fragment.\r\n"
+    },
+    {
+      "id": "act3-01-lavaridge-flannery",
+      "title": "Lavaridge — Heat Badge and Shard Tempering",
+      "map": "LavaridgeTown",
+      "vanillaEvent": "LavaridgeTown_EventScript_Gym",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "FLANNERY",
+          "line": "Steam reveals truth! Let's see if you can stand the heat!",
+          "note": "gym"
+        },
+        {
+          "speaker": "FLANNERY",
+          "line": "Heat Badge! You're burning bright!",
+          "note": "post"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Dip the shard. Unown letters will rise in the steam.",
+          "note": "ritual"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Seafloor Cavern. Sootopolis. They built two locks for one throat.",
+          "note": "twist map"
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "Come home to Petalburg when ready. It's time I told you why we left Olivine.",
+          "note": "letter"
+        },
+        {
+          "speaker": "FLANNERY",
+          "line": "Fortree's gym leader saw masks in the trees. Winona's no coward.",
+          "note": "hook"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "VAR_LAVARIDGE_STATE"
+      ],
+      "rawBody": "\r\n# Scene: Lavaridge — Heat Badge and Shard Tempering\r\n\r\n## Context\r\nFlannery's hot springs temper the bell shard. Mid-game twist: shard reveals map coordinates to Sootopolis and Seafloor Cavern. Norman sends letter asking player to return. Replaces Lavaridge Gym only.\r\n\r\n## Characters\r\n- FLANNERY — Gym Leader\r\n- NORMAN — letter only\r\n- ELARA — shard ritual\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| FLANNERY | Steam reveals truth! Let's see if you can stand the heat! | gym |\r\n| FLANNERY | Heat Badge! You're burning bright! | post |\r\n| ELARA | Dip the shard. Unown letters will rise in the steam. | ritual |\r\n| ELARA | Seafloor Cavern. Sootopolis. They built two locks for one throat. | twist map |\r\n| NORMAN | Come home to Petalburg when ready. It's time I told you why we left Olivine. | letter |\r\n| FLANNERY | Fortree's gym leader saw masks in the trees. Winona's no coward. | hook |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_LAVARIDGE_STATE = 1\r\n- Sets FLAG_BELL_MAP = 1\r\n- Unlocks: Petalburg Gym Norman, Fortree\r\n\r\n## Implementation notes\r\nGym battle Flannery team. Hot springs event with Elara NPC. Letter from Norman auto-delivered.\r\n"
+    },
+    {
+      "id": "act3-02-petalburg-norman-gym",
+      "title": "Petalburg Gym — Norman's Confession",
+      "map": "PetalburgCity",
+      "vanillaEvent": "PetalburgCity_EventScript_NormanBattle",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "NORMAN",
+          "line": "Five badges mean five answers. Show me yours.",
+          "note": "battle start"
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "Balance isn't equal strength. It's knowing when to strike.",
+          "note": "mid-battle quote"
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "The Balance Badge is yours. I'm proud. Now listen.",
+          "note": "post"
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "Your parent didn't flee shame. They fled recruiters in white masks.",
+          "note": "revelation"
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "The Syndicate hunts children with high bond readings. You lit up their scanner."
+        },
+        {
+          "speaker": "WALLY",
+          "line": "I beat Winona's apprentice! Ralts and I won't let hollow things win."
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "Go to Fortree. Winona spotted their scouts. Then Pyre."
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "Kael waits outside. He asked me to train him. Don't make me regret it."
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "VAR_NORMAN_BADGE"
+      ],
+      "rawBody": "\r\n# Scene: Petalburg Gym — Norman's Confession\r\n\r\n## Context\r\nNorman battles player for Balance Badge with full team. Post-battle he reveals player's parent saw Syndicate hollow ships at Olivine; family fled to protect child from recruitment. Wally returns stronger. Replaces Norman Gym battle.\r\n\r\n## Characters\r\n- NORMAN — Gym Leader, father figure\r\n- WALLY — short reunion\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| NORMAN | Five badges mean five answers. Show me yours. | battle start |\r\n| NORMAN | Balance isn't equal strength. It's knowing when to strike. | mid-battle quote |\r\n| NORMAN | The Balance Badge is yours. I'm proud. Now listen. | post |\r\n| NORMAN | Your parent didn't flee shame. They fled recruiters in white masks. | revelation |\r\n| NORMAN | The Syndicate hunts children with high bond readings. You lit up their scanner. | |\r\n| WALLY | I beat Winona's apprentice! Ralts and I won't let hollow things win. | |\r\n| NORMAN | Go to Fortree. Winona spotted their scouts. Then Pyre. | |\r\n| NORMAN | Kael waits outside. He asked me to train him. Don't make me regret it. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_NORMAN_BADGE = 1\r\n- Sets FLAG_NORMAN_TRUTH = 1\r\n- Unlocks: Fortree, Route 119\r\n\r\n## Implementation notes\r\nNorman full team Lv29-31. Balance Badge + HM Surf reminder from Norman if not yet. Kael sprite outside gym optional dialogue.\r\n"
+    },
+    {
+      "id": "act3-03-fortree-winona",
+      "title": "Fortree — Feather Badge and the Treehouse Spy",
+      "map": "FortreeCity",
+      "vanillaEvent": "FortreeCity_EventScript_Gym",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "WINONA",
+          "line": "The wind told me you'd come. It also told me someone watches."
+        },
+        {
+          "speaker": "WINONA",
+          "line": "Feather Badge! Soar, but never lose sight of ground truth.",
+          "note": "post-gym"
+        },
+        {
+          "speaker": "SPY",
+          "line": "You weren't supposed to look up.",
+          "note": "treehouse"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Harrow runs captains. Null runs everything else. I was captain candidate.",
+          "note": "exposition"
+        },
+        {
+          "speaker": "SPY",
+          "line": "Sovereign Null already has Lilycove warehouse keys.",
+          "note": "reveal"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Player. Battle me after this. I need to know I'm not hollow."
+        },
+        {
+          "speaker": "WINONA",
+          "line": "Lilycove next. And Mt Pyre before they desecrate the summit."
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "VAR_FORTREE_STATE"
+      ],
+      "rawBody": "\r\n# Scene: Fortree — Feather Badge and the Treehouse Spy\r\n\r\n## Context\r\nWinona's Gym grants Feather Badge. Spy in treehouse is Syndicate scout with stolen Fortree roster; player exposes them. Kael reveals Syndicate rank structure mirroring \"elite captains.\" Replaces Fortree invisible Kecleon shop unchanged; spy is new event.\r\n\r\n## Characters\r\n- WINONA — Gym Leader\r\n- KAEL — spy confrontation ally\r\n- SPY — Syndicate scout\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| WINONA | The wind told me you'd come. It also told me someone watches. | |\r\n| WINONA | Feather Badge! Soar, but never lose sight of ground truth. | post-gym |\r\n| SPY | You weren't supposed to look up. | treehouse |\r\n| KAEL | Harrow runs captains. Null runs everything else. I was captain candidate. | exposition |\r\n| SPY | Sovereign Null already has Lilycove warehouse keys. | reveal |\r\n| KAEL | Player. Battle me after this. I need to know I'm not hollow. | |\r\n| WINONA | Lilycove next. And Mt Pyre before they desecrate the summit. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_FORTREE_STATE = 1\r\n- Sets FLAG_LILYCOVE_TIP = 1\r\n- Optional: FLAG_KAEL_FORTREE_REMATCH\r\n\r\n## Implementation notes\r\nGym Winona. Spy battle Lv26 Murkrow + Cacturne. Kael optional rematch outside gym.\r\n"
+    },
+    {
+      "id": "act3-04-mt-pyre-lore",
+      "title": "Mt Pyre — The Third Bell and the Stillness",
+      "map": "MtPyre",
+      "vanillaEvent": "MtPyre_EventScript_TeamAquaMagma",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "BELL_KEEPER",
+          "line": "Three bells rang: one burned, one sunk, one buried here.",
+          "note": "lore"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Ecruteak's fire woke the first crack. Hoenn hid the last seal.",
+          "note": "Johto link"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Merge your shard. The Brass Bell hums for living trainers only.",
+          "note": "item merge"
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "…reyalp… emyrrah…",
+          "note": "whisper backward names"
+        },
+        {
+          "speaker": "HARROW",
+          "line": "Sentimental noise. The orb carries frequency. Goodbye.",
+          "note": "theft"
+        },
+        {
+          "speaker": "BELL_KEEPER",
+          "line": "They took the Red Orb analogue — the Pulse Orb. Blue remains hidden at sea.",
+          "note": "macguffin"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "The Stillness is not a Pokémon. It's what Pokémon fear when the sky forgets them.",
+          "note": "horror lore"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Lilycove hideout. Then Mossdeep. Captain Jori sails true.",
+          "note": "quest"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_PYRE_BELL"
+      ],
+      "rawBody": "\r\n# Scene: Mt Pyre — The Third Bell and the Stillness\r\n\r\n## Context\r\nReplaces Aqua/Magma Mt Pyre orb theft. Elara restores bell shrine; lore dump on Johto-Hoenn linked tragedy. Old couple guardians become \"Bell Keepers.\" Syndicate steals only a resonance orb — player keeps bell shard merge. Horror: summit whispers player name backward.\r\n\r\n## Characters\r\n- ELARA — ritual leader\r\n- BELL_KEEPER — elderly guardian\r\n- HARROW — orb thief\r\n- PLAYER — silent\r\n- NARRATOR — Stillness whisper\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| BELL_KEEPER | Three bells rang: one burned, one sunk, one buried here. | lore |\r\n| ELARA | Ecruteak's fire woke the first crack. Hoenn hid the last seal. | Johto link |\r\n| ELARA | Merge your shard. The Brass Bell hums for living trainers only. | item merge |\r\n| NARRATOR | …reyalp… emyrrah… | whisper backward names |\r\n| HARROW | Sentimental noise. The orb carries frequency. Goodbye. | theft |\r\n| BELL_KEEPER | They took the Red Orb analogue — the Pulse Orb. Blue remains hidden at sea. | macguffin |\r\n| ELARA | The Stillness is not a Pokémon. It's what Pokémon fear when the sky forgets them. | horror lore |\r\n| ELARA | Lilycove hideout. Then Mossdeep. Captain Jori sails true. | quest |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_PYRE_BELL = 1\r\n- Item: BRASS_BELL (merged)\r\n- Sets FLAG_PULSE_ORB_STOLEN = 1\r\n- Unlocks: Lilycove Syndicate hideout\r\n\r\n## Implementation notes\r\nSummit interior event. Harrow battle optional if player fast. Bell item enables Sootopolis door later. No Magma/Aqua NPCs.\r\n"
+    },
+    {
+      "id": "act3-05-lilycove-hideout",
+      "title": "Lilycove — Warehouse of Hollow Shells",
+      "map": "LilycoveCity",
+      "vanillaEvent": "LilycoveCity_EventScript_Hideout",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "KAEL",
+          "line": "This was my dorm. Rows of smiles that never reach eyes.",
+          "note": "horror"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Downloading cavern coordinates. Don't touch the tanks."
+        },
+        {
+          "speaker": "GRUNT",
+          "line": "Recruit returned? We'll reboot you.",
+          "note": "battle"
+        },
+        {
+          "speaker": "HUSK",
+          "line": "…ka…el…",
+          "note": "broken speech"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "That's Ren. They polished him until nothing moved inside."
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Seafloor Cavern entrance requires Mossdeep submarine. Stern's been compromised."
+        },
+        {
+          "speaker": "KAEL",
+          "line": "I carry Ren to Slateport. You carry the fight. Understood?"
+        },
+        {
+          "speaker": "GRUNT",
+          "line": "Sovereign Null waits where land and sea disagree.",
+          "note": "flee line"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_HIDEOUT_INFILTRATED"
+      ],
+      "rawBody": "\r\n# Scene: Lilycove — Warehouse of Hollow Shells\r\n\r\n## Context\r\nReplaces Team Aqua Hideout with Null Syndicate warehouse beneath contest hall. Rows of empty-eyed test subjects in tanks (PG horror). Player rescues data, frees Kael's former squad mate (comatose, sent to Mira). Password puzzle uses Unown.\r\n\r\n## Characters\r\n- KAEL — emotional breakdown\r\n- ELARA — hack terminals\r\n- GRUNT — guards\r\n- HUSK — former trainee NPC\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| KAEL | This was my dorm. Rows of smiles that never reach eyes. | horror |\r\n| ELARA | Downloading cavern coordinates. Don't touch the tanks. | |\r\n| GRUNT | Recruit returned? We'll reboot you. | battle |\r\n| HUSK | …ka…el… | broken speech |\r\n| KAEL | That's Ren. They polished him until nothing moved inside. | |\r\n| ELARA | Seafloor Cavern entrance requires Mossdeep submarine. Stern's been compromised. | |\r\n| KAEL | I carry Ren to Slateport. You carry the fight. Understood? | |\r\n| GRUNT | Sovereign Null waits where land and sea disagree. | flee line |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_HIDEOUT_INFILTRATED = 1\r\n- Sets FLAG_CAVERN_COORDS = 1\r\n- Unlocks: Mossdeep Space Center arc\r\n\r\n## Implementation notes\r\nHideout map reuse Aqua layout. Tank NPCs non-interactive except HUSK. Multi-floor grunt battles. No admin battle yet.\r\n"
+    },
+    {
+      "id": "act3-06-mossdeep-planning",
+      "title": "Mossdeep — Mind Badge and Submarine Launch",
+      "map": "MossdeepCity",
+      "vanillaEvent": "MossdeepCity_EventScript_SpaceCenter",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "TATE",
+          "line": "Two minds!"
+        },
+        {
+          "speaker": "LIZA",
+          "line": "One path!"
+        },
+        {
+          "speaker": "TATE & LIZA",
+          "line": "Mind Badge! Don't split your heart before the deep!",
+          "note": "post-gym"
+        },
+        {
+          "speaker": "STEVEN",
+          "line": "Syndicate rigged Stern's sub with void drills. We stole it back."
+        },
+        {
+          "speaker": "JORI",
+          "line": "I sailed Johto seas during the bell fires. I know silence when water lies."
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Brass Bell must ring at Sootopolis summit during cavern breach.",
+          "note": "plan"
+        },
+        {
+          "speaker": "STEVEN",
+          "line": "You'll dive first. Null expects a hero. Give him a storm instead."
+        },
+        {
+          "speaker": "JORI",
+          "line": "Submarine ready on Route 128. Surf there when prepared."
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "VAR_MOSSDEEP_STATE"
+      ],
+      "rawBody": "\r\n# Scene: Mossdeep — Mind Badge and Submarine Launch\r\n\r\n## Context\r\nTate & Liza Gym grants Mind Badge with double battle. Space Center repurposed: Captain Jori and Steven launch modified submarine to Seafloor Cavern. Pre-climax planning with full party allies. Replaces Mossdeep rocket / Deoxys setup with cavern dive.\r\n\r\n## Characters\r\n- TATE — Gym Leader\r\n- LIZA — Gym Leader\r\n- STEVEN — mission lead\r\n- JORI — submarine captain\r\n- ELARA — support\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| TATE | Two minds! |\r\n| LIZA | One path! |\r\n| TATE & LIZA | Mind Badge! Don't split your heart before the deep! | post-gym |\r\n| STEVEN | Syndicate rigged Stern's sub with void drills. We stole it back. | |\r\n| JORI | I sailed Johto seas during the bell fires. I know silence when water lies. | |\r\n| ELARA | Brass Bell must ring at Sootopolis summit during cavern breach. | plan |\r\n| STEVEN | You'll dive first. Null expects a hero. Give him a storm instead. | |\r\n| JORI | Submarine ready on Route 128. Surf there when prepared. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_MOSSDEEP_STATE = 1\r\n- Sets FLAG_SUBMARINE_READY = 1\r\n- Unlocks: Seafloor Cavern, Route 128 dive\r\n\r\n## Implementation notes\r\nDouble battle Tate & Liza. Space Center interior dialogue chain. Submarine flag replaces vanilla Mossdeep story lock.\r\n"
+    },
+    {
+      "id": "act4-01-seafloor-cavern",
+      "title": "Seafloor Cavern — The Second Lock",
+      "map": "SeafloorCavern",
+      "vanillaEvent": "SeafloorCavern_EventScript_KyogreAwakening",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "ELARA",
+          "line": "Depth reading spiking. The Stillness exhales through cracks.",
+          "note": "radio"
+        },
+        {
+          "speaker": "HARROW",
+          "line": "You dive well for surface trash."
+        },
+        {
+          "speaker": "HARROW",
+          "line": "Blue Orb meets Pulse. Two keys, one throat. Null knew you'd bring the bell."
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "Water darkens though no shadow moves. Your Pokémon cling closer."
+        },
+        {
+          "speaker": "HARROW",
+          "line": "Beat me, and I drop the drill codes. Lose, and your name empties.",
+          "note": "battle"
+        },
+        {
+          "speaker": "HARROW",
+          "line": "…Sovereign Null was right. You burn loud.",
+          "note": "post-battle"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Surface team destroyed the drill! Get out— now!",
+          "note": "radio"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Sootopolis! The sky turned white over the crater!",
+          "note": "urgent"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_CAVERN_DEEP"
+      ],
+      "rawBody": "\r\n# Scene: Seafloor Cavern — The Second Lock\r\n\r\n## Context\r\nReplaces Kyogre awakening. Player dives with Brass Bell. Syndicate drills into ocean seal; Blue Resonance Orb activates. Kyogre stirs but remains chained — player battles Harrow's elite squad in flooded chamber.\r\n\r\n## Characters\r\n- HARROW — boss battle\r\n- ELARA — radio\r\n- KAEL — surface radio only\r\n- PLAYER — silent\r\n- NARRATOR — deep pressure horror\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| ELARA | Depth reading spiking. The Stillness exhales through cracks. | radio |\r\n| HARROW | You dive well for surface trash. | |\r\n| HARROW | Blue Orb meets Pulse. Two keys, one throat. Null knew you'd bring the bell. | |\r\n| NARRATOR | Water darkens though no shadow moves. Your Pokémon cling closer. | |\r\n| HARROW | Beat me, and I drop the drill codes. Lose, and your name empties. | battle |\r\n| HARROW | …Sovereign Null was right. You burn loud. | post-battle |\r\n| KAEL | Surface team destroyed the drill! Get out— now! | radio |\r\n| ELARA | Sootopolis! The sky turned white over the crater! | urgent |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_CAVERN_DEEP = 1\r\n- Sets FLAG_HARROW_DEFEATED = 1\r\n- Unlocks: Sootopolis urgent warp / Route 131 fast current\r\n\r\n## Implementation notes\r\nHarrow boss Lv38 team with Dark/Psychic types. Kyogre cutscene roars only. Auto-exit submarine to Sootopolis edge.\r\n"
+    },
+    {
+      "id": "act4-02-sootopolis-confrontation",
+      "title": "Sootopolis — Seal Keepers Rise",
+      "map": "SootopolisCity",
+      "vanillaEvent": "SootopolisCity_EventScript_GroudonKyogre",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "SOVEREIGN_NULL",
+          "line": "Welcome to perfection's cradle. Hoenn's dragons are leashes, not gods."
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Ring the bell! Living bond only!"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Go! I'll keep these people breathing!"
+        },
+        {
+          "speaker": "SOVEREIGN_NULL",
+          "line": "Groudon. Kyogre. Drink the Stillness and become quiet.",
+          "note": "ritual"
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "The water and stone scream in opposite directions. The city cracks white."
+        },
+        {
+          "speaker": "STEVEN",
+          "line": "Null's fragment corrupts the seal. Stop him before the merge completes!"
+        },
+        {
+          "speaker": "SOVEREIGN_NULL",
+          "line": "You fight like a Johto folktale. I erased folktales.",
+          "note": "pre-boss"
+        },
+        {
+          "speaker": "SOVEREIGN_NULL",
+          "line": "I'll offer you silence. It's painless. Mostly.",
+          "note": "battle start"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Don't you dare die, rival. I haven't surpassed you yet.",
+          "note": "mid cutscene"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_SOOTOPOLIS_CRISIS"
+      ],
+      "rawBody": "\r\n# Scene: Sootopolis — Seal Keepers Rise\r\n\r\n## Context\r\nFull rewrite of Groudon/Kyogre clash. Both emerge as Seal Keepers responding to broken locks, not weather war. Sovereign Null stands on altar with Crown Fragment attempting to merge Stillness into legends. Kael holds civilians at cave mouth.\r\n\r\n## Characters\r\n- SOVEREIGN_NULL — climax villain\r\n- KAEL — civilian defense\r\n- ELARA — bell ringer\r\n- STEVEN — strategist\r\n- PLAYER — silent\r\n- GROUDON — cutscene only\r\n- KYOGRE — cutscene only\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| SOVEREIGN_NULL | Welcome to perfection's cradle. Hoenn's dragons are leashes, not gods. | |\r\n| ELARA | Ring the bell! Living bond only! | |\r\n| KAEL | Go! I'll keep these people breathing! | |\r\n| SOVEREIGN_NULL | Groudon. Kyogre. Drink the Stillness and become quiet. | ritual |\r\n| NARRATOR | The water and stone scream in opposite directions. The city cracks white. | |\r\n| STEVEN | Null's fragment corrupts the seal. Stop him before the merge completes! | |\r\n| SOVEREIGN_NULL | You fight like a Johto folktale. I erased folktales. | pre-boss |\r\n| SOVEREIGN_NULL | I'll offer you silence. It's painless. Mostly. | battle start |\r\n| KAEL | Don't you dare die, rival. I haven't surpassed you yet. | mid cutscene |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_SOOTOPOLIS_CRISIS = 1\r\n- Triggers Sovereign Null battle phase 1\r\n- Unlocks: act4-03 after Null phase 1 HP threshold\r\n\r\n## Implementation notes\r\nLegendary cutscene non-catch. Brass Bell ring animation. Null battle Lv40 mixed team + Crown Fragment item ability. Kael no battle here.\r\n"
+    },
+    {
+      "id": "act4-03-rayquaza-resolution",
+      "title": "Sootopolis — Sky Arbiter Descends",
+      "map": "SootopolisCity",
+      "vanillaEvent": "SootopolisCity_EventScript_Rayquaza",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "NARRATOR",
+          "line": "The bell's tone pierces cloud. Something ancient answers from above."
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Rayquaza isn't salvation. It's the lock's final tooth."
+        },
+        {
+          "speaker": "SOVEREIGN_NULL",
+          "line": "No. The sky was supposed to stay mute."
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "Rayquaza's roar pushes water and stone back into their bones."
+        },
+        {
+          "speaker": "SOVEREIGN_NULL",
+          "line": "You win noise. Enjoy it while it decays.",
+          "note": "mask shatters"
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "Behind the porcelain: nothing. Then the nothing collapses.",
+          "note": "horror payoff"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Stillness sealed. Orbs returned to Pyre. Bell sleeps."
+        },
+        {
+          "speaker": "STEVEN",
+          "line": "Null fled bodiless. Corpses remain. Hunt ends slowly, not today."
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Optional: Rayquaza tests you. Catch only if your bond can hold sky weight.",
+          "note": "optional battle"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_STILLNESS_SEALED"
+      ],
+      "rawBody": "\r\n# Scene: Sootopolis — Sky Arbiter Descends\r\n\r\n## Context\r\nRayquaza descends when Brass Bell resonates — Sky Arbiter, not tame god. Player may battle Rayquaza (optional capture after story). Stillness pulled back into dual seal; Null's mask cracks revealing empty void beneath. Resolution re-chains legends.\r\n\r\n## Characters\r\n- RAYQUAZA — legendary presence\r\n- SOVEREIGN_NULL — defeated monologue\r\n- ELARA — sealing ritual\r\n- PLAYER — silent\r\n- NARRATOR — resolution\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| NARRATOR | The bell's tone pierces cloud. Something ancient answers from above. | |\r\n| ELARA | Rayquaza isn't salvation. It's the lock's final tooth. | |\r\n| SOVEREIGN_NULL | No. The sky was supposed to stay mute. | |\r\n| NARRATOR | Rayquaza's roar pushes water and stone back into their bones. | |\r\n| SOVEREIGN_NULL | You win noise. Enjoy it while it decays. | mask shatters |\r\n| NARRATOR | Behind the porcelain: nothing. Then the nothing collapses. | horror payoff |\r\n| ELARA | Stillness sealed. Orbs returned to Pyre. Bell sleeps. | |\r\n| STEVEN | Null fled bodiless. Corpses remain. Hunt ends slowly, not today. | |\r\n| ELARA | Optional: Rayquaza tests you. Catch only if your bond can hold sky weight. | optional battle |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_STILLNESS_SEALED = 1\r\n- Sets FLAG_SOVEREIGN_NULL_DEFEATED = 1\r\n- Optional: FLAG_RAYQUAZA_BATTLE after cutscene\r\n- Unlocks: Victory Road, Wallace recognition\r\n\r\n## Implementation notes\r\nRayquaza Lv70 optional battle post-cutscene. Groudon/Kyogre fade underground. Null sprite removed. Sootopolis NPCs repopulate gradually.\r\n"
+    },
+    {
+      "id": "act5-01-victory-road",
+      "title": "Victory Road — Wally's Trial",
+      "map": "VictoryRoad",
+      "vanillaEvent": "VictoryRoad_EventScript_Wally",
+      "act": 5,
+      "dialogue": [
+        {
+          "speaker": "WALLY",
+          "line": "I heard you sealed a horror. I trained in Victory Road to stand beside you."
+        },
+        {
+          "speaker": "WALLY",
+          "line": "Ralts became Gardevoir. We don't flinch at empty air anymore.",
+          "note": "battle"
+        },
+        {
+          "speaker": "WALLY",
+          "line": "You win. Tell Norman I kept my promise.",
+          "note": "post"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Last stretch. Champion waits.",
+          "note": "exit"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "If I become Champion first someday, I'll still owe you one save."
+        },
+        {
+          "speaker": "KAEL",
+          "line": "The Syndicate's scattered. White masks burn in dumpsters. Good."
+        },
+        {
+          "speaker": "WALLACE",
+          "line": "Letter: Prove Hoenn's heart isn't hollow. The League watches.",
+          "note": "sign"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_VICTORY_ROAD"
+      ],
+      "rawBody": "\r\n# Scene: Victory Road — Wally's Trial\r\n\r\n## Context\r\nWallace sent word from Champion office. Wally blocks mid-cave for friendly battle — Ralts evolved. Kael appears at exit with mutual respect dialogue. Replaces Victory Road Wally encounter.\r\n\r\n## Characters\r\n- WALLY — battle\r\n- KAEL — exit dialogue\r\n- WALLACE — letter mention\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| WALLY | I heard you sealed a horror. I trained in Victory Road to stand beside you. | |\r\n| WALLY | Ralts became Gardevoir. We don't flinch at empty air anymore. | battle |\r\n| WALLY | You win. Tell Norman I kept my promise. | post |\r\n| KAEL | Last stretch. Champion waits. | exit |\r\n| KAEL | If I become Champion first someday, I'll still owe you one save. | |\r\n| KAEL | The Syndicate's scattered. White masks burn in dumpsters. Good. | |\r\n| WALLACE | Letter: Prove Hoenn's heart isn't hollow. The League watches. | sign |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_VICTORY_ROAD = 1\r\n- Sets FLAG_WALLY_VR_BATTLE = 1\r\n- Unlocks: Ever Grande City, Elite Four\r\n\r\n## Implementation notes\r\nWally battle Lv42 Gardevoir team. Kael non-battle dialogue at cave exit. Wallace letter on signpost.\r\n"
+    },
+    {
+      "id": "act5-02-elite-four",
+      "title": "Elite Four — Four Questions",
+      "map": "EverGrandeCity",
+      "vanillaEvent": "EverGrandeCity_EventScript_EliteFour",
+      "act": 5,
+      "dialogue": [
+        {
+          "speaker": "SIDNEY",
+          "line": "You stared into the Stillness. Did fear sharpen you or shrink you?"
+        },
+        {
+          "speaker": "SIDNEY",
+          "line": "Good. Sharp is how we survive.",
+          "note": "post-battle"
+        },
+        {
+          "speaker": "PHOEBE",
+          "line": "Spirits whisper you sealed Johto's ghost in Hoenn soil. True?"
+        },
+        {
+          "speaker": "PHOEBE",
+          "line": "Then remember them when you strike.",
+          "note": "post"
+        },
+        {
+          "speaker": "GLACIA",
+          "line": "Null offered silence. Why keep noisy pain?"
+        },
+        {
+          "speaker": "GLACIA",
+          "line": "Because warmth melts hollow ice. Clever.",
+          "note": "post"
+        },
+        {
+          "speaker": "DRAKE",
+          "line": "What do you leave after Champion?"
+        },
+        {
+          "speaker": "DRAKE",
+          "line": "A name that isn't empty. Proceed.",
+          "note": "post"
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "The Champion's door opens. Storm light flickers behind it."
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_ELITE_FOUR"
+      ],
+      "rawBody": "\r\n# Scene: Elite Four — Four Questions\r\n\r\n## Context\r\nEach Elite Four member asks a thematic question tied to story before battle. Sidney: fear. Phoebe: memory. Glacia: silence. Drake: legacy. Replaces standard Elite Four intro lines only; battles unchanged.\r\n\r\n## Characters\r\n- SIDNEY — Elite Four\r\n- PHOEBE — Elite Four\r\n- GLACIA — Elite Four\r\n- DRAKE — Elite Four\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| SIDNEY | You stared into the Stillness. Did fear sharpen you or shrink you? | |\r\n| SIDNEY | Good. Sharp is how we survive. | post-battle |\r\n| PHOEBE | Spirits whisper you sealed Johto's ghost in Hoenn soil. True? | |\r\n| PHOEBE | Then remember them when you strike. | post |\r\n| GLACIA | Null offered silence. Why keep noisy pain? | |\r\n| GLACIA | Because warmth melts hollow ice. Clever. | post |\r\n| DRAKE | What do you leave after Champion? | |\r\n| DRAKE | A name that isn't empty. Proceed. | post |\r\n| NARRATOR | The Champion's door opens. Storm light flickers behind it. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_ELITE_FOUR = 1 after Drake\r\n- Unlocks: Champion room\r\n\r\n## Implementation notes\r\nSequential Elite Four battles. Custom pre/post dialogue each. Drake opens champion door.\r\n"
+    },
+    {
+      "id": "act5-03-wallace-gate",
+      "title": "Ever Grande — Wallace's Gate",
+      "map": "EverGrandeCity",
+      "vanillaEvent": "EverGrandeCity_EventScript_Wallace",
+      "act": 5,
+      "dialogue": [
+        {
+          "speaker": "WALLACE",
+          "line": "You carry a bell that rang across regions. Art appreciates symmetry."
+        },
+        {
+          "speaker": "WALLACE",
+          "line": "Juan dives Sootopolis depths now. He says the water finally sounds like water.",
+          "note": "Juan beat"
+        },
+        {
+          "speaker": "WALLACE",
+          "line": "I am Wallace, Champion. I test whether your victory was accident or character."
+        },
+        {
+          "speaker": "WALLACE",
+          "line": "Win, and Hoenn tells your story in stone and spray."
+        },
+        {
+          "speaker": "WALLACE",
+          "line": "Lose, and you train again. Noise beats silence either way."
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_WALLACE_BLESSING"
+      ],
+      "rawBody": "\r\n# Scene: Ever Grande — Wallace's Gate\r\n\r\n## Context\r\nWallace (Champion) meets player before final door if Juan arc skipped. He blesses the Brass Bell for the champion battle and mentions Sootopolis murals updating. Optional Juan mention: he trains in Sootopolis cave now. Replaces Wallace pre-champion dialogue.\r\n\r\n## Characters\r\n- WALLACE — Champion, mentor tone\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| WALLACE | You carry a bell that rang across regions. Art appreciates symmetry. | |\r\n| WALLACE | Juan dives Sootopolis depths now. He says the water finally sounds like water. | Juan beat |\r\n| WALLACE | I am Wallace, Champion. I test whether your victory was accident or character. | |\r\n| WALLACE | Win, and Hoenn tells your story in stone and spray. | |\r\n| WALLACE | Lose, and you train again. Noise beats silence either way. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_WALLACE_BLESSING = 1\r\n- Unlocks: Champion battle act6-01\r\n\r\n## Implementation notes\r\nWallace sprite outside champion door. Short scene before entering. No battle here.\r\n"
+    },
+    {
+      "id": "act6-01-champion",
+      "title": "Champion Battle — Wallace",
+      "map": "EverGrandeCity",
+      "vanillaEvent": "EverGrandeCity_EventScript_ChampionBattle",
+      "act": 6,
+      "dialogue": [
+        {
+          "speaker": "WALLACE",
+          "line": "Show me the rhythm you used against the Stillness!",
+          "note": "battle start"
+        },
+        {
+          "speaker": "WALLACE",
+          "line": "Water flows around force. You force nothing. Interesting!",
+          "note": "mid-battle"
+        },
+        {
+          "speaker": "WALLACE",
+          "line": "Magnificent! Hoenn's new Champion carries living noise!",
+          "note": "defeat"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Took you long enough.",
+          "note": "gallery"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Next season I win the rematch. Syndicate or no Syndicate."
+        },
+        {
+          "speaker": "WALLACE",
+          "line": "Register your partners. History prefers names over masks.",
+          "note": "Hall of Fame prompt"
+        },
+        {
+          "speaker": "STEVEN",
+          "line": "Devon scans show void readings dropping region-wide. Thank you.",
+          "note": "post via letter"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Ecruteak sends congratulations. The third bell sleeps again.",
+          "note": "post via letter"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_CHAMPION_DEFEATED"
+      ],
+      "rawBody": "\r\n# Scene: Champion Battle — Wallace\r\n\r\n## Context\r\nFull Champion battle against Wallace with story-flavored dialogue mid-fight. After victory, player enters Hall of Fame setup. Kael watches from gallery. Replaces Steven/Wallace champion battle (Emerald uses Wallace).\r\n\r\n## Characters\r\n- WALLACE — Champion battle\r\n- KAEL — gallery\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| WALLACE | Show me the rhythm you used against the Stillness! | battle start |\r\n| WALLACE | Water flows around force. You force nothing. Interesting! | mid-battle |\r\n| WALLACE | Magnificent! Hoenn's new Champion carries living noise! | defeat |\r\n| KAEL | Took you long enough. | gallery |\r\n| KAEL | Next season I win the rematch. Syndicate or no Syndicate. | |\r\n| WALLACE | Register your partners. History prefers names over masks. | Hall of Fame prompt |\r\n| STEVEN | Devon scans show void readings dropping region-wide. Thank you. | post via letter |\r\n| ELARA | Ecruteak sends congratulations. The third bell sleeps again. | post via letter |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_CHAMPION_DEFEATED = 1\r\n- Triggers Hall of Fame sequence\r\n- Unlocks: act6-02 epilogue\r\n\r\n## Implementation notes\r\nWallace champion team Lv57-59. Kael gallery sprite after battle. Hall of Fame vanilla flow.\r\n"
+    },
+    {
+      "id": "act6-02-epilogue",
+      "title": "Epilogue — Home Without Whispers",
+      "map": "LittlerootTown",
+      "vanillaEvent": "NEW",
+      "act": 6,
+      "dialogue": [
+        {
+          "speaker": "MOM",
+          "line": "You came back. The empty room stopped whispering the day you left for Ever Grande.",
+          "note": "horror resolved"
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "Birch here! New field: track Null cells abroad. Interested?",
+          "note": "postgame hook"
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "Champion. Your parent would have cried happy. Train daily."
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Ren woke up. Said my name wrong on purpose. I laughed.",
+          "note": "payoff"
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Brass Bell replica hangs in my museum. Real one? Still on your belt."
+        },
+        {
+          "speaker": "ELARA",
+          "line": "Devon satellites pinged a void spike beyond Hoenn's map edge.",
+          "note": "sequel tease"
+        },
+        {
+          "speaker": "MOM",
+          "line": "Dinner first. Saving the world on an empty stomach is forbidden.",
+          "note": "warm close"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Race you to Route 101 tomorrow. Loser buys berries.",
+          "note": "gameplay tone"
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "Hoenn breathes. The sky remembers your name forward.",
+          "note": "final line"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_EPILOGUE_COMPLETE"
+      ],
+      "rawBody": "\r\n# Scene: Epilogue — Home Without Whispers\r\n\r\n## Context\r\nPost-Hall of Fame homecoming. Mom, Birch, Norman, Kael, and Elara gather in Littleroot. Sequel hook: faint void reading from far sea (Namek-analogue island tease). New game+ flag optional.\r\n\r\n## Characters\r\n- MOM — homecoming\r\n- BIRCH — research future\r\n- NORMAN — proud mentor\r\n- KAEL — rival promise\r\n- ELARA — sequel hook\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| MOM | You came back. The empty room stopped whispering the day you left for Ever Grande. | horror resolved |\r\n| BIRCH | Birch here! New field: track Null cells abroad. Interested? | postgame hook |\r\n| NORMAN | Champion. Your parent would have cried happy. Train daily. | |\r\n| KAEL | Ren woke up. Said my name wrong on purpose. I laughed. | payoff |\r\n| ELARA | Brass Bell replica hangs in my museum. Real one? Still on your belt. | |\r\n| ELARA | Devon satellites pinged a void spike beyond Hoenn's map edge. | sequel tease |\r\n| MOM | Dinner first. Saving the world on an empty stomach is forbidden. | warm close |\r\n| KAEL | Race you to Route 101 tomorrow. Loser buys berries. | gameplay tone |\r\n| NARRATOR | Hoenn breathes. The sky remembers your name forward. | final line |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_EPILOGUE_COMPLETE = 1\r\n- Unlocks: postgame island quest placeholder (Battle Frontier unchanged)\r\n\r\n## Implementation notes\r\nTrigger on first Littleroot visit after Hall of Fame. Group NPCs on Brendan/May porch area. Optional fade to credits with bell sound SFX.\r\n"
+    }
+  ],
+  "files": [
+    {
+      "name": "00-overview.md",
+      "content": "# Pokémon Emerald: The Hollow Crown\r\n\r\n## Elevator pitch\r\nYou arrive in Hoenn as ancient Johto relics begin surfacing beneath the region's soil. A corporate cult called the Null Syndicate hunts those relics to feed a sleeping horror called the Stillness, and your rival Kael knows their secrets because he once wore their uniform. Train like a fighter, seal what should never wake, and climb from Littleroot to Champion before Sovereign Null reshapes the world into silence.\r\n\r\n## Themes\r\n- Power earned through discipline and bonds, not stolen life force\r\n- History buried twice: Johto bells and Hoenn legends as one chained truth\r\n- Horror of erasure — bodies, names, and memory hollowed out for \"perfection\"\r\n\r\n## Protagonist\r\nDefault name follows player choice (Brendan/May). Backstory: family relocated from Olivine after your parent witnessed a \"hollow ship\" dredging the sea floor. Starting goal: settle in Littleroot, win badges, prove yourself to Gym Leader Norman (your father's friend). End goal: break the Null Syndicate's crown seals, restore the Brass Bell trinity, and deny Sovereign Null the Stillness.\r\n\r\n## Rival\r\n**Kael** — sharp, proud, obsessed with surpassing you. Early: cocky ex-trainer who left the Syndicate's youth program and hides a branded mark on his wrist. Mid: forced to cooperate when the Syndicate targets his sister in Slateport; grudging respect. Late: stands with you at Sootopolis, admits fear is not weakness, fights Null's lieutenant while you face the sovereign.\r\n\r\n## Antagonist / faction\r\n**The Null Syndicate** — merger of Devon poachers, renegade Silph tech, and Johto ruin delvers. Leader: **Sovereign Null** (humanoid, porcelain mask, Frieza-cold politeness), believes the Stillness will grant immortal \"perfect silence\" by consuming legendary essence. Player opposes them because they hollow Pokémon and people into empty vessels. **Team Magma and Team Aqua are fully replaced** — no weather teams; Mt Chimney and Seafloor Cavern are Syndicate excavation sites.\r\n\r\n## Legendaries\r\nGroudon and Kyogre appear as **Seal Keepers** bound at Sootopolis — required for plot climax but not catch-required. Rayquaza descends as **Sky Arbiter** when the Brass Bell shards resonate; story resolution uses Rayquaza to re-chain the Stillness, not a mandatory capture. Optional: player may battle/catch after story flag STILLNESS_SEALED.\r\n\r\n## Act structure\r\n\r\n| Act | Region progress | Main conflict |\r\n|-----|-----------------|----------------|\r\n| 1 | Littleroot → Stone Badge | Relocation, first Syndicate sighting, Devon theft |\r\n| 2 | → Knuckle Badge | Museum heist, power-scanner plot, Mt Chimney breach |\r\n| 3 | → Dynamo Badge | Norman's truth, Fortree spy, Mt Pyre bell shard |\r\n| 4 | → Heat Badge | Lilycove hideout, Mossdeep launch, cavern descent |\r\n| 5 | → Feather Badge | Sootopolis cataclysm, legendary re-sealing |\r\n| 6 | → Champion | Victory Road trials, Elite Four, homecoming |\r\n\r\n## New named NPCs\r\n| Name | Role | First scene file |\r\n|------|------|------------------|\r\n| Kael | Rival, ex-Syndicate | act1-02-clock-rival |\r\n| Sovereign Null | Antagonist | act2-06-mt-chimney-clash |\r\n| Elara Voss | Johto archaeologist | act2-02-slateport-museum |\r\n| Harrow | Null lieutenant | act2-06-mt-chimney-clash |\r\n| Sister Mira | Kael's sister, Slateport nurse | act2-02-slateport-museum |\r\n| Captain Jori | S.S. Tidal ally | act3-06-mossdeep-planning |\r\n| The Stillness | Eldritch sealed entity | act3-04-mt-pyre-lore |\r\n\r\n## Tone & content rating\r\nPG-13. Martial arts enthusiasm, cosmic horror undertones (hollow eyes, whispering ruins, body-husk imagery without gore). No explicit content. Frightening scenes use atmosphere and implication, not splatter.\r\n"
+    },
+    {
+      "name": "act1-01-truck-intro.md",
+      "content": "---\r\nscene_id: act1-01-truck-intro\r\nmap: LittlerootTown\r\nvanilla_event: LittlerootTown_EventScript_Intro\r\nact: 1\r\nflags: VAR_LITTLEROOT_INTRO_STATE\r\n---\r\n\r\n# Scene: Arrival in Littleroot\r\n\r\n## Context\r\nThe moving truck arrives in Littleroot after the family fled Olivine's docks. Mom hides her anxiety behind warmth; a distant siren wails once and stops. Replaces vanilla truck intro and house entry. Player has no Pokémon yet.\r\n\r\n## Characters\r\n- MOM — welcomes player, hints at why they left Johto\r\n- PLAYER — silent protagonist\r\n- NARRATOR — optional truck bump\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| NARRATOR | The truck shudders over red Hoenn soil. In the mirror of a puddle, your reflection blinks a half-second late. | horror beat, subtle |\r\n| MOM | We're home, sweetie. Littleroot Town. Fresh air. Fresh start. | warm, tired |\r\n| MOM | Your father asked Norman to watch over us. That means you train hard, but not foolishly. | foreshadow Norman |\r\n| MOM | I know Olivine still feels close. Forget the hollow ships. Forget the bells that rang underwater. | Johto hook |\r\n| PLAYER | | silent |\r\n| MOM | Go on inside. I'll unpack. And if you hear whispering from the empty room— | pause |\r\n| MOM | —that's just the house settling. | Mom lies kindly |\r\n| MOM | Welcome to our new life. | sets tone |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_LITTLEROOT_INTRO_STATE = 1 when complete\r\n- Unlocks: house interior, clock scene\r\n\r\n## Implementation notes\r\nPlay truck arrival animation. Fade to player bedroom. Set global flag MOVED_TO_HOENN. Optional: one-frame static overlay on puddle reflection.\r\n"
+    },
+    {
+      "name": "act1-02-clock-rival.md",
+      "content": "---\r\nscene_id: act1-02-clock-rival\r\nmap: LittlerootTown\r\nvanilla_event: LittlerootTown_EventScript_SetClock\r\nact: 1\r\nflags: VAR_LITTLEROOT_INTRO_STATE\r\n---\r\n\r\n# Scene: Clock and the Neighbor\r\n\r\n## Context\r\nPlayer sets the wall clock, then visits the rival's house. Kael introduces himself with aggressive confidence and mentions \"the program\" he escaped. Replaces clock tutorial and rival house intro.\r\n\r\n## Characters\r\n- MOM — sends player to meet neighbor\r\n- KAEL — rival, first appearance\r\n- KAEL_MOM — brief, off-screen mention\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| MOM | Set the clock, dear. Time only moves forward if we tell it to. | thematic |\r\n| MOM | Our neighbors have a boy your age. Kael. Be polite. | |\r\n| KAEL | You the import from Johto? Heard your family ran from the coast. | confrontational |\r\n| PLAYER | | silent |\r\n| KAEL | Don't flinch. I left something worse than a bad town. | Syndicate hint |\r\n| KAEL | They call it training. I call it branding. | shows wrist later |\r\n| KAEL | Professor Birch is outside Route 101. Probably dying of boredom. Or of something else. | pushes player out |\r\n| KAEL | Beat me when you're worth measuring. | rivalry declared |\r\n| MOM (if Brendan) | May's family said their son is intense. Be careful, Brendan. | gender branch |\r\n| MOM (if May) | Brendan's family said their son is intense. Be careful, May. | gender branch |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_LITTLEROOT_INTRO_STATE = 2 when clock set\r\n- Sets FLAG_MET_KAEL = 1 after rival house visit\r\n- Unlocks: Route 101 north exit\r\n\r\n## Implementation notes\r\nClock UI tutorial unchanged. Rival sprite in bedroom or hallway. Kael dialogue differs slightly if player chose same starter type later (retroactive patch in act1-04).\r\n"
+    },
+    {
+      "name": "act1-03-route101-birch.md",
+      "content": "---\r\nscene_id: act1-03-route101-birch\r\nmap: Route101\r\nvanilla_event: Route101_EventScript_ProfBirchRescue\r\nact: 1\r\nflags: VAR_STARTER_CHOICE\r\n---\r\n\r\n# Scene: Route 101 — Birch and the Shaking Grass\r\n\r\n## Context\r\nProfessor Birch is chased by a zigzagging Poochyena that moves wrong — eyes flat, no breath fog. Player takes starter from Birch's bag. Replaces vanilla Route 101 rescue. First battle is mandatory.\r\n\r\n## Characters\r\n- BIRCH — professor, panicked then grateful\r\n- PLAYER — silent\r\n- NARRATOR — Poochyena description\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| BIRCH | Help! My data! My— the specimen is wrong! | |\r\n| NARRATOR | The Poochyena twitches in perfect intervals, like a metronome. | horror |\r\n| BIRCH | In the bag! Quick! Take a Pokémon and fight! | starter choice |\r\n| BIRCH | You did it. Its shadow stayed when it fled. That isn't normal. | post-battle |\r\n| BIRCH | I'm Birch. Officially I study ecosystems. Unofficially I study what's eating them. | |\r\n| BIRCH | Come to my lab in Littleroot. I'll register your partner. | |\r\n| BIRCH | And listen— if anyone in a white mask asks about Johto bells, lie. | Syndicate foreshadow |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_STARTER_CHOICE = 1/2/3 by pick\r\n- Sets FLAG_BIRCH_RESCUE_COMPLETE = 1\r\n- Unlocks: Littleroot Lab registration, Route 103\r\n\r\n## Implementation notes\r\nStarter bag UI. Modified Poochyena AI aggressive. After battle, Poochyena flees north instead of KO fade. Birch follows to lab for dex handoff scene (vanilla lab script).\r\n"
+    },
+    {
+      "name": "act1-04-route103-rival.md",
+      "content": "---\r\nscene_id: act1-04-route103-rival\r\nmap: Route103\r\nvanilla_event: Route103_EventScript_RivalBattle\r\nact: 1\r\nflags: FLAG_RIVAL_ROUTE103\r\n---\r\n\r\n# Scene: Route 103 — First Measurement\r\n\r\n## Context\r\nKael blocks the path to Oldale, calling this a \"baseline reading.\" First rival battle. Birch arrives after and sends both kids on a dex errand to Route 102. Replaces vanilla Route 103 rival fight.\r\n\r\n## Characters\r\n- KAEL — rival battle\r\n- BIRCH — post-battle exposition\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| KAEL | Hold it. I need a number before the world gets noisy. | DBZ power-scanner vibe |\r\n| KAEL | Your stance is sloppy. Your Pokémon believes in you anyway. That's annoying. | |\r\n| KAEL | …Tch. Fine. You're not hollow. | if player wins |\r\n| KAEL | Laugh while you can. The Syndicate counts everything. | |\r\n| BIRCH | Kael! I said friendly research, not gladiator cosplay. | arrives after battle |\r\n| BIRCH | Both of you: Route 102, then Petalburg. Norman wants to meet our new trainer. | |\r\n| KAEL | Norman's real. Unlike the masks. | |\r\n| BIRCH | Player, don't lose to him twice in one week. | light humor |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_RIVAL_ROUTE103 = 1\r\n- Unlocks: Route 102, Oldale Town access\r\n\r\n## Implementation notes\r\nRival party: starter + Lv2 Poochyena. Birch cutscene spawns after win/loss. Kael walks toward Oldale north gate.\r\n"
+    },
+    {
+      "name": "act1-05-petalburg-norman.md",
+      "content": "---\r\nscene_id: act1-05-petalburg-norman\r\nmap: PetalburgCity\r\nvanilla_event: PetalburgCity_EventScript_WallyTutorial\r\nact: 1\r\nflags: VAR_PETALBURG_STATE\r\n---\r\n\r\n# Scene: Petalburg — Norman and Wally\r\n\r\n## Context\r\nNorman greets the player as an old friend of their parent and refuses the Gym battle until \"foundation is laid.\" Wally catches a Ralts with player's help — Ralts shivers at something unseen. Replaces Wally catching tutorial and Norman dialogue.\r\n\r\n## Characters\r\n- NORMAN — mentor figure, Gym Leader\r\n- WALLY — timid boy, first catch\r\n- KAEL — optional background cameo leaving city\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| NORMAN | So you're the one my friend trusted Hoenn with. Stand straight. | martial mentor |\r\n| NORMAN | I won't battle you today. Badges aren't medals. They're answers to hard questions. | |\r\n| WALLY | Um… could you help me? I hear something in the grass… crying backward. | horror hint |\r\n| NARRATOR | Wally throws a Poké Ball. Ralts lands, then stares at empty air behind you. | |\r\n| NORMAN | Good. Sensitivity is a weapon if you train it. | to Wally |\r\n| NORMAN | Player, Route 102 next. Petalburg Woods has been… disturbed. | |\r\n| NORMAN | Kael passed through scowling. Tell him the Gym doesn't fix what's broken inside. | if Kael seen |\r\n| WALLY | I'll get strong. For my family. For whatever is watching. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_PETALBURG_STATE = 1\r\n- Sets FLAG_WALLY_RALTS = 1\r\n- Unlocks: Petalburg Woods, Gym interior (decline battle)\r\n\r\n## Implementation notes\r\nWally battle tutorial optional skip. Ralts given to Wally via script. Norman blocks gym doors with \"Come back with one badge.\"\r\n"
+    },
+    {
+      "name": "act1-06-petalburg-woods.md",
+      "content": "---\r\nscene_id: act1-06-petalburg-woods\r\nmap: PetalburgWoods\r\nvanilla_event: PetalburgWoods_EventScript_TeamAquaGrunt\r\nact: 1\r\nflags: FLAG_SYNDICATE_WOODS\r\n---\r\n\r\n# Scene: Petalburg Woods — White Masks in Green\r\n\r\n## Context\r\nNull Syndicate grunts in white half-masks steal a Devon parcel from a researcher. They speak of \"hollow ratios\" and flee north. Replaces Team Aqua grunt encounter entirely.\r\n\r\n## Characters\r\n- RESEARCHER — Devon courier\r\n- GRUNT — Null Syndicate grunt\r\n- GRUNT_2 — backup\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| RESEARCHER | Stop! That parcel is classified Devon— | |\r\n| GRUNT | Classified means useless until we peel it open. | Syndicate voice |\r\n| GRUNT | Life readings inside. Johto shard readings. Same song. | |\r\n| GRUNT_2 | Kid, you didn't see us. Walk away and keep your name. | threat |\r\n| GRUNT | …Or stay, and we'll measure how loud you scream. | battle trigger |\r\n| GRUNT | The Crown hungers. Rustboro warehouse. You'll be late. | post-battle flee line |\r\n| RESEARCHER | Thank you. Devon will hear of this. Take this Potion— please. | item gift |\r\n| RESEARCHER | They wore no Aqua colors. Something new is rooting here. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_SYNDICATE_WOODS = 1\r\n- Unlocks: Route 104 north, Rustboro storyline hook\r\n\r\n## Implementation notes\r\nReplace Aqua grunt sprite with white-mask variant (palette swap). Battle: Lv6 Poochyena + Lv6 Nincada. Grunts exit toward Rustboro. Give Potion.\r\n"
+    },
+    {
+      "name": "act1-07-rustboro-roxanne.md",
+      "content": "---\r\nscene_id: act1-07-rustboro-roxanne\r\nmap: RustboroCity\r\nvanilla_event: RustboroCity_EventScript_DevonCorp\r\nact: 1\r\nflags: VAR_RUSTBORO_STATE\r\n---\r\n\r\n# Scene: Rustboro — Stone Badge and Stolen Research\r\n\r\n## Context\r\nRoxanne's Gym grants the Stone Badge after a battle about \"foundations.\" Devon Corp reports a break-in; player receives HM Cut from employee. Mr. Stone asks player to deliver letter to Steven. Replaces Devon intro and Roxanne sequence.\r\n\r\n## Characters\r\n- ROXANNE — first Gym Leader\r\n- MR_STONE — Devon president\r\n- DEVON_EMPLOYEE — HM Cut gift\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| ROXANNE | Fossils teach patience. Syndicate thieves teach urgency. Which lesson do you bring? | pre-battle |\r\n| ROXANNE | Your strikes are honest. Take the Stone Badge. | post-battle |\r\n| MR_STONE | Our scanner detected a void signature in Petalburg Woods. | Devon plot |\r\n| MR_STONE | Null Syndicate agents stole the Hoenn-Johto cross index. | |\r\n| MR_STONE | Deliver this letter to Steven in Dewford's granite caves. | quest hook |\r\n| DEVON_EMPLOYEE | Take HM Cut. Some paths must be opened, not wished open. | |\r\n| MR_STONE | Roxanne trusts you. Don't waste trust. It's heavier than stone. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_RUSTBORO_STATE = 1 on badge\r\n- Sets FLAG_DEVON_LETTER = 1\r\n- Unlocks: Route 116, Mr. Briney boat later, Dewford letter quest\r\n\r\n## Implementation notes\r\nGym battle standard Roxanne team. Devon 2F scene triggers after badge. Letter item in bag. Cut given on 1F.\r\n"
+    },
+    {
+      "name": "act1-08-route116-tunnel.md",
+      "content": "---\r\nscene_id: act1-08-route116-tunnel\r\nmap: RusturfTunnel\r\nvanilla_event: RusturfTunnel_EventScript_ClearTunnel\r\nact: 1\r\nflags: FLAG_TUNNEL_CLEARED\r\n---\r\n\r\n# Scene: Route 116 — The Whispering Tunnel\r\n\r\n## Context\r\nPeeko the Wingull is trapped; player fights Syndicate grunt using sonic drill on the rock face. Tunnel clearing reveals Unown scratches and a cold draft. Replaces vanilla Peeko rescue / tunnel clear.\r\n\r\n## Characters\r\n- GRUNT — Syndicate drill operator\r\n- MR_BRINEY — Peeko owner\r\n- PLAYER — silent\r\n- SIGN — wall etching\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| MR_BRINEY | My Peeko! The rock's humming wrong— | |\r\n| GRUNT | Back off. We're sampling resonance. | |\r\n| GRUNT | This tunnel sings when blood's near. Want to hear? | battle |\r\n| GRUNT | Stillness hears you now. Run. | flees |\r\n| SIGN | UNOWN glyphs: BELL — SEAL — SKY | inspectable |\r\n| MR_BRINEY | You saved Peeko. I'll ferry you when you need the sea. | |\r\n| MR_BRINEY | That mark… my wife saw similar in Johto, years ago. | Johto tie |\r\n| NARRATOR | Air from the crack tastes like copper and forgotten names. | horror |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_TUNNEL_CLEARED = 1\r\n- Unlocks: Verdanturf access, Briney boat services\r\n\r\n## Implementation notes\r\nBreakable rocks script. Grunt battle Lv10 Aron. After clear, tunnel NPCs return. Sign is examine event.\r\n"
+    },
+    {
+      "name": "act2-01-dewford-brawly.md",
+      "content": "---\r\nscene_id: act2-01-dewford-brawly\r\nmap: DewfordTown\r\nvanilla_event: DewfordTown_EventScript_Gym\r\nact: 2\r\nflags: VAR_DEWFORD_STATE\r\n---\r\n\r\n# Scene: Dewford — Knuckle Badge and Granite Depths\r\n\r\n## Context\r\nBrawly trains fighters who \"empty the mind.\" Kael rematch in gym foyer — he lost someone to the Syndicate's \"hollow program.\" Steven's letter delivery unlocks cave access. Replaces Dewford Gym and Steven meet.\r\n\r\n## Characters\r\n- BRAWLY — Gym Leader\r\n- KAEL — rival rematch\r\n- STEVEN — Devon heir, lore drop\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| KAEL | You again. I trained six hours. Don't bore me. | rematch |\r\n| KAEL | …You're improving. That's worse for me. | post-win |\r\n| KAEL | They took my squad mate. Left a smiling husk. I won't end like that. | character beat |\r\n| BRAWLY | I felt your battle through the floor. Good rhythm. | |\r\n| BRAWLY | Empty your fear. Not your heart. Take the Knuckle Badge. | post-gym |\r\n| STEVEN | Letter from Mr. Stone? Then you know the Syndicate wants the Brass Bell map. | cave scene |\r\n| STEVEN | Johto's burned tower had three bells. Hoenn hid the third beneath Pyre. | lore |\r\n| STEVEN | Find Elara in Slateport Museum. She reads Unown the way others read weather. | quest |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_DEWFORD_STATE = 1 on badge\r\n- Sets FLAG_RIVAL_DEWFORD = 1\r\n- Sets FLAG_MET_STEVEN = 1\r\n- Unlocks: Route 109 boat, Slateport\r\n\r\n## Implementation notes\r\nRival battle before gym or after letter. Steven in Granite Cave 1F. Brawly gives badge + TM Bulk Up.\r\n"
+    },
+    {
+      "name": "act2-02-slateport-museum.md",
+      "content": "---\r\nscene_id: act2-02-slateport-museum\r\nmap: SlateportCity\r\nvanilla_event: SlateportCity_EventScript_OceanicMuseum\r\nact: 2\r\nflags: VAR_SLATEPORT_MUSEUM\r\n---\r\n\r\n# Scene: Slateport — Oceanic Museum Heist\r\n\r\n## Context\r\nElara Voss exhibits Johto brass rubbings. Syndicate agents gas the gallery and steal a bell shard replica. Kael's sister Mira treats coughing victims. Captain Stern's submarine plot is co-opted by Syndicate front. Replaces Captain Stern vanilla museum scenes.\r\n\r\n## Characters\r\n- ELARA — Johto archaeologist\r\n- MIRA — Kael's sister, nurse\r\n- KAEL — emotional beat\r\n- GRUNT — museum thief\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| ELARA | These rubbings came from Ecruteak's ruins. Hoenn soil echoes them. | exhibit |\r\n| GRUNT | Hands off the display. The Crown owns history now. | ambush |\r\n| MIRA | People are collapsing! The gas smells like wet ash! | |\r\n| KAEL | Mira! I told you to stay away from my past! | |\r\n| ELARA | The shard replica is bait. The real map is in the submarine blueprints. | post-fight |\r\n| ELARA | Stern's crew includes Syndicate shells. Stop them before dive tests. | |\r\n| MIRA | Kael… your wrist brand is gone. Did it hurt? | sibling scene |\r\n| KAEL | Player. I owe you one. Just one. Don't spend it stupidly. | alliance seed |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_SLATEPORT_MUSEUM = 1\r\n- Sets FLAG_MET_ELARA = 1\r\n- Unlocks: Team Aqua hideout slot → Syndicate warehouse in Slateport\r\n\r\n## Implementation notes\r\nIndoor battle 2 grunts Lv14. Gas event: NPCs slumped until talked. Elara joins as follower sprite to Stern's Shipyard.\r\n"
+    },
+    {
+      "name": "act2-03-route110-trick.md",
+      "content": "---\r\nscene_id: act2-03-route110-trick\r\nmap: Route110\r\nvanilla_event: Route110_EventScript_TrickHouse\r\nact: 2\r\nflags: FLAG_TRICK_HOUSE_PUZZLE\r\n---\r\n\r\n# Scene: Route 110 — Trick House of Mirrors\r\n\r\n## Context\r\nTrick Master invites player into a maze where mirrors show \"hollow\" versions of NPCs. Final room has a Syndicate power-scanner prototype disguised as a puzzle prize. Replaces Trick House reward sequence with plot device.\r\n\r\n## Characters\r\n- TRICK_MASTER — eccentric host\r\n- HOLLOW_NPC — mirror illusion\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| TRICK_MASTER | Welcome! Today's theme: WHO ARE YOU WITHOUT YOUR NAME? | |\r\n| HOLLOW_NPC | I am you. I am empty. Join us. | horror mirror |\r\n| TRICK_MASTER | Ignore the reflections! They're syndicate bait! | mid-puzzle |\r\n| TRICK_MASTER | You found my prize… and their scanner. Devon wants it destroyed. | reward room |\r\n| TRICK_MASTER | Take the TM Shock Wave. Shock the lies. | item |\r\n| NARRATOR | The scanner reads your party's bond as a single bright number. | DBZ nod |\r\n| TRICK_MASTER | Mauville next. Wattson hates silence. Literally. | direction |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_TRICK_HOUSE_PUZZLE = 1\r\n- Sets FLAG_DEVON_SCANNER = 1 (quest item)\r\n- Unlocks: Mauville City main arc\r\n\r\n## Implementation notes\r\nTrick House puzzles unchanged. Mirror NPCs use grayscale palette. Scanner item key for Wattson scene. TM reward as vanilla.\r\n"
+    },
+    {
+      "name": "act2-04-mauville-wattson.md",
+      "content": "---\r\nscene_id: act2-04-mauville-wattson\r\nmap: MauvilleCity\r\nvanilla_event: MauvilleCity_EventScript_Gym\r\nact: 2\r\nflags: VAR_MAUVILLE_STATE\r\n---\r\n\r\n# Scene: Mauville — Dynamo Badge and the Living Grid\r\n\r\n## Context\r\nWattson's Gym doubles as a power grid for Devon scanners. Citywide blackout is Syndicate sabotage. Player battles Wattson, then restores substation with rival help. Replaces Mauville Gym and Wattson dialogue.\r\n\r\n## Characters\r\n- WATTSON — electric Gym Leader\r\n- KAEL — brief cooperation\r\n- HARROW — Syndicate lieutenant intro (non-boss)\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| WATTSON | Wahahah! Feel the thunder! Feel your legs! | pre-gym |\r\n| WATTSON | Dynamo Badge! You conduct hope like lightning! | post-gym |\r\n| HARROW | Charming town. We needed darkness. | blackout scene |\r\n| HARROW | Sovereign Null sends greetings and a request: surrender the scanner. | |\r\n| KAEL | Two on one. I've done worse odds. | joins player |\r\n| HARROW | Ex-program dog. Still branded inside. | taunt |\r\n| HARROW | Mt Chimney next. The seal breaks there. Try to keep pace. | flees |\r\n| WATTSON | Route 111 north. Fallarbor's sky fell last night. | quest |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_MAUVILLE_STATE = 1\r\n- Sets FLAG_MET_HARROW = 1\r\n- Unlocks: Route 111 desert, Fallarbor meteor arc\r\n\r\n## Implementation notes\r\nGym battle standard. Post-badge event: city lights off. Double battle with Kael vs Harrow Lv20 team then Harrow teleports away.\r\n"
+    },
+    {
+      "name": "act2-05-fallarbor-meteor.md",
+      "content": "---\r\nscene_id: act2-05-fallarbor-meteor\r\nmap: FallarborTown\r\nvanilla_event: FallarborTown_EventScript_Meteorite\r\nact: 2\r\nflags: FLAG_METEOR_SHARD\r\n---\r\n\r\n# Scene: Fallarbor — The Fallen Bell Fragment\r\n\r\n## Context\r\nMeteor crash site holds not space rock but a brass fragment inscribed with Unown. Cozmo's father recontextualized as Elara's assistant; fragment needed for Mt Pyre later. Replaces Meteor Falls fetch quest intro.\r\n\r\n## Characters\r\n- ELARA — leads investigation\r\n- COZMO — shy boy, meteor witness\r\n- PLAYER — silent\r\n- SIGN — fragment inscription\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| COZMO | The sky screamed. The stone sang when it landed. | scared |\r\n| ELARA | This isn't meteoric iron. It's bell-brass from Johto's third tower. | |\r\n| ELARA | Syndicate drones circled but didn't land. They're afraid of something here. | |\r\n| SIGN | WHEN BELL CRACKS STILLNESS WAKES | |\r\n| ELARA | Take the shard to Mt Pyre when you're ready. Not before Lavaridge's heat tests it. | |\r\n| COZMO | Will the whispering stop? | |\r\n| ELARA | Only if brave people stop whispering back. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_METEOR_SHARD = 1\r\n- Item: BELL_SHARD in bag\r\n- Unlocks: Meteor Falls dungeon, Mt Chimney urgent\r\n\r\n## Implementation notes\r\nMeteor Falls 1F event. Shard is key item. Cozmo gives Star Piece sellable or quest keep.\r\n"
+    },
+    {
+      "name": "act2-06-mt-chimney-clash.md",
+      "content": "---\r\nscene_id: act2-06-mt-chimney-clash\r\nmap: MtChimney\r\nvanilla_event: MtChimney_EventScript_GroudonAwakening\r\nact: 2\r\nflags: FLAG_CHIMNEY_BREACH\r\n---\r\n\r\n# Scene: Mt Chimney — Breach the Seal Machine\r\n\r\n## Context\r\nMajor setpiece replacing Magma/Aqua clash. Syndicate drills into volcanic seal point; Sovereign Null appears via holo then in person. Groudon does NOT fully awaken — only a pulse knocks back Syndicate. Player and Kael fight Harrow and grunts.\r\n\r\n## Characters\r\n- SOVEREIGN_NULL — antagonist first full appearance\r\n- HARROW — lieutenant battle\r\n- KAEL — ally battle\r\n- ELARA — radio support\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| SOVEREIGN_NULL | Ah. Devon's little spark. You arrived with noise. | Frieza tone |\r\n| SOVEREIGN_NULL | We seek perfection: a world without screaming memory. | motive |\r\n| SOVEREIGN_NULL | The Stillness slept beneath Hoenn before your dragons had names. | lore |\r\n| HARROW | Boss, the drill hits magma seal in three minutes. | |\r\n| KAEL | Player! Keep them off the core! | |\r\n| SOVEREIGN_NULL | Your friend was ours. We polished him. He cracked. Pity. | taunts Kael |\r\n| ELARA | Groudon's pulse is a warning, not an invitation! | radio |\r\n| NARRATOR | The mountain exhales red light. For one heartbeat, every shadow has teeth. | horror |\r\n| SOVEREIGN_NULL | Enjoy this reprieve. Sootopolis is where crowns fit. | retreat |\r\n| HARROW | Next time I collect your voice. | battle then flee |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_CHIMNEY_BREACH = 1\r\n- Sets FLAG_MET_SOVEREIGN_NULL = 1\r\n- Unlocks: Jagged Pass return, Lavaridge Gym\r\n\r\n## Implementation notes\r\nMulti battle: Kael partner vs 2 grunts, then solo vs Harrow Lv24. Cutscene earthquake. No Groudon catch. Null teleports with item Crown Fragment.\r\n"
+    },
+    {
+      "name": "act3-01-lavaridge-flannery.md",
+      "content": "---\r\nscene_id: act3-01-lavaridge-flannery\r\nmap: LavaridgeTown\r\nvanilla_event: LavaridgeTown_EventScript_Gym\r\nact: 3\r\nflags: VAR_LAVARIDGE_STATE\r\n---\r\n\r\n# Scene: Lavaridge — Heat Badge and Shard Tempering\r\n\r\n## Context\r\nFlannery's hot springs temper the bell shard. Mid-game twist: shard reveals map coordinates to Sootopolis and Seafloor Cavern. Norman sends letter asking player to return. Replaces Lavaridge Gym only.\r\n\r\n## Characters\r\n- FLANNERY — Gym Leader\r\n- NORMAN — letter only\r\n- ELARA — shard ritual\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| FLANNERY | Steam reveals truth! Let's see if you can stand the heat! | gym |\r\n| FLANNERY | Heat Badge! You're burning bright! | post |\r\n| ELARA | Dip the shard. Unown letters will rise in the steam. | ritual |\r\n| ELARA | Seafloor Cavern. Sootopolis. They built two locks for one throat. | twist map |\r\n| NORMAN | Come home to Petalburg when ready. It's time I told you why we left Olivine. | letter |\r\n| FLANNERY | Fortree's gym leader saw masks in the trees. Winona's no coward. | hook |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_LAVARIDGE_STATE = 1\r\n- Sets FLAG_BELL_MAP = 1\r\n- Unlocks: Petalburg Gym Norman, Fortree\r\n\r\n## Implementation notes\r\nGym battle Flannery team. Hot springs event with Elara NPC. Letter from Norman auto-delivered.\r\n"
+    },
+    {
+      "name": "act3-02-petalburg-norman-gym.md",
+      "content": "---\r\nscene_id: act3-02-petalburg-norman-gym\r\nmap: PetalburgCity\r\nvanilla_event: PetalburgCity_EventScript_NormanBattle\r\nact: 3\r\nflags: VAR_NORMAN_BADGE\r\n---\r\n\r\n# Scene: Petalburg Gym — Norman's Confession\r\n\r\n## Context\r\nNorman battles player for Balance Badge with full team. Post-battle he reveals player's parent saw Syndicate hollow ships at Olivine; family fled to protect child from recruitment. Wally returns stronger. Replaces Norman Gym battle.\r\n\r\n## Characters\r\n- NORMAN — Gym Leader, father figure\r\n- WALLY — short reunion\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| NORMAN | Five badges mean five answers. Show me yours. | battle start |\r\n| NORMAN | Balance isn't equal strength. It's knowing when to strike. | mid-battle quote |\r\n| NORMAN | The Balance Badge is yours. I'm proud. Now listen. | post |\r\n| NORMAN | Your parent didn't flee shame. They fled recruiters in white masks. | revelation |\r\n| NORMAN | The Syndicate hunts children with high bond readings. You lit up their scanner. | |\r\n| WALLY | I beat Winona's apprentice! Ralts and I won't let hollow things win. | |\r\n| NORMAN | Go to Fortree. Winona spotted their scouts. Then Pyre. | |\r\n| NORMAN | Kael waits outside. He asked me to train him. Don't make me regret it. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_NORMAN_BADGE = 1\r\n- Sets FLAG_NORMAN_TRUTH = 1\r\n- Unlocks: Fortree, Route 119\r\n\r\n## Implementation notes\r\nNorman full team Lv29-31. Balance Badge + HM Surf reminder from Norman if not yet. Kael sprite outside gym optional dialogue.\r\n"
+    },
+    {
+      "name": "act3-03-fortree-winona.md",
+      "content": "---\r\nscene_id: act3-03-fortree-winona\r\nmap: FortreeCity\r\nvanilla_event: FortreeCity_EventScript_Gym\r\nact: 3\r\nflags: VAR_FORTREE_STATE\r\n---\r\n\r\n# Scene: Fortree — Feather Badge and the Treehouse Spy\r\n\r\n## Context\r\nWinona's Gym grants Feather Badge. Spy in treehouse is Syndicate scout with stolen Fortree roster; player exposes them. Kael reveals Syndicate rank structure mirroring \"elite captains.\" Replaces Fortree invisible Kecleon shop unchanged; spy is new event.\r\n\r\n## Characters\r\n- WINONA — Gym Leader\r\n- KAEL — spy confrontation ally\r\n- SPY — Syndicate scout\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| WINONA | The wind told me you'd come. It also told me someone watches. | |\r\n| WINONA | Feather Badge! Soar, but never lose sight of ground truth. | post-gym |\r\n| SPY | You weren't supposed to look up. | treehouse |\r\n| KAEL | Harrow runs captains. Null runs everything else. I was captain candidate. | exposition |\r\n| SPY | Sovereign Null already has Lilycove warehouse keys. | reveal |\r\n| KAEL | Player. Battle me after this. I need to know I'm not hollow. | |\r\n| WINONA | Lilycove next. And Mt Pyre before they desecrate the summit. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_FORTREE_STATE = 1\r\n- Sets FLAG_LILYCOVE_TIP = 1\r\n- Optional: FLAG_KAEL_FORTREE_REMATCH\r\n\r\n## Implementation notes\r\nGym Winona. Spy battle Lv26 Murkrow + Cacturne. Kael optional rematch outside gym.\r\n"
+    },
+    {
+      "name": "act3-04-mt-pyre-lore.md",
+      "content": "---\r\nscene_id: act3-04-mt-pyre-lore\r\nmap: MtPyre\r\nvanilla_event: MtPyre_EventScript_TeamAquaMagma\r\nact: 3\r\nflags: FLAG_PYRE_BELL\r\n---\r\n\r\n# Scene: Mt Pyre — The Third Bell and the Stillness\r\n\r\n## Context\r\nReplaces Aqua/Magma Mt Pyre orb theft. Elara restores bell shrine; lore dump on Johto-Hoenn linked tragedy. Old couple guardians become \"Bell Keepers.\" Syndicate steals only a resonance orb — player keeps bell shard merge. Horror: summit whispers player name backward.\r\n\r\n## Characters\r\n- ELARA — ritual leader\r\n- BELL_KEEPER — elderly guardian\r\n- HARROW — orb thief\r\n- PLAYER — silent\r\n- NARRATOR — Stillness whisper\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| BELL_KEEPER | Three bells rang: one burned, one sunk, one buried here. | lore |\r\n| ELARA | Ecruteak's fire woke the first crack. Hoenn hid the last seal. | Johto link |\r\n| ELARA | Merge your shard. The Brass Bell hums for living trainers only. | item merge |\r\n| NARRATOR | …reyalp… emyrrah… | whisper backward names |\r\n| HARROW | Sentimental noise. The orb carries frequency. Goodbye. | theft |\r\n| BELL_KEEPER | They took the Red Orb analogue — the Pulse Orb. Blue remains hidden at sea. | macguffin |\r\n| ELARA | The Stillness is not a Pokémon. It's what Pokémon fear when the sky forgets them. | horror lore |\r\n| ELARA | Lilycove hideout. Then Mossdeep. Captain Jori sails true. | quest |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_PYRE_BELL = 1\r\n- Item: BRASS_BELL (merged)\r\n- Sets FLAG_PULSE_ORB_STOLEN = 1\r\n- Unlocks: Lilycove Syndicate hideout\r\n\r\n## Implementation notes\r\nSummit interior event. Harrow battle optional if player fast. Bell item enables Sootopolis door later. No Magma/Aqua NPCs.\r\n"
+    },
+    {
+      "name": "act3-05-lilycove-hideout.md",
+      "content": "---\r\nscene_id: act3-05-lilycove-hideout\r\nmap: LilycoveCity\r\nvanilla_event: LilycoveCity_EventScript_Hideout\r\nact: 3\r\nflags: FLAG_HIDEOUT_INFILTRATED\r\n---\r\n\r\n# Scene: Lilycove — Warehouse of Hollow Shells\r\n\r\n## Context\r\nReplaces Team Aqua Hideout with Null Syndicate warehouse beneath contest hall. Rows of empty-eyed test subjects in tanks (PG horror). Player rescues data, frees Kael's former squad mate (comatose, sent to Mira). Password puzzle uses Unown.\r\n\r\n## Characters\r\n- KAEL — emotional breakdown\r\n- ELARA — hack terminals\r\n- GRUNT — guards\r\n- HUSK — former trainee NPC\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| KAEL | This was my dorm. Rows of smiles that never reach eyes. | horror |\r\n| ELARA | Downloading cavern coordinates. Don't touch the tanks. | |\r\n| GRUNT | Recruit returned? We'll reboot you. | battle |\r\n| HUSK | …ka…el… | broken speech |\r\n| KAEL | That's Ren. They polished him until nothing moved inside. | |\r\n| ELARA | Seafloor Cavern entrance requires Mossdeep submarine. Stern's been compromised. | |\r\n| KAEL | I carry Ren to Slateport. You carry the fight. Understood? | |\r\n| GRUNT | Sovereign Null waits where land and sea disagree. | flee line |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_HIDEOUT_INFILTRATED = 1\r\n- Sets FLAG_CAVERN_COORDS = 1\r\n- Unlocks: Mossdeep Space Center arc\r\n\r\n## Implementation notes\r\nHideout map reuse Aqua layout. Tank NPCs non-interactive except HUSK. Multi-floor grunt battles. No admin battle yet.\r\n"
+    },
+    {
+      "name": "act3-06-mossdeep-planning.md",
+      "content": "---\r\nscene_id: act3-06-mossdeep-planning\r\nmap: MossdeepCity\r\nvanilla_event: MossdeepCity_EventScript_SpaceCenter\r\nact: 3\r\nflags: VAR_MOSSDEEP_STATE\r\n---\r\n\r\n# Scene: Mossdeep — Mind Badge and Submarine Launch\r\n\r\n## Context\r\nTate & Liza Gym grants Mind Badge with double battle. Space Center repurposed: Captain Jori and Steven launch modified submarine to Seafloor Cavern. Pre-climax planning with full party allies. Replaces Mossdeep rocket / Deoxys setup with cavern dive.\r\n\r\n## Characters\r\n- TATE — Gym Leader\r\n- LIZA — Gym Leader\r\n- STEVEN — mission lead\r\n- JORI — submarine captain\r\n- ELARA — support\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| TATE | Two minds! |\r\n| LIZA | One path! |\r\n| TATE & LIZA | Mind Badge! Don't split your heart before the deep! | post-gym |\r\n| STEVEN | Syndicate rigged Stern's sub with void drills. We stole it back. | |\r\n| JORI | I sailed Johto seas during the bell fires. I know silence when water lies. | |\r\n| ELARA | Brass Bell must ring at Sootopolis summit during cavern breach. | plan |\r\n| STEVEN | You'll dive first. Null expects a hero. Give him a storm instead. | |\r\n| JORI | Submarine ready on Route 128. Surf there when prepared. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_MOSSDEEP_STATE = 1\r\n- Sets FLAG_SUBMARINE_READY = 1\r\n- Unlocks: Seafloor Cavern, Route 128 dive\r\n\r\n## Implementation notes\r\nDouble battle Tate & Liza. Space Center interior dialogue chain. Submarine flag replaces vanilla Mossdeep story lock.\r\n"
+    },
+    {
+      "name": "act4-01-seafloor-cavern.md",
+      "content": "---\r\nscene_id: act4-01-seafloor-cavern\r\nmap: SeafloorCavern\r\nvanilla_event: SeafloorCavern_EventScript_KyogreAwakening\r\nact: 4\r\nflags: FLAG_CAVERN_DEEP\r\n---\r\n\r\n# Scene: Seafloor Cavern — The Second Lock\r\n\r\n## Context\r\nReplaces Kyogre awakening. Player dives with Brass Bell. Syndicate drills into ocean seal; Blue Resonance Orb activates. Kyogre stirs but remains chained — player battles Harrow's elite squad in flooded chamber.\r\n\r\n## Characters\r\n- HARROW — boss battle\r\n- ELARA — radio\r\n- KAEL — surface radio only\r\n- PLAYER — silent\r\n- NARRATOR — deep pressure horror\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| ELARA | Depth reading spiking. The Stillness exhales through cracks. | radio |\r\n| HARROW | You dive well for surface trash. | |\r\n| HARROW | Blue Orb meets Pulse. Two keys, one throat. Null knew you'd bring the bell. | |\r\n| NARRATOR | Water darkens though no shadow moves. Your Pokémon cling closer. | |\r\n| HARROW | Beat me, and I drop the drill codes. Lose, and your name empties. | battle |\r\n| HARROW | …Sovereign Null was right. You burn loud. | post-battle |\r\n| KAEL | Surface team destroyed the drill! Get out— now! | radio |\r\n| ELARA | Sootopolis! The sky turned white over the crater! | urgent |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_CAVERN_DEEP = 1\r\n- Sets FLAG_HARROW_DEFEATED = 1\r\n- Unlocks: Sootopolis urgent warp / Route 131 fast current\r\n\r\n## Implementation notes\r\nHarrow boss Lv38 team with Dark/Psychic types. Kyogre cutscene roars only. Auto-exit submarine to Sootopolis edge.\r\n"
+    },
+    {
+      "name": "act4-02-sootopolis-confrontation.md",
+      "content": "---\r\nscene_id: act4-02-sootopolis-confrontation\r\nmap: SootopolisCity\r\nvanilla_event: SootopolisCity_EventScript_GroudonKyogre\r\nact: 4\r\nflags: FLAG_SOOTOPOLIS_CRISIS\r\n---\r\n\r\n# Scene: Sootopolis — Seal Keepers Rise\r\n\r\n## Context\r\nFull rewrite of Groudon/Kyogre clash. Both emerge as Seal Keepers responding to broken locks, not weather war. Sovereign Null stands on altar with Crown Fragment attempting to merge Stillness into legends. Kael holds civilians at cave mouth.\r\n\r\n## Characters\r\n- SOVEREIGN_NULL — climax villain\r\n- KAEL — civilian defense\r\n- ELARA — bell ringer\r\n- STEVEN — strategist\r\n- PLAYER — silent\r\n- GROUDON — cutscene only\r\n- KYOGRE — cutscene only\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| SOVEREIGN_NULL | Welcome to perfection's cradle. Hoenn's dragons are leashes, not gods. | |\r\n| ELARA | Ring the bell! Living bond only! | |\r\n| KAEL | Go! I'll keep these people breathing! | |\r\n| SOVEREIGN_NULL | Groudon. Kyogre. Drink the Stillness and become quiet. | ritual |\r\n| NARRATOR | The water and stone scream in opposite directions. The city cracks white. | |\r\n| STEVEN | Null's fragment corrupts the seal. Stop him before the merge completes! | |\r\n| SOVEREIGN_NULL | You fight like a Johto folktale. I erased folktales. | pre-boss |\r\n| SOVEREIGN_NULL | I'll offer you silence. It's painless. Mostly. | battle start |\r\n| KAEL | Don't you dare die, rival. I haven't surpassed you yet. | mid cutscene |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_SOOTOPOLIS_CRISIS = 1\r\n- Triggers Sovereign Null battle phase 1\r\n- Unlocks: act4-03 after Null phase 1 HP threshold\r\n\r\n## Implementation notes\r\nLegendary cutscene non-catch. Brass Bell ring animation. Null battle Lv40 mixed team + Crown Fragment item ability. Kael no battle here.\r\n"
+    },
+    {
+      "name": "act4-03-rayquaza-resolution.md",
+      "content": "---\r\nscene_id: act4-03-rayquaza-resolution\r\nmap: SootopolisCity\r\nvanilla_event: SootopolisCity_EventScript_Rayquaza\r\nact: 4\r\nflags: FLAG_STILLNESS_SEALED\r\n---\r\n\r\n# Scene: Sootopolis — Sky Arbiter Descends\r\n\r\n## Context\r\nRayquaza descends when Brass Bell resonates — Sky Arbiter, not tame god. Player may battle Rayquaza (optional capture after story). Stillness pulled back into dual seal; Null's mask cracks revealing empty void beneath. Resolution re-chains legends.\r\n\r\n## Characters\r\n- RAYQUAZA — legendary presence\r\n- SOVEREIGN_NULL — defeated monologue\r\n- ELARA — sealing ritual\r\n- PLAYER — silent\r\n- NARRATOR — resolution\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| NARRATOR | The bell's tone pierces cloud. Something ancient answers from above. | |\r\n| ELARA | Rayquaza isn't salvation. It's the lock's final tooth. | |\r\n| SOVEREIGN_NULL | No. The sky was supposed to stay mute. | |\r\n| NARRATOR | Rayquaza's roar pushes water and stone back into their bones. | |\r\n| SOVEREIGN_NULL | You win noise. Enjoy it while it decays. | mask shatters |\r\n| NARRATOR | Behind the porcelain: nothing. Then the nothing collapses. | horror payoff |\r\n| ELARA | Stillness sealed. Orbs returned to Pyre. Bell sleeps. | |\r\n| STEVEN | Null fled bodiless. Corpses remain. Hunt ends slowly, not today. | |\r\n| ELARA | Optional: Rayquaza tests you. Catch only if your bond can hold sky weight. | optional battle |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_STILLNESS_SEALED = 1\r\n- Sets FLAG_SOVEREIGN_NULL_DEFEATED = 1\r\n- Optional: FLAG_RAYQUAZA_BATTLE after cutscene\r\n- Unlocks: Victory Road, Wallace recognition\r\n\r\n## Implementation notes\r\nRayquaza Lv70 optional battle post-cutscene. Groudon/Kyogre fade underground. Null sprite removed. Sootopolis NPCs repopulate gradually.\r\n"
+    },
+    {
+      "name": "act5-01-victory-road.md",
+      "content": "---\r\nscene_id: act5-01-victory-road\r\nmap: VictoryRoad\r\nvanilla_event: VictoryRoad_EventScript_Wally\r\nact: 5\r\nflags: FLAG_VICTORY_ROAD\r\n---\r\n\r\n# Scene: Victory Road — Wally's Trial\r\n\r\n## Context\r\nWallace sent word from Champion office. Wally blocks mid-cave for friendly battle — Ralts evolved. Kael appears at exit with mutual respect dialogue. Replaces Victory Road Wally encounter.\r\n\r\n## Characters\r\n- WALLY — battle\r\n- KAEL — exit dialogue\r\n- WALLACE — letter mention\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| WALLY | I heard you sealed a horror. I trained in Victory Road to stand beside you. | |\r\n| WALLY | Ralts became Gardevoir. We don't flinch at empty air anymore. | battle |\r\n| WALLY | You win. Tell Norman I kept my promise. | post |\r\n| KAEL | Last stretch. Champion waits. | exit |\r\n| KAEL | If I become Champion first someday, I'll still owe you one save. | |\r\n| KAEL | The Syndicate's scattered. White masks burn in dumpsters. Good. | |\r\n| WALLACE | Letter: Prove Hoenn's heart isn't hollow. The League watches. | sign |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_VICTORY_ROAD = 1\r\n- Sets FLAG_WALLY_VR_BATTLE = 1\r\n- Unlocks: Ever Grande City, Elite Four\r\n\r\n## Implementation notes\r\nWally battle Lv42 Gardevoir team. Kael non-battle dialogue at cave exit. Wallace letter on signpost.\r\n"
+    },
+    {
+      "name": "act5-02-elite-four.md",
+      "content": "---\r\nscene_id: act5-02-elite-four\r\nmap: EverGrandeCity\r\nvanilla_event: EverGrandeCity_EventScript_EliteFour\r\nact: 5\r\nflags: FLAG_ELITE_FOUR\r\n---\r\n\r\n# Scene: Elite Four — Four Questions\r\n\r\n## Context\r\nEach Elite Four member asks a thematic question tied to story before battle. Sidney: fear. Phoebe: memory. Glacia: silence. Drake: legacy. Replaces standard Elite Four intro lines only; battles unchanged.\r\n\r\n## Characters\r\n- SIDNEY — Elite Four\r\n- PHOEBE — Elite Four\r\n- GLACIA — Elite Four\r\n- DRAKE — Elite Four\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| SIDNEY | You stared into the Stillness. Did fear sharpen you or shrink you? | |\r\n| SIDNEY | Good. Sharp is how we survive. | post-battle |\r\n| PHOEBE | Spirits whisper you sealed Johto's ghost in Hoenn soil. True? | |\r\n| PHOEBE | Then remember them when you strike. | post |\r\n| GLACIA | Null offered silence. Why keep noisy pain? | |\r\n| GLACIA | Because warmth melts hollow ice. Clever. | post |\r\n| DRAKE | What do you leave after Champion? | |\r\n| DRAKE | A name that isn't empty. Proceed. | post |\r\n| NARRATOR | The Champion's door opens. Storm light flickers behind it. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_ELITE_FOUR = 1 after Drake\r\n- Unlocks: Champion room\r\n\r\n## Implementation notes\r\nSequential Elite Four battles. Custom pre/post dialogue each. Drake opens champion door.\r\n"
+    },
+    {
+      "name": "act5-03-wallace-gate.md",
+      "content": "---\r\nscene_id: act5-03-wallace-gate\r\nmap: EverGrandeCity\r\nvanilla_event: EverGrandeCity_EventScript_Wallace\r\nact: 5\r\nflags: FLAG_WALLACE_BLESSING\r\n---\r\n\r\n# Scene: Ever Grande — Wallace's Gate\r\n\r\n## Context\r\nWallace (Champion) meets player before final door if Juan arc skipped. He blesses the Brass Bell for the champion battle and mentions Sootopolis murals updating. Optional Juan mention: he trains in Sootopolis cave now. Replaces Wallace pre-champion dialogue.\r\n\r\n## Characters\r\n- WALLACE — Champion, mentor tone\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| WALLACE | You carry a bell that rang across regions. Art appreciates symmetry. | |\r\n| WALLACE | Juan dives Sootopolis depths now. He says the water finally sounds like water. | Juan beat |\r\n| WALLACE | I am Wallace, Champion. I test whether your victory was accident or character. | |\r\n| WALLACE | Win, and Hoenn tells your story in stone and spray. | |\r\n| WALLACE | Lose, and you train again. Noise beats silence either way. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_WALLACE_BLESSING = 1\r\n- Unlocks: Champion battle act6-01\r\n\r\n## Implementation notes\r\nWallace sprite outside champion door. Short scene before entering. No battle here.\r\n"
+    },
+    {
+      "name": "act6-01-champion.md",
+      "content": "---\r\nscene_id: act6-01-champion\r\nmap: EverGrandeCity\r\nvanilla_event: EverGrandeCity_EventScript_ChampionBattle\r\nact: 6\r\nflags: FLAG_CHAMPION_DEFEATED\r\n---\r\n\r\n# Scene: Champion Battle — Wallace\r\n\r\n## Context\r\nFull Champion battle against Wallace with story-flavored dialogue mid-fight. After victory, player enters Hall of Fame setup. Kael watches from gallery. Replaces Steven/Wallace champion battle (Emerald uses Wallace).\r\n\r\n## Characters\r\n- WALLACE — Champion battle\r\n- KAEL — gallery\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| WALLACE | Show me the rhythm you used against the Stillness! | battle start |\r\n| WALLACE | Water flows around force. You force nothing. Interesting! | mid-battle |\r\n| WALLACE | Magnificent! Hoenn's new Champion carries living noise! | defeat |\r\n| KAEL | Took you long enough. | gallery |\r\n| KAEL | Next season I win the rematch. Syndicate or no Syndicate. | |\r\n| WALLACE | Register your partners. History prefers names over masks. | Hall of Fame prompt |\r\n| STEVEN | Devon scans show void readings dropping region-wide. Thank you. | post via letter |\r\n| ELARA | Ecruteak sends congratulations. The third bell sleeps again. | post via letter |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_CHAMPION_DEFEATED = 1\r\n- Triggers Hall of Fame sequence\r\n- Unlocks: act6-02 epilogue\r\n\r\n## Implementation notes\r\nWallace champion team Lv57-59. Kael gallery sprite after battle. Hall of Fame vanilla flow.\r\n"
+    },
+    {
+      "name": "act6-02-epilogue.md",
+      "content": "---\r\nscene_id: act6-02-epilogue\r\nmap: LittlerootTown\r\nvanilla_event: NEW\r\nact: 6\r\nflags: FLAG_EPILOGUE_COMPLETE\r\n---\r\n\r\n# Scene: Epilogue — Home Without Whispers\r\n\r\n## Context\r\nPost-Hall of Fame homecoming. Mom, Birch, Norman, Kael, and Elara gather in Littleroot. Sequel hook: faint void reading from far sea (Namek-analogue island tease). New game+ flag optional.\r\n\r\n## Characters\r\n- MOM — homecoming\r\n- BIRCH — research future\r\n- NORMAN — proud mentor\r\n- KAEL — rival promise\r\n- ELARA — sequel hook\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| MOM | You came back. The empty room stopped whispering the day you left for Ever Grande. | horror resolved |\r\n| BIRCH | Birch here! New field: track Null cells abroad. Interested? | postgame hook |\r\n| NORMAN | Champion. Your parent would have cried happy. Train daily. | |\r\n| KAEL | Ren woke up. Said my name wrong on purpose. I laughed. | payoff |\r\n| ELARA | Brass Bell replica hangs in my museum. Real one? Still on your belt. | |\r\n| ELARA | Devon satellites pinged a void spike beyond Hoenn's map edge. | sequel tease |\r\n| MOM | Dinner first. Saving the world on an empty stomach is forbidden. | warm close |\r\n| KAEL | Race you to Route 101 tomorrow. Loser buys berries. | gameplay tone |\r\n| NARRATOR | Hoenn breathes. The sky remembers your name forward. | final line |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_EPILOGUE_COMPLETE = 1\r\n- Unlocks: postgame island quest placeholder (Battle Frontier unchanged)\r\n\r\n## Implementation notes\r\nTrigger on first Littleroot visit after Hall of Fame. Group NPCs on Brendan/May porch area. Optional fade to credits with bell sound SFX.\r\n"
+    }
+  ]
+}
