@@ -42,11 +42,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: rh-hideout/pokeemerald-expansion
+          # Pinned: structural-hacks.mjs anchors are verified against this commit.
+          ref: 662421c9225d59fbac466c9ced05fea4ff8e3441
           path: hack/pokeemerald-expansion
           submodules: recursive
 
       - name: Apply story to source
         run: node scripts/apply-story.mjs story-package.json hack/pokeemerald-expansion
+
+      - name: Apply structural gameplay hacks
+        run: node scripts/structural-hacks.mjs hack/pokeemerald-expansion
 
       - name: Install ARM toolchain
         run: |
