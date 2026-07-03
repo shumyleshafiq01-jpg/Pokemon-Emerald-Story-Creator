@@ -1,0 +1,303 @@
+{
+  "version": 1,
+  "hackTitle": "Pokémon Emerald: The Hollow Crown",
+  "romGameCode": "BPEE",
+  "createdAt": "2026-07-03T16:37:59.842Z",
+  "overview": "# Pokémon Emerald: The Hollow Crown\r\n\r\n## Elevator pitch\r\nYou arrive in Hoenn as ancient Johto relics begin surfacing beneath the region's soil. A corporate cult called the Null Syndicate hunts those relics to feed a sleeping horror called the Stillness, and your rival Kael knows their secrets because he once wore their uniform. Train like a fighter, seal what should never wake, and climb from Littleroot to Champion before Sovereign Null reshapes the world into silence.\r\n\r\n## Themes\r\n- Power earned through discipline and bonds, not stolen life force\r\n- History buried twice: Johto bells and Hoenn legends as one chained truth\r\n- Horror of erasure — bodies, names, and memory hollowed out for \"perfection\"\r\n\r\n## Protagonist\r\nDefault name follows player choice (Brendan/May). Backstory: family relocated from Olivine after your parent witnessed a \"hollow ship\" dredging the sea floor. Starting goal: settle in Littleroot, win badges, prove yourself to Gym Leader Norman (your father's friend). End goal: break the Null Syndicate's crown seals, restore the Brass Bell trinity, and deny Sovereign Null the Stillness.\r\n\r\n## Rival\r\n**Kael** — sharp, proud, obsessed with surpassing you. Early: cocky ex-trainer who left the Syndicate's youth program and hides a branded mark on his wrist. Mid: forced to cooperate when the Syndicate targets his sister in Slateport; grudging respect. Late: stands with you at Sootopolis, admits fear is not weakness, fights Null's lieutenant while you face the sovereign.\r\n\r\n## Antagonist / faction\r\n**The Null Syndicate** — merger of Devon poachers, renegade Silph tech, and Johto ruin delvers. Leader: **Sovereign Null** (humanoid, porcelain mask, Frieza-cold politeness), believes the Stillness will grant immortal \"perfect silence\" by consuming legendary essence. Player opposes them because they hollow Pokémon and people into empty vessels. **Team Magma and Team Aqua are fully replaced** — no weather teams; Mt Chimney and Seafloor Cavern are Syndicate excavation sites.\r\n\r\n## Legendaries\r\nGroudon and Kyogre appear as **Seal Keepers** bound at Sootopolis — required for plot climax but not catch-required. Rayquaza descends as **Sky Arbiter** when the Brass Bell shards resonate; story resolution uses Rayquaza to re-chain the Stillness, not a mandatory capture. Optional: player may battle/catch after story flag STILLNESS_SEALED.\r\n\r\n## Act structure\r\n\r\n| Act | Region progress | Main conflict |\r\n|-----|-----------------|----------------|\r\n| 1 | Littleroot → Stone Badge | Relocation, first Syndicate sighting, Devon theft |\r\n| 2 | → Knuckle Badge | Museum heist, power-scanner plot, Mt Chimney breach |\r\n| 3 | → Dynamo Badge | Norman's truth, Fortree spy, Mt Pyre bell shard |\r\n| 4 | → Heat Badge | Lilycove hideout, Mossdeep launch, cavern descent |\r\n| 5 | → Feather Badge | Sootopolis cataclysm, legendary re-sealing |\r\n| 6 | → Champion | Victory Road trials, Elite Four, homecoming |\r\n\r\n## New named NPCs\r\n| Name | Role | First scene file |\r\n|------|------|------------------|\r\n| Kael | Rival, ex-Syndicate | act1-02-clock-rival |\r\n| Sovereign Null | Antagonist | act2-06-mt-chimney-clash |\r\n| Elara Voss | Johto archaeologist | act2-02-slateport-museum |\r\n| Harrow | Null lieutenant | act2-06-mt-chimney-clash |\r\n| Sister Mira | Kael's sister, Slateport nurse | act2-02-slateport-museum |\r\n| Captain Jori | S.S. Tidal ally | act3-06-mossdeep-planning |\r\n| The Stillness | Eldritch sealed entity | act3-04-mt-pyre-lore |\r\n\r\n## Tone & content rating\r\nPG-13. Martial arts enthusiasm, cosmic horror undertones (hollow eyes, whispering ruins, body-husk imagery without gore). No explicit content. Frightening scenes use atmosphere and implication, not splatter.",
+  "scenes": [
+    {
+      "id": "act1-01-truck-intro",
+      "title": "Arrival in Littleroot",
+      "map": "LittlerootTown",
+      "vanillaEvent": "LittlerootTown_EventScript_Intro",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "NARRATOR",
+          "line": "The truck shudders over red Hoenn soil. In the mirror of a puddle, your reflection blinks a half-second late.",
+          "note": "horror beat, subtle"
+        },
+        {
+          "speaker": "MOM",
+          "line": "We're home, sweetie. Littleroot Town. Fresh air. Fresh start.",
+          "note": "warm, tired"
+        },
+        {
+          "speaker": "MOM",
+          "line": "Your father asked Norman to watch over us. That means you train hard, but not foolishly.",
+          "note": "foreshadow Norman"
+        },
+        {
+          "speaker": "MOM",
+          "line": "I know Olivine still feels close. Forget the hollow ships. Forget the bells that rang underwater.",
+          "note": "Johto hook"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        },
+        {
+          "speaker": "MOM",
+          "line": "Go on inside. I'll unpack. And if you hear whispering from the empty room—",
+          "note": "pause"
+        },
+        {
+          "speaker": "MOM",
+          "line": "—that's just the house settling.",
+          "note": "Mom lies kindly"
+        },
+        {
+          "speaker": "MOM",
+          "line": "Welcome to our new life.",
+          "note": "sets tone"
+        }
+      ],
+      "flags": [
+        "VAR_LITTLEROOT_INTRO_STATE"
+      ],
+      "rawBody": "\r\n# Scene: Arrival in Littleroot\r\n\r\n## Context\r\nThe moving truck arrives in Littleroot after the family fled Olivine's docks. Mom hides her anxiety behind warmth; a distant siren wails once and stops. Replaces vanilla truck intro and house entry. Player has no Pokémon yet.\r\n\r\n## Characters\r\n- MOM — welcomes player, hints at why they left Johto\r\n- PLAYER — silent protagonist\r\n- NARRATOR — optional truck bump\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| NARRATOR | The truck shudders over red Hoenn soil. In the mirror of a puddle, your reflection blinks a half-second late. | horror beat, subtle |\r\n| MOM | We're home, sweetie. Littleroot Town. Fresh air. Fresh start. | warm, tired |\r\n| MOM | Your father asked Norman to watch over us. That means you train hard, but not foolishly. | foreshadow Norman |\r\n| MOM | I know Olivine still feels close. Forget the hollow ships. Forget the bells that rang underwater. | Johto hook |\r\n| PLAYER | | silent |\r\n| MOM | Go on inside. I'll unpack. And if you hear whispering from the empty room— | pause |\r\n| MOM | —that's just the house settling. | Mom lies kindly |\r\n| MOM | Welcome to our new life. | sets tone |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_LITTLEROOT_INTRO_STATE = 1 when complete\r\n- Unlocks: house interior, clock scene\r\n\r\n## Implementation notes\r\nPlay truck arrival animation. Fade to player bedroom. Set global flag MOVED_TO_HOENN. Optional: one-frame static overlay on puddle reflection.\r\n"
+    },
+    {
+      "id": "act1-02-clock-rival",
+      "title": "Clock and the Neighbor",
+      "map": "LittlerootTown",
+      "vanillaEvent": "LittlerootTown_EventScript_SetClock",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "MOM",
+          "line": "Set the clock, dear. Time only moves forward if we tell it to.",
+          "note": "thematic"
+        },
+        {
+          "speaker": "MOM",
+          "line": "Our neighbors have a boy your age. Kael. Be polite."
+        },
+        {
+          "speaker": "KAEL",
+          "line": "You the import from Johto? Heard your family ran from the coast.",
+          "note": "confrontational"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Don't flinch. I left something worse than a bad town.",
+          "note": "Syndicate hint"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "They call it training. I call it branding.",
+          "note": "shows wrist later"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Professor Birch is outside Route 101. Probably dying of boredom. Or of something else.",
+          "note": "pushes player out"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Beat me when you're worth measuring.",
+          "note": "rivalry declared"
+        },
+        {
+          "speaker": "MOM (if Brendan)",
+          "line": "May's family said their son is intense. Be careful, Brendan.",
+          "note": "gender branch"
+        },
+        {
+          "speaker": "MOM (if May)",
+          "line": "Brendan's family said their son is intense. Be careful, May.",
+          "note": "gender branch"
+        }
+      ],
+      "flags": [
+        "VAR_LITTLEROOT_INTRO_STATE"
+      ],
+      "rawBody": "\r\n# Scene: Clock and the Neighbor\r\n\r\n## Context\r\nPlayer sets the wall clock, then visits the rival's house. Kael introduces himself with aggressive confidence and mentions \"the program\" he escaped. Replaces clock tutorial and rival house intro.\r\n\r\n## Characters\r\n- MOM — sends player to meet neighbor\r\n- KAEL — rival, first appearance\r\n- KAEL_MOM — brief, off-screen mention\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| MOM | Set the clock, dear. Time only moves forward if we tell it to. | thematic |\r\n| MOM | Our neighbors have a boy your age. Kael. Be polite. | |\r\n| KAEL | You the import from Johto? Heard your family ran from the coast. | confrontational |\r\n| PLAYER | | silent |\r\n| KAEL | Don't flinch. I left something worse than a bad town. | Syndicate hint |\r\n| KAEL | They call it training. I call it branding. | shows wrist later |\r\n| KAEL | Professor Birch is outside Route 101. Probably dying of boredom. Or of something else. | pushes player out |\r\n| KAEL | Beat me when you're worth measuring. | rivalry declared |\r\n| MOM (if Brendan) | May's family said their son is intense. Be careful, Brendan. | gender branch |\r\n| MOM (if May) | Brendan's family said their son is intense. Be careful, May. | gender branch |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_LITTLEROOT_INTRO_STATE = 2 when clock set\r\n- Sets FLAG_MET_KAEL = 1 after rival house visit\r\n- Unlocks: Route 101 north exit\r\n\r\n## Implementation notes\r\nClock UI tutorial unchanged. Rival sprite in bedroom or hallway. Kael dialogue differs slightly if player chose same starter type later (retroactive patch in act1-04).\r\n"
+    },
+    {
+      "id": "act1-03-route101-birch",
+      "title": "Route 101 — Birch and the Shaking Grass",
+      "map": "Route101",
+      "vanillaEvent": "Route101_EventScript_ProfBirchRescue",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "BIRCH",
+          "line": "Help! My data! My— the specimen is wrong!"
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "The Poochyena twitches in perfect intervals, like a metronome.",
+          "note": "horror"
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "In the bag! Quick! Take a Pokémon and fight!",
+          "note": "starter choice"
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "You did it. Its shadow stayed when it fled. That isn't normal.",
+          "note": "post-battle"
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "I'm Birch. Officially I study ecosystems. Unofficially I study what's eating them."
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "Come to my lab in Littleroot. I'll register your partner."
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "And listen— if anyone in a white mask asks about Johto bells, lie.",
+          "note": "Syndicate foreshadow"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "VAR_STARTER_CHOICE"
+      ],
+      "rawBody": "\r\n# Scene: Route 101 — Birch and the Shaking Grass\r\n\r\n## Context\r\nProfessor Birch is chased by a zigzagging Poochyena that moves wrong — eyes flat, no breath fog. Player takes starter from Birch's bag. Replaces vanilla Route 101 rescue. First battle is mandatory.\r\n\r\n## Characters\r\n- BIRCH — professor, panicked then grateful\r\n- PLAYER — silent\r\n- NARRATOR — Poochyena description\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| BIRCH | Help! My data! My— the specimen is wrong! | |\r\n| NARRATOR | The Poochyena twitches in perfect intervals, like a metronome. | horror |\r\n| BIRCH | In the bag! Quick! Take a Pokémon and fight! | starter choice |\r\n| BIRCH | You did it. Its shadow stayed when it fled. That isn't normal. | post-battle |\r\n| BIRCH | I'm Birch. Officially I study ecosystems. Unofficially I study what's eating them. | |\r\n| BIRCH | Come to my lab in Littleroot. I'll register your partner. | |\r\n| BIRCH | And listen— if anyone in a white mask asks about Johto bells, lie. | Syndicate foreshadow |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_STARTER_CHOICE = 1/2/3 by pick\r\n- Sets FLAG_BIRCH_RESCUE_COMPLETE = 1\r\n- Unlocks: Littleroot Lab registration, Route 103\r\n\r\n## Implementation notes\r\nStarter bag UI. Modified Poochyena AI aggressive. After battle, Poochyena flees north instead of KO fade. Birch follows to lab for dex handoff scene (vanilla lab script).\r\n"
+    },
+    {
+      "id": "act1-04-route103-rival",
+      "title": "Route 103 — First Measurement",
+      "map": "Route103",
+      "vanillaEvent": "Route103_EventScript_RivalBattle",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "KAEL",
+          "line": "Hold it. I need a number before the world gets noisy.",
+          "note": "DBZ power-scanner vibe"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Your stance is sloppy. Your Pokémon believes in you anyway. That's annoying."
+        },
+        {
+          "speaker": "KAEL",
+          "line": "…Tch. Fine. You're not hollow.",
+          "note": "if player wins"
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Laugh while you can. The Syndicate counts everything."
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "Kael! I said friendly research, not gladiator cosplay.",
+          "note": "arrives after battle"
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "Both of you: Route 102, then Petalburg. Norman wants to meet our new trainer."
+        },
+        {
+          "speaker": "KAEL",
+          "line": "Norman's real. Unlike the masks."
+        },
+        {
+          "speaker": "BIRCH",
+          "line": "Player, don't lose to him twice in one week.",
+          "note": "light humor"
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "FLAG_RIVAL_ROUTE103"
+      ],
+      "rawBody": "\r\n# Scene: Route 103 — First Measurement\r\n\r\n## Context\r\nKael blocks the path to Oldale, calling this a \"baseline reading.\" First rival battle. Birch arrives after and sends both kids on a dex errand to Route 102. Replaces vanilla Route 103 rival fight.\r\n\r\n## Characters\r\n- KAEL — rival battle\r\n- BIRCH — post-battle exposition\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| KAEL | Hold it. I need a number before the world gets noisy. | DBZ power-scanner vibe |\r\n| KAEL | Your stance is sloppy. Your Pokémon believes in you anyway. That's annoying. | |\r\n| KAEL | …Tch. Fine. You're not hollow. | if player wins |\r\n| KAEL | Laugh while you can. The Syndicate counts everything. | |\r\n| BIRCH | Kael! I said friendly research, not gladiator cosplay. | arrives after battle |\r\n| BIRCH | Both of you: Route 102, then Petalburg. Norman wants to meet our new trainer. | |\r\n| KAEL | Norman's real. Unlike the masks. | |\r\n| BIRCH | Player, don't lose to him twice in one week. | light humor |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_RIVAL_ROUTE103 = 1\r\n- Unlocks: Route 102, Oldale Town access\r\n\r\n## Implementation notes\r\nRival party: starter + Lv2 Poochyena. Birch cutscene spawns after win/loss. Kael walks toward Oldale north gate.\r\n"
+    },
+    {
+      "id": "act1-05-petalburg-norman",
+      "title": "Petalburg — Norman and Wally",
+      "map": "PetalburgCity",
+      "vanillaEvent": "PetalburgCity_EventScript_WallyTutorial",
+      "act": 1,
+      "dialogue": [
+        {
+          "speaker": "NORMAN",
+          "line": "So you're the one my friend trusted Hoenn with. Stand straight.",
+          "note": "martial mentor"
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "I won't battle you today. Badges aren't medals. They're answers to hard questions."
+        },
+        {
+          "speaker": "WALLY",
+          "line": "Um… could you help me? I hear something in the grass… crying backward.",
+          "note": "horror hint"
+        },
+        {
+          "speaker": "NARRATOR",
+          "line": "Wally throws a Poké Ball. Ralts lands, then stares at empty air behind you."
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "Good. Sensitivity is a weapon if you train it.",
+          "note": "to Wally"
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "Player, Route 102 next. Petalburg Woods has been… disturbed."
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "Kael passed through scowling. Tell him the Gym doesn't fix what's broken inside.",
+          "note": "if Kael seen"
+        },
+        {
+          "speaker": "WALLY",
+          "line": "I'll get strong. For my family. For whatever is watching."
+        },
+        {
+          "speaker": "PLAYER",
+          "line": "silent"
+        }
+      ],
+      "flags": [
+        "VAR_PETALBURG_STATE"
+      ],
+      "rawBody": "\r\n# Scene: Petalburg — Norman and Wally\r\n\r\n## Context\r\nNorman greets the player as an old friend of their parent and refuses the Gym battle until \"foundation is laid.\" Wally catches a Ralts with player's help — Ralts shivers at something unseen. Replaces Wally catching tutorial and Norman dialogue.\r\n\r\n## Characters\r\n- NORMAN — mentor figure, Gym Leader\r\n- WALLY — timid boy, first catch\r\n- KAEL — optional background cameo leaving city\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| NORMAN | So you're the one my friend trusted Hoenn with. Stand straight. | martial mentor |\r\n| NORMAN | I won't battle you today. Badges aren't medals. They're answers to hard questions. | |\r\n| WALLY | Um… could you help me? I hear something in the grass… crying backward. | horror hint |\r\n| NARRATOR | Wally throws a Poké Ball. Ralts lands, then stares at empty air behind you. | |\r\n| NORMAN | Good. Sensitivity is a weapon if you train it. | to Wally |\r\n| NORMAN | Player, Route 102 next. Petalburg Woods has been… disturbed. | |\r\n| NORMAN | Kael passed through scowling. Tell him the Gym doesn't fix what's broken inside. | if Kael seen |\r\n| WALLY | I'll get strong. For my family. For whatever is watching. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_PETALBURG_STATE = 1\r\n- Sets FLAG_WALLY_RALTS = 1\r\n- Unlocks: Petalburg Woods, Gym interior (decline battle)\r\n\r\n## Implementation notes\r\nWally battle tutorial optional skip. Ralts given to Wally via script. Norman blocks gym doors with \"Come back with one badge.\"\r\n"
+    }
+  ],
+  "files": [
+    {
+      "name": "00-overview.md",
+      "content": "# Pokémon Emerald: The Hollow Crown\r\n\r\n## Elevator pitch\r\nYou arrive in Hoenn as ancient Johto relics begin surfacing beneath the region's soil. A corporate cult called the Null Syndicate hunts those relics to feed a sleeping horror called the Stillness, and your rival Kael knows their secrets because he once wore their uniform. Train like a fighter, seal what should never wake, and climb from Littleroot to Champion before Sovereign Null reshapes the world into silence.\r\n\r\n## Themes\r\n- Power earned through discipline and bonds, not stolen life force\r\n- History buried twice: Johto bells and Hoenn legends as one chained truth\r\n- Horror of erasure — bodies, names, and memory hollowed out for \"perfection\"\r\n\r\n## Protagonist\r\nDefault name follows player choice (Brendan/May). Backstory: family relocated from Olivine after your parent witnessed a \"hollow ship\" dredging the sea floor. Starting goal: settle in Littleroot, win badges, prove yourself to Gym Leader Norman (your father's friend). End goal: break the Null Syndicate's crown seals, restore the Brass Bell trinity, and deny Sovereign Null the Stillness.\r\n\r\n## Rival\r\n**Kael** — sharp, proud, obsessed with surpassing you. Early: cocky ex-trainer who left the Syndicate's youth program and hides a branded mark on his wrist. Mid: forced to cooperate when the Syndicate targets his sister in Slateport; grudging respect. Late: stands with you at Sootopolis, admits fear is not weakness, fights Null's lieutenant while you face the sovereign.\r\n\r\n## Antagonist / faction\r\n**The Null Syndicate** — merger of Devon poachers, renegade Silph tech, and Johto ruin delvers. Leader: **Sovereign Null** (humanoid, porcelain mask, Frieza-cold politeness), believes the Stillness will grant immortal \"perfect silence\" by consuming legendary essence. Player opposes them because they hollow Pokémon and people into empty vessels. **Team Magma and Team Aqua are fully replaced** — no weather teams; Mt Chimney and Seafloor Cavern are Syndicate excavation sites.\r\n\r\n## Legendaries\r\nGroudon and Kyogre appear as **Seal Keepers** bound at Sootopolis — required for plot climax but not catch-required. Rayquaza descends as **Sky Arbiter** when the Brass Bell shards resonate; story resolution uses Rayquaza to re-chain the Stillness, not a mandatory capture. Optional: player may battle/catch after story flag STILLNESS_SEALED.\r\n\r\n## Act structure\r\n\r\n| Act | Region progress | Main conflict |\r\n|-----|-----------------|----------------|\r\n| 1 | Littleroot → Stone Badge | Relocation, first Syndicate sighting, Devon theft |\r\n| 2 | → Knuckle Badge | Museum heist, power-scanner plot, Mt Chimney breach |\r\n| 3 | → Dynamo Badge | Norman's truth, Fortree spy, Mt Pyre bell shard |\r\n| 4 | → Heat Badge | Lilycove hideout, Mossdeep launch, cavern descent |\r\n| 5 | → Feather Badge | Sootopolis cataclysm, legendary re-sealing |\r\n| 6 | → Champion | Victory Road trials, Elite Four, homecoming |\r\n\r\n## New named NPCs\r\n| Name | Role | First scene file |\r\n|------|------|------------------|\r\n| Kael | Rival, ex-Syndicate | act1-02-clock-rival |\r\n| Sovereign Null | Antagonist | act2-06-mt-chimney-clash |\r\n| Elara Voss | Johto archaeologist | act2-02-slateport-museum |\r\n| Harrow | Null lieutenant | act2-06-mt-chimney-clash |\r\n| Sister Mira | Kael's sister, Slateport nurse | act2-02-slateport-museum |\r\n| Captain Jori | S.S. Tidal ally | act3-06-mossdeep-planning |\r\n| The Stillness | Eldritch sealed entity | act3-04-mt-pyre-lore |\r\n\r\n## Tone & content rating\r\nPG-13. Martial arts enthusiasm, cosmic horror undertones (hollow eyes, whispering ruins, body-husk imagery without gore). No explicit content. Frightening scenes use atmosphere and implication, not splatter.\r\n"
+    },
+    {
+      "name": "act1-01-truck-intro.md",
+      "content": "---\r\nscene_id: act1-01-truck-intro\r\nmap: LittlerootTown\r\nvanilla_event: LittlerootTown_EventScript_Intro\r\nact: 1\r\nflags: VAR_LITTLEROOT_INTRO_STATE\r\n---\r\n\r\n# Scene: Arrival in Littleroot\r\n\r\n## Context\r\nThe moving truck arrives in Littleroot after the family fled Olivine's docks. Mom hides her anxiety behind warmth; a distant siren wails once and stops. Replaces vanilla truck intro and house entry. Player has no Pokémon yet.\r\n\r\n## Characters\r\n- MOM — welcomes player, hints at why they left Johto\r\n- PLAYER — silent protagonist\r\n- NARRATOR — optional truck bump\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| NARRATOR | The truck shudders over red Hoenn soil. In the mirror of a puddle, your reflection blinks a half-second late. | horror beat, subtle |\r\n| MOM | We're home, sweetie. Littleroot Town. Fresh air. Fresh start. | warm, tired |\r\n| MOM | Your father asked Norman to watch over us. That means you train hard, but not foolishly. | foreshadow Norman |\r\n| MOM | I know Olivine still feels close. Forget the hollow ships. Forget the bells that rang underwater. | Johto hook |\r\n| PLAYER | | silent |\r\n| MOM | Go on inside. I'll unpack. And if you hear whispering from the empty room— | pause |\r\n| MOM | —that's just the house settling. | Mom lies kindly |\r\n| MOM | Welcome to our new life. | sets tone |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_LITTLEROOT_INTRO_STATE = 1 when complete\r\n- Unlocks: house interior, clock scene\r\n\r\n## Implementation notes\r\nPlay truck arrival animation. Fade to player bedroom. Set global flag MOVED_TO_HOENN. Optional: one-frame static overlay on puddle reflection.\r\n"
+    },
+    {
+      "name": "act1-02-clock-rival.md",
+      "content": "---\r\nscene_id: act1-02-clock-rival\r\nmap: LittlerootTown\r\nvanilla_event: LittlerootTown_EventScript_SetClock\r\nact: 1\r\nflags: VAR_LITTLEROOT_INTRO_STATE\r\n---\r\n\r\n# Scene: Clock and the Neighbor\r\n\r\n## Context\r\nPlayer sets the wall clock, then visits the rival's house. Kael introduces himself with aggressive confidence and mentions \"the program\" he escaped. Replaces clock tutorial and rival house intro.\r\n\r\n## Characters\r\n- MOM — sends player to meet neighbor\r\n- KAEL — rival, first appearance\r\n- KAEL_MOM — brief, off-screen mention\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| MOM | Set the clock, dear. Time only moves forward if we tell it to. | thematic |\r\n| MOM | Our neighbors have a boy your age. Kael. Be polite. | |\r\n| KAEL | You the import from Johto? Heard your family ran from the coast. | confrontational |\r\n| PLAYER | | silent |\r\n| KAEL | Don't flinch. I left something worse than a bad town. | Syndicate hint |\r\n| KAEL | They call it training. I call it branding. | shows wrist later |\r\n| KAEL | Professor Birch is outside Route 101. Probably dying of boredom. Or of something else. | pushes player out |\r\n| KAEL | Beat me when you're worth measuring. | rivalry declared |\r\n| MOM (if Brendan) | May's family said their son is intense. Be careful, Brendan. | gender branch |\r\n| MOM (if May) | Brendan's family said their son is intense. Be careful, May. | gender branch |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_LITTLEROOT_INTRO_STATE = 2 when clock set\r\n- Sets FLAG_MET_KAEL = 1 after rival house visit\r\n- Unlocks: Route 101 north exit\r\n\r\n## Implementation notes\r\nClock UI tutorial unchanged. Rival sprite in bedroom or hallway. Kael dialogue differs slightly if player chose same starter type later (retroactive patch in act1-04).\r\n"
+    },
+    {
+      "name": "act1-03-route101-birch.md",
+      "content": "---\r\nscene_id: act1-03-route101-birch\r\nmap: Route101\r\nvanilla_event: Route101_EventScript_ProfBirchRescue\r\nact: 1\r\nflags: VAR_STARTER_CHOICE\r\n---\r\n\r\n# Scene: Route 101 — Birch and the Shaking Grass\r\n\r\n## Context\r\nProfessor Birch is chased by a zigzagging Poochyena that moves wrong — eyes flat, no breath fog. Player takes starter from Birch's bag. Replaces vanilla Route 101 rescue. First battle is mandatory.\r\n\r\n## Characters\r\n- BIRCH — professor, panicked then grateful\r\n- PLAYER — silent\r\n- NARRATOR — Poochyena description\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| BIRCH | Help! My data! My— the specimen is wrong! | |\r\n| NARRATOR | The Poochyena twitches in perfect intervals, like a metronome. | horror |\r\n| BIRCH | In the bag! Quick! Take a Pokémon and fight! | starter choice |\r\n| BIRCH | You did it. Its shadow stayed when it fled. That isn't normal. | post-battle |\r\n| BIRCH | I'm Birch. Officially I study ecosystems. Unofficially I study what's eating them. | |\r\n| BIRCH | Come to my lab in Littleroot. I'll register your partner. | |\r\n| BIRCH | And listen— if anyone in a white mask asks about Johto bells, lie. | Syndicate foreshadow |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_STARTER_CHOICE = 1/2/3 by pick\r\n- Sets FLAG_BIRCH_RESCUE_COMPLETE = 1\r\n- Unlocks: Littleroot Lab registration, Route 103\r\n\r\n## Implementation notes\r\nStarter bag UI. Modified Poochyena AI aggressive. After battle, Poochyena flees north instead of KO fade. Birch follows to lab for dex handoff scene (vanilla lab script).\r\n"
+    },
+    {
+      "name": "act1-04-route103-rival.md",
+      "content": "---\r\nscene_id: act1-04-route103-rival\r\nmap: Route103\r\nvanilla_event: Route103_EventScript_RivalBattle\r\nact: 1\r\nflags: FLAG_RIVAL_ROUTE103\r\n---\r\n\r\n# Scene: Route 103 — First Measurement\r\n\r\n## Context\r\nKael blocks the path to Oldale, calling this a \"baseline reading.\" First rival battle. Birch arrives after and sends both kids on a dex errand to Route 102. Replaces vanilla Route 103 rival fight.\r\n\r\n## Characters\r\n- KAEL — rival battle\r\n- BIRCH — post-battle exposition\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| KAEL | Hold it. I need a number before the world gets noisy. | DBZ power-scanner vibe |\r\n| KAEL | Your stance is sloppy. Your Pokémon believes in you anyway. That's annoying. | |\r\n| KAEL | …Tch. Fine. You're not hollow. | if player wins |\r\n| KAEL | Laugh while you can. The Syndicate counts everything. | |\r\n| BIRCH | Kael! I said friendly research, not gladiator cosplay. | arrives after battle |\r\n| BIRCH | Both of you: Route 102, then Petalburg. Norman wants to meet our new trainer. | |\r\n| KAEL | Norman's real. Unlike the masks. | |\r\n| BIRCH | Player, don't lose to him twice in one week. | light humor |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets FLAG_RIVAL_ROUTE103 = 1\r\n- Unlocks: Route 102, Oldale Town access\r\n\r\n## Implementation notes\r\nRival party: starter + Lv2 Poochyena. Birch cutscene spawns after win/loss. Kael walks toward Oldale north gate.\r\n"
+    },
+    {
+      "name": "act1-05-petalburg-norman.md",
+      "content": "---\r\nscene_id: act1-05-petalburg-norman\r\nmap: PetalburgCity\r\nvanilla_event: PetalburgCity_EventScript_WallyTutorial\r\nact: 1\r\nflags: VAR_PETALBURG_STATE\r\n---\r\n\r\n# Scene: Petalburg — Norman and Wally\r\n\r\n## Context\r\nNorman greets the player as an old friend of their parent and refuses the Gym battle until \"foundation is laid.\" Wally catches a Ralts with player's help — Ralts shivers at something unseen. Replaces Wally catching tutorial and Norman dialogue.\r\n\r\n## Characters\r\n- NORMAN — mentor figure, Gym Leader\r\n- WALLY — timid boy, first catch\r\n- KAEL — optional background cameo leaving city\r\n- PLAYER — silent\r\n\r\n## Dialogue\r\n\r\n| Speaker | Line | Notes |\r\n|---------|------|-------|\r\n| NORMAN | So you're the one my friend trusted Hoenn with. Stand straight. | martial mentor |\r\n| NORMAN | I won't battle you today. Badges aren't medals. They're answers to hard questions. | |\r\n| WALLY | Um… could you help me? I hear something in the grass… crying backward. | horror hint |\r\n| NARRATOR | Wally throws a Poké Ball. Ralts lands, then stares at empty air behind you. | |\r\n| NORMAN | Good. Sensitivity is a weapon if you train it. | to Wally |\r\n| NORMAN | Player, Route 102 next. Petalburg Woods has been… disturbed. | |\r\n| NORMAN | Kael passed through scowling. Tell him the Gym doesn't fix what's broken inside. | if Kael seen |\r\n| WALLY | I'll get strong. For my family. For whatever is watching. | |\r\n| PLAYER | | silent |\r\n\r\n## Story flags / triggers\r\n- Sets VAR_PETALBURG_STATE = 1\r\n- Sets FLAG_WALLY_RALTS = 1\r\n- Unlocks: Petalburg Woods, Gym interior (decline battle)\r\n\r\n## Implementation notes\r\nWally battle tutorial optional skip. Ralts given to Wally via script. Norman blocks gym doors with \"Come back with one badge.\"\r\n"
+    }
+  ]
+}
