@@ -1,0 +1,20 @@
+{
+  "_comment": "Maps Story Builder scene slugs -> REAL pokeemerald-expansion text labels to overwrite. The applier trusts ONLY this file, never the AI-supplied vanilla_event field (the AI hallucinates decomp symbol names). Every anchor here was grep-verified to exist in rh-hideout/pokeemerald-expansion. Extend this map to raise story coverage. 'anchors' may list several labels (e.g. May/Brendan gender variants); the scene's dialogue is distributed across the anchors in order.",
+  "scenes": {
+    "act1-01-truck-intro": {
+      "file": "data/maps/LittlerootTown/scripts.inc",
+      "anchors": ["LittlerootTown_Text_OurNewHomeLetsGoInside"]
+    },
+    "act1-03-route101-birch": {
+      "file": "data/maps/Route101/scripts.inc",
+      "anchors": ["Route101_Text_YouSavedMe"]
+    },
+    "act1-04-route103-rival": {
+      "file": "data/maps/Route103/scripts.inc",
+      "anchors": [
+        "Route103_Text_BrendanRoute103Pokemon",
+        "Route103_Text_MayRoute103Pokemon"
+      ]
+    }
+  }
+}
