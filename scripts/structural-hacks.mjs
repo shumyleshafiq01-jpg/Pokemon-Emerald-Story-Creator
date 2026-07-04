@@ -641,6 +641,184 @@ export function applyStructuralHacks(expansionRoot) {
   });
 
   // -------------------------------------------------------------------------
+  // KAIROS'S HOLLOW — a NEW MAP that does not exist in vanilla Emerald.
+  // Registered as a real map (layout + group + header + scripts include):
+  // an invisible rift in the Route 111 desert pulls the player into a stone
+  // chamber (shares the Ancient Tomb's blockdata) where KAIROS waits as a
+  // fightable boss (reuses the never-fought TRAINER_LEAF slot, Giovanni's
+  // FRLG boss portrait). After the battle the rift ejects you back out.
+  {
+    let ok = true;
+    const fail = (msg) => {
+      errors.push(`kairos hollow: ${msg}`);
+      ok = false;
+    };
+
+    // 1) layout registry — new layout id sharing AncientTomb's blockdata
+    const layoutsPath = path.join(expansionRoot, "data", "layouts", "layouts.json");
+    const layouts = JSON.parse(fs.readFileSync(layoutsPath, "utf8"));
+    const donor = layouts.layouts.find((l) => l && l.id === "LAYOUT_ANCIENT_TOMB");
+    if (!donor) fail("donor layout LAYOUT_ANCIENT_TOMB not found");
+    else if (!layouts.layouts.some((l) => l && l.id === "LAYOUT_KAIROS_HOLLOW")) {
+      layouts.layouts.push({
+        ...donor,
+        id: "LAYOUT_KAIROS_HOLLOW",
+        name: "KairosHollow_Layout",
+      });
+      fs.writeFileSync(layoutsPath, JSON.stringify(layouts, null, 2) + "\n");
+    }
+
+    // 2) map group
+    const groupsPath = path.join(expansionRoot, "data", "maps", "map_groups.json");
+    const groups = JSON.parse(fs.readFileSync(groupsPath, "utf8"));
+    if (!groups.gMapGroup_Dungeons) fail("gMapGroup_Dungeons missing");
+    else if (!groups.gMapGroup_Dungeons.includes("KairosHollow")) {
+      groups.gMapGroup_Dungeons.push("KairosHollow");
+      fs.writeFileSync(groupsPath, JSON.stringify(groups, null, 2) + "\n");
+    }
+
+    // 3) pick an existing overworld gfx for Kairos
+    const objConsts = fs.readFileSync(
+      path.join(expansionRoot, "include", "constants", "event_objects.h"),
+      "utf8",
+    );
+    const kairosGfx =
+      ["OBJ_EVENT_GFX_MYSTERY_GIFT_MAN", "OBJ_EVENT_GFX_SCIENTIST_1", "OBJ_EVENT_GFX_PSYCHIC_M"].find(
+        (g) => objConsts.includes(g + ","),
+      ) || "OBJ_EVENT_GFX_MAN_5";
+
+    // 4) the map itself (arrival tile 8,11 and NPC tile 8,7 are both
+    //    vanilla-verified walkable: the tomb's inner warp pad + statue tile)
+    const mapDir = path.join(expansionRoot, "data", "maps", "KairosHollow");
+    fs.mkdirSync(mapDir, { recursive: true });
+    fs.writeFileSync(
+      path.join(mapDir, "map.json"),
+      JSON.stringify(
+        {
+          id: "MAP_KAIROS_HOLLOW",
+          name: "KairosHollow",
+          layout: "LAYOUT_KAIROS_HOLLOW",
+          music: "MUS_SEALED_CHAMBER",
+          region: "REGION_HOENN",
+          region_map_section: "MAPSEC_ANCIENT_TOMB",
+          requires_flash: false,
+          weather: "WEATHER_NONE",
+          map_type: "MAP_TYPE_UNDERGROUND",
+          allow_cycling: false,
+          allow_escaping: true,
+          allow_running: true,
+          show_map_name: false,
+          battle_scene: "MAP_BATTLE_SCENE_NORMAL",
+          connections: null,
+          object_events: [
+            {
+              graphics_id: kairosGfx,
+              x: 8,
+              y: 7,
+              elevation: 3,
+              movement_type: "MOVEMENT_TYPE_FACE_DOWN",
+              movement_range_x: 0,
+              movement_range_y: 0,
+              trainer_type: "TRAINER_TYPE_NONE",
+              trainer_sight_or_berry_tree_id: "0",
+              script: "SaiyanRequiem_EventScript_KairosBoss",
+              flag: "0",
+            },
+          ],
+          warp_events: [],
+          coord_events: [],
+          bg_events: [],
+        },
+        null,
+        2,
+      ) + "\n",
+    );
+    fs.writeFileSync(
+      path.join(mapDir, "scripts.inc"),
+      "KairosHollow_MapScripts::\n\t.byte 0\n" +
+        "\nSaiyanRequiem_EventScript_KairosBoss::\n" +
+        "\ttrainerbattle_single TRAINER_LEAF, SaiyanRequiem_Text_KairosBossIntro, SaiyanRequiem_Text_KairosBossDefeat, SaiyanRequiem_EventScript_KairosBeaten\n" +
+        "\tmsgbox SaiyanRequiem_Text_KairosBossRematch, MSGBOX_DEFAULT\n" +
+        "\tclosemessage\n" +
+        "\tcall SaiyanRequiem_EventScript_RiftEject\n" +
+        "\tend\n" +
+        "\nSaiyanRequiem_EventScript_KairosBeaten::\n" +
+        "\tmsgbox SaiyanRequiem_Text_KairosBossPost, MSGBOX_DEFAULT\n" +
+        "\tclosemessage\n" +
+        "\tcall SaiyanRequiem_EventScript_RiftEject\n" +
+        "\trelease\n" +
+        "\tend\n" +
+        "\nSaiyanRequiem_EventScript_RiftEject::\n" +
+        "\tplayse SE_THUNDER\n" +
+        "\tfadescreen FADE_TO_BLACK\n" +
+        "\twarp MAP_ROUTE111, 14, 115\n" +
+        "\twaitstate\n" +
+        "\treturn\n" +
+        "\nSaiyanRequiem_Text_KairosBossIntro:\n" +
+        '\t.string "KAIROS: The courier, in person.\\pDo you know what a timeline\\nweighs? I have carried two.\\pMine burned. Yours squirms.\\pShow me which one deserves\\nto exist!$"\n' +
+        "\nSaiyanRequiem_Text_KairosBossDefeat:\n" +
+        '\t.string "...Heavier than expected.$"\n' +
+        "\nSaiyanRequiem_Text_KairosBossPost:\n" +
+        '\t.string "KAIROS: This body was never\\nthe battle, child.\\pThe question at the LEAGUE -\\nTHAT is the battle.\\pAnswer it knowing I was\\nsomeone\'s hero once.$"\n' +
+        "\nSaiyanRequiem_Text_KairosBossRematch:\n" +
+        '\t.string "KAIROS: We are done here.\\pThe hall is waiting for\\nyour answer.$"\n',
+    );
+
+    // 5) include the new map's scripts in the build
+    const evsPath = path.join(expansionRoot, "data", "event_scripts.s");
+    const evs = fs.readFileSync(evsPath, "utf8");
+    if (!evs.includes("KairosHollow/scripts.inc")) {
+      fs.appendFileSync(evsPath, '\n\t.include "data/maps/KairosHollow/scripts.inc"\n');
+    }
+
+    // 6) the rift on Route 111 (trigger tile + entry script + return point south of it)
+    const r111Map = path.join(expansionRoot, "data", "maps", "Route111", "map.json");
+    const r111 = JSON.parse(fs.readFileSync(r111Map, "utf8"));
+    if (!r111.coord_events.some((c) => c.script === "SaiyanRequiem_EventScript_RiftEnter")) {
+      r111.coord_events.push({
+        type: "trigger",
+        x: 14,
+        y: 114,
+        elevation: 3,
+        var: "VAR_TEMP_4",
+        var_value: "0",
+        script: "SaiyanRequiem_EventScript_RiftEnter",
+      });
+      fs.writeFileSync(r111Map, JSON.stringify(r111, null, 2) + "\n");
+    }
+    fs.appendFileSync(
+      path.join(expansionRoot, "data", "maps", "Route111", "scripts.inc"),
+      "\nSaiyanRequiem_EventScript_RiftEnter::\n" +
+        "\tlockall\n" +
+        "\tplayse SE_THUNDER\n" +
+        "\tmsgbox SaiyanRequiem_Text_RiftPull, MSGBOX_DEFAULT\n" +
+        "\tclosemessage\n" +
+        "\tfadescreen FADE_TO_BLACK\n" +
+        "\twarp MAP_KAIROS_HOLLOW, 8, 11\n" +
+        "\twaitstate\n" +
+        "\treleaseall\n" +
+        "\tend\n" +
+        "\nSaiyanRequiem_Text_RiftPull:\n" +
+        '\t.string "The desert wind stops.\\pSomething UNDER the sand\\ninhales.$"\n',
+    );
+
+    if (ok) {
+      editCount++;
+      bulkCount++;
+      console.log(`ok: KAIROS'S HOLLOW — new map registered, rift on Route 111, boss inside (gfx ${kairosGfx})`);
+    }
+  }
+
+  // KAIROS the boss — the unused LEAF slot becomes his battle
+  edit("src/data/trainers.party", "TRAINER_LEAF -> KAIROS boss", (src) =>
+    replaceOnce(
+      src,
+      "=== TRAINER_LEAF ===\nName: LEAF\nClass: Rival\nPic: Leaf\nGender: Female\nMusic: Male\nDouble Battle: No\n\nBulbasaur\nLevel: 5\nIVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe\n",
+      "=== TRAINER_LEAF ===\nName: KAIROS\nClass: Boss Frlg\nPic: Leader Giovanni Frlg\nGender: Male\nMusic: Aqua\nDouble Battle: No\nAI: Check Bad Move / Try To Faint / Check Viability\n\nDusknoir\nLevel: 61\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\n- Shadow Punch\n- Earthquake\n- Ice Punch\n- Will-O-Wisp\n\nChandelure\nLevel: 61\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\n- Shadow Ball\n- Flamethrower\n- Energy Ball\n- Calm Mind\n\nClaydol\nLevel: 60\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\n- Earth Power\n- Psychic\n- Ice Beam\n- Light Screen\n\nJellicent\nLevel: 60\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\n- Scald\n- Shadow Ball\n- Recover\n- Will-O-Wisp\n\nBanette\nLevel: 60\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\n- Shadow Claw\n- Sucker Punch\n- Thunder Wave\n- Destiny Bond\n\nBronzong\nLevel: 61\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\n- Gyro Ball\n- Psychic\n- Hypnosis\n- Reflect\n",
+    ),
+  );
+
+  // -------------------------------------------------------------------------
   // GLOBAL NPC FLAVOR PASS — every town/route's background chatter gets a
   // rumor about the merged Pokemon/DBZ world and the thing rewriting the
   // timeline. Appends one sentence to existing dialogue (never replaces),
