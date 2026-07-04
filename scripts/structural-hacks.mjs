@@ -404,6 +404,20 @@ export function applyStructuralHacks(expansionRoot) {
   }
 
   // -------------------------------------------------------------------------
+  // The Rusturf thief SPEAKS Team Rocket (Kairos arc) — now he LOOKS it too.
+  // The expansion ships FRLG Rocket assets natively; no sprite ripping needed.
+  edit("src/data/trainers.party", "Rusturf grunt -> real Team Rocket sprite", (src) =>
+    replaceOnce(
+      src,
+      "=== TRAINER_GRUNT_RUSTURF_TUNNEL ===\nName: GRUNT\nClass: Team Aqua\nPic: Aqua Grunt M\n",
+      "=== TRAINER_GRUNT_RUSTURF_TUNNEL ===\nName: GRUNT\nClass: Team Rocket Frlg\nPic: Rocket Grunt M Frlg\n",
+    ),
+  );
+  edit("data/maps/RusturfTunnel/map.json", "Rusturf grunt overworld -> Rocket sprite", (src) =>
+    replaceOnce(src, '"OBJ_EVENT_GFX_AQUA_MEMBER_M"', '"OBJ_EVENT_GFX_ROCKET_M"'),
+  );
+
+  // -------------------------------------------------------------------------
   // KAIROS ARC: BRANCHING CHOICE + TWO ENDINGS + THE WATCHER
   // The choice lives in persistent VAR_UNUSED_0x404E (0=unchosen, 1=seal,
   // 2=erase). Asked at the League gate after the guard's blessing; resolved
