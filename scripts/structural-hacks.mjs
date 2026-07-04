@@ -438,6 +438,12 @@ export function applyStructuralHacks(expansionRoot) {
       "\nSaiyanRequiem_EventScript_ChooseSeal::\n" +
       "\tsetvar VAR_UNUSED_0x404E, 1\n" +
       "\tmsgbox SaiyanRequiem_Text_ChoseSeal, MSGBOX_DEFAULT\n" +
+      "\tcheckitem ITEM_SOOTHE_BELL\n" +
+      "\tcall_if_eq VAR_RESULT, FALSE, SaiyanRequiem_EventScript_GiveElderBell\n" +
+      "\treturn\n" +
+      "\nSaiyanRequiem_EventScript_GiveElderBell::\n" +
+      "\tgiveitem ITEM_SOOTHE_BELL\n" +
+      "\tmsgbox SaiyanRequiem_Text_ElderBell, MSGBOX_DEFAULT\n" +
       "\treturn\n" +
       "\nSaiyanRequiem_EventScript_ChooseErase::\n" +
       "\tsetvar VAR_UNUSED_0x404E, 2\n" +
@@ -448,7 +454,9 @@ export function applyStructuralHacks(expansionRoot) {
       "\nSaiyanRequiem_Text_ChoseSeal:\n" +
       '\t.string "The bell in your bag hums warm.\\pThe elder\'s seal accepts you.\\nSomewhere ahead, KAIROS screams.$"\n' +
       "\nSaiyanRequiem_Text_ChoseErase:\n" +
-      '\t.string "Cold washes down your spine.\\pKAIROS: Then help me end the\\nthing that ends us, co-author.$"\n'
+      '\t.string "Cold washes down your spine.\\pKAIROS: Then help me end the\\nthing that ends us, co-author.$"\n' +
+      "\nSaiyanRequiem_Text_ElderBell:\n" +
+      '\t.string "The gatekeeper presses something\\nwarm into your hand.\\pIt is a small brass bell.\\nIt rings without being touched.$"\n'
     );
   });
 
@@ -503,10 +511,32 @@ export function applyStructuralHacks(expansionRoot) {
       }
       const scriptLabel = `SaiyanRequiem_EventScript_Watcher${w.map.replace(/[^A-Za-z]/g, "")}`;
       const textLabel = `SaiyanRequiem_Text_Watcher${w.map.replace(/[^A-Za-z]/g, "")}`;
-      fs.appendFileSync(
-        scriptsPath,
-        `\n${scriptLabel}::\n\tmsgbox ${textLabel}, MSGBOX_NPC\n\tend\n\n${textLabel}:\n\t.string "${w.text}$"\n`,
-      );
+      if (w.map === "SlateportCity") {
+        // Glazed homage: the Watcher entrusts a descendant of the wish-dragon
+        // (one-time, gated by a persistent unused flag).
+        fs.appendFileSync(
+          scriptsPath,
+          `\n${scriptLabel}::\n` +
+            "\tlock\n\tfaceplayer\n" +
+            `\tgoto_if_set FLAG_UNUSED_0x020, ${scriptLabel}Done\n` +
+            `\tmsgbox ${textLabel}, MSGBOX_DEFAULT\n` +
+            `\tmsgbox ${textLabel}Gift, MSGBOX_DEFAULT\n` +
+            "\tgivemon SPECIES_DRATINI, 5\n" +
+            "\tsetflag FLAG_UNUSED_0x020\n" +
+            "\trelease\n\tend\n" +
+            `\n${scriptLabel}Done::\n` +
+            `\tmsgbox ${textLabel}Done, MSGBOX_DEFAULT\n` +
+            "\trelease\n\tend\n" +
+            `\n${textLabel}:\n\t.string "${w.text}$"\n` +
+            `\n${textLabel}Gift:\n\t.string "WATCHER: Hold out your hands.\\pThis small one descends from the\\nwish-dragon your DRAKE dreams of.\\pIn sixteen hallways it died\\nunhatched. Not in this one.$"\n` +
+            `\n${textLabel}Done:\n\t.string "WATCHER: Raise it kindly.\\pWishes remember the hands\\nthat carried them.$"\n`,
+        );
+      } else {
+        fs.appendFileSync(
+          scriptsPath,
+          `\n${scriptLabel}::\n\tmsgbox ${textLabel}, MSGBOX_NPC\n\tend\n\n${textLabel}:\n\t.string "${w.text}$"\n`,
+        );
+      }
       const mj = JSON.parse(fs.readFileSync(mapPath, "utf8"));
       mj.object_events.push({
         graphics_id: "OBJ_EVENT_GFX_HEX_MANIAC",
@@ -532,6 +562,50 @@ export function applyStructuralHacks(expansionRoot) {
       errors.push(`watcher: only ${placed}/${WATCHERS.length} placed`);
     }
   }
+
+  // -------------------------------------------------------------------------
+  // KAKAROT — hidden superboss on Mt. Pyre Summit (Adventure Red homage:
+  // the silent legend on the mountain). Reuses the never-fought TRAINER_RED
+  // slot, so the battle self-gates through the engine's own trainer flags.
+  edit("src/data/trainers.party", "TRAINER_RED -> KAKAROT superboss", (src) =>
+    replaceOnce(
+      src,
+      "=== TRAINER_RED ===\nName: RED\nClass: Rival\nPic: Red\nGender: Male\nMusic: Male\nDouble Battle: No\n\nCharmander\nLevel: 5\nIVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe\n",
+      "=== TRAINER_RED ===\nName: KAKAROT\nClass: Rival\nPic: Red\nGender: Male\nMusic: Male\nDouble Battle: No\nAI: Check Bad Move / Try To Faint / Check Viability\n\nLucario\nLevel: 67\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\n- Aura Sphere\n- Close Combat\n- Extreme Speed\n- Swords Dance\n\nMachamp\nLevel: 66\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\n- Cross Chop\n- Earthquake\n- Rock Slide\n- Bulk Up\n\nDusknoir\nLevel: 66\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\n- Shadow Punch\n- Earthquake\n- Ice Punch\n- Will-O-Wisp\n\nMetagross\nLevel: 67\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\n- Meteor Mash\n- Zen Headbutt\n- Earthquake\n- Agility\n\nHoundoom\nLevel: 66\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\n- Flamethrower\n- Dark Pulse\n- Sludge Bomb\n- Nasty Plot\n\nDragonite\nLevel: 70\nIVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe\n- Outrage\n- Extreme Speed\n- Earthquake\n- Dragon Dance\n",
+    ),
+  );
+  edit("data/maps/MtPyre_Summit/scripts.inc", "KAKAROT NPC script on Mt. Pyre Summit", (src) => {
+    return (
+      src +
+      "\nSaiyanRequiem_EventScript_Kakarot::\n" +
+      "\ttrainerbattle_single TRAINER_RED, SaiyanRequiem_Text_KakarotIntro, SaiyanRequiem_Text_KakarotDefeat\n" +
+      "\tmsgbox SaiyanRequiem_Text_KakarotPost, MSGBOX_AUTOCLOSE\n" +
+      "\tend\n" +
+      "\nSaiyanRequiem_Text_KakarotIntro:\n" +
+      '\t.string "...You climbed with your own\\nfeet. Good.\\pIn my world they called me a\\nname the wind took back.\\pHere, the ghosts call me\\nKAKAROT.\\pShow me the strength of a\\nworld worth saving!$"\n' +
+      "\nSaiyanRequiem_Text_KakarotDefeat:\n" +
+      '\t.string "Ha! GOOD!\\pThat is the hunger I remember.$"\n' +
+      "\nSaiyanRequiem_Text_KakarotPost:\n" +
+      '\t.string "KAKAROT: The seal, the crown,\\nthe silence - none of it beats\\pa heart that refuses to quit.\\pFind me again when both our\\nworlds are safe.$"\n'
+    );
+  });
+  edit("data/maps/MtPyre_Summit/map.json", "KAKAROT placed on the summit", (src) => {
+    const mj = JSON.parse(src);
+    mj.object_events.push({
+      graphics_id: "OBJ_EVENT_GFX_RED",
+      x: 21,
+      y: 6,
+      elevation: 3,
+      movement_type: "MOVEMENT_TYPE_FACE_DOWN",
+      movement_range_x: 0,
+      movement_range_y: 0,
+      trainer_type: "TRAINER_TYPE_NONE",
+      trainer_sight_or_berry_tree_id: "0",
+      script: "SaiyanRequiem_EventScript_Kakarot",
+      flag: "0",
+    });
+    return JSON.stringify(mj, null, 2) + "\n";
+  });
 
   // -------------------------------------------------------------------------
   // GLOBAL NPC FLAVOR PASS — every town/route's background chatter gets a
