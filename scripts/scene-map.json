@@ -33,6 +33,84 @@
         "Route103_Text_MayLetsBattle",
         "Route103_Text_MayTimeToHeadBack"
       ]
+    },
+    "kairos-01-rustboro-robbed": {
+      "file": "data/maps/RustboroCity/scripts.inc",
+      "anchors": [
+        "RustboroCity_Text_HelpMeIWasRobbed",
+        "RustboroCity_Text_ShadyCharacterTookOffTowardsTunnel"
+      ]
+    },
+    "kairos-02-rustboro-recovered": {
+      "file": "data/maps/RustboroCity/scripts.inc",
+      "anchors": [
+        "RustboroCity_Text_YouGotItThankYou",
+        "RustboroCity_Text_PleaseComeWithMe"
+      ]
+    },
+    "kairos-03-mr-stone": {
+      "file": "data/maps/RustboroCity_DevonCorp_3F/scripts.inc",
+      "anchors": [
+        "RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor",
+        "RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis"
+      ]
+    },
+    "kairos-04-rusturf-rocket": {
+      "file": "data/maps/RusturfTunnel/scripts.inc",
+      "anchors": [
+        "RusturfTunnel_Text_GruntIntro",
+        "RusturfTunnel_Text_GruntDefeat",
+        "RusturfTunnel_Text_GruntTakePackage"
+      ]
+    },
+    "kairos-05-slateport-sub": {
+      "file": "data/maps/SlateportCity/scripts.inc",
+      "anchors": [
+        "SlateportCity_Text_AquaWillAssumeControlOfSubmarine",
+        "SlateportCity_Text_FromHarborTryingToTakeSub"
+      ]
+    },
+    "kairos-06-chimney-maxie": {
+      "file": "data/maps/MtChimney/scripts.inc",
+      "anchors": [
+        "MtChimney_Text_MaxieIntro",
+        "MtChimney_Text_MeteoriteWillActivateVolcano"
+      ]
+    },
+    "kairos-07-chimney-aftermath": {
+      "file": "data/maps/MtChimney/scripts.inc",
+      "anchors": [
+        "MtChimney_Text_MaxieDefeat",
+        "MtChimney_Text_MaxieYouHaventSeenLastOfMagma"
+      ]
+    },
+    "kairos-08-chimney-archie": {
+      "file": "data/maps/MtChimney/scripts.inc",
+      "anchors": [
+        "MtChimney_Text_ArchieGoStopTeamMagma",
+        "MtChimney_Text_ArchieThankYou"
+      ]
+    },
+    "kairos-09-league-gate": {
+      "file": "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.inc",
+      "anchors": [
+        "EverGrandeCity_PokemonLeague_1F_Text_MustHaveAllGymBadges",
+        "EverGrandeCity_PokemonLeague_1F_Text_GoForth"
+      ]
+    },
+    "kairos-10-champion": {
+      "file": "data/maps/EverGrandeCity_ChampionsRoom/scripts.inc",
+      "anchors": [
+        "EverGrandeCity_ChampionsRoom_Text_IntroSpeech",
+        "EverGrandeCity_ChampionsRoom_Text_Defeat"
+      ]
+    },
+    "kairos-11-epilogue": {
+      "file": "data/maps/EverGrandeCity_ChampionsRoom/scripts.inc",
+      "anchors": [
+        "EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex",
+        "EverGrandeCity_ChampionsRoom_Text_BirchCongratulations"
+      ]
     }
   }
 }

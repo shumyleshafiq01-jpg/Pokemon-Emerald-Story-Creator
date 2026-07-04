@@ -108,6 +108,208 @@
           "line": "Enough, Vegeta. Route 102, then Petalburg. Norman is waiting - and he already knows what the child is."
         }
       ]
+    },
+    {
+      "id": "kairos-01-rustboro-robbed",
+      "title": "The Ki-Core Theft",
+      "map": "RustboroCity",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "DEVON WORKER",
+          "line": "Help! A thief - black uniform, a red R on the chest! He took the KI-CORE! If MAGMA or AQUA learn we lost it, MR. STONE is finished. Please, get it back!"
+        },
+        {
+          "speaker": "DEVON WORKER",
+          "line": "He ran for RUSTURF TUNNEL. Strange... as he fled, he shouted 'We're SAVING you people.' What kind of thief says that?"
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-02-rustboro-recovered",
+      "title": "An Uneasy Recovery",
+      "map": "RustboroCity",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "DEVON WORKER",
+          "line": "You got it back! You really are something... So why do I feel like we just did something terrible?"
+        },
+        {
+          "speaker": "DEVON WORKER",
+          "line": "MR. STONE insists on meeting you personally. Please, come with me. And... don't mention what the thief said. Please."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-03-mr-stone",
+      "title": "The President's Favor",
+      "map": "RustboroCity_DevonCorp_3F",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "MR. STONE",
+          "line": "So you're the one. You've heard the rumors - the crater, the cracked sky. This KI-CORE simply keeps the lights on, nothing more. Now, a small favor: deliver a letter for me. And if you ever hear the word KAIROS... forget it."
+        },
+        {
+          "speaker": "MR. STONE",
+          "line": "Take this POKENAV as thanks. If the readings near MT. CHIMNEY ever spike... don't look up. Ha ha. A joke. Of course it's a joke."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-04-rusturf-rocket",
+      "title": "The Honest Thief",
+      "map": "RusturfTunnel",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "ROCKET GRUNT",
+          "line": "Back off, kid! TEAM ROCKET isn't robbing anyone today - we're REPOSSESSING doom. Do you even know what your precious DEVON feeds the mountain?"
+        },
+        {
+          "speaker": "ROCKET GRUNT",
+          "line": "Urgh... fine. We're thieves, not liars. Remember that later, when the sky goes quiet."
+        },
+        {
+          "speaker": "ROCKET GRUNT",
+          "line": "Take the core. Deliver it like a good little courier. But when you finally hear the name KAIROS... remember that I tried to stop you."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-05-slateport-sub",
+      "title": "Theater at the Harbor",
+      "map": "SlateportCity",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "ARCHIE",
+          "line": "CAPT. STERN! TEAM AQUA will assume control of your submarine! Resist and regret it! ...And Maxie, if you're listening: the performance is right on schedule."
+        },
+        {
+          "speaker": "SAILOR",
+          "line": "The HARBOR! They're taking the sub! But... I swear the AQUA thugs waved MAGMA men INTO the cargo hold. Did I imagine that?"
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-06-chimney-maxie",
+      "title": "The Courier Arrives",
+      "map": "MtChimney",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "MAXIE",
+          "line": "So. The courier arrives at last. Yes, child - courier. Who do you think carried the third component up this mountain? Check your bag. KAIROS thanks you for your service."
+        },
+        {
+          "speaker": "MAXIE",
+          "line": "The METEORITE was never for GROUDON - that fairy tale is for the cameras. It feeds the hungry silence beneath Hoenn. A future burned to nothing... unless we starve that future of ever happening."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-07-chimney-aftermath",
+      "title": "No Teams, Only the Timeline",
+      "map": "MtChimney",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "MAXIE",
+          "line": "Defeated... and it changes nothing. The delivery is already complete. You saw to that yourself."
+        },
+        {
+          "speaker": "MAXIE",
+          "line": "TEAM MAGMA, TEAM AQUA - there are no teams. There is only the timeline, and the man rewriting it. WALLACE knows. GOHAN suspects. Ask them... which side YOU have been on."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-08-chimney-archie",
+      "title": "The Showman",
+      "map": "MtChimney",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "ARCHIE",
+          "line": "Go! Stop TEAM MAGMA! ...Say it louder, kid. The audience is watching."
+        },
+        {
+          "speaker": "ARCHIE",
+          "line": "Thank you! You were magnificent. (He winks. Something is very, very wrong.)"
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-09-league-gate",
+      "title": "The Elder's Toll",
+      "map": "EverGrandeCity_PokemonLeague_1F",
+      "act": 5,
+      "dialogue": [
+        {
+          "speaker": "GATEKEEPER",
+          "line": "Badges? Yes, you have them all. But the ELDER asks a harder toll of you. Beyond this door, you decide what tomorrow is allowed to be."
+        },
+        {
+          "speaker": "GATEKEEPER",
+          "line": "The seal is failing. KAIROS is already inside the LEAGUE. Believe in your partner - and choose as if the whole timeline is listening. Because it is."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-10-champion",
+      "title": "The Champion's Question",
+      "map": "EverGrandeCity_ChampionsRoom",
+      "act": 6,
+      "dialogue": [
+        {
+          "speaker": "WALLACE",
+          "line": "Welcome, {PLAYER}. Sootopolis. The crater. The silence between seconds. I watched you carry all of it here. KAIROS reached this room before you did - and so did the elder's last breath. Show me which future your fists believe in."
+        },
+        {
+          "speaker": "WALLACE",
+          "line": "I fall... and the room holds its breath. What happens next was never about me."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-11-epilogue",
+      "title": "Two Worlds, One Record",
+      "map": "EverGrandeCity_ChampionsRoom",
+      "act": 6,
+      "dialogue": [
+        {
+          "speaker": "GOHAN",
+          "line": "{PLAYER}! You're safe - and the readings... the readings finally make sense. Let me see your POKEDEX. Amazing. Creatures of two worlds, recorded side by side, as if they always belonged together."
+        },
+        {
+          "speaker": "GOHAN",
+          "line": "Whatever you chose up here... my father used to say strength is just love with somewhere to be. Congratulations, champion. Both worlds are yours now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
     }
   ],
   "files": []

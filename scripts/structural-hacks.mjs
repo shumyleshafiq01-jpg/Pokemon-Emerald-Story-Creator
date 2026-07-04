@@ -404,6 +404,122 @@ export function applyStructuralHacks(expansionRoot) {
   }
 
   // -------------------------------------------------------------------------
+  // KAIROS ARC: BRANCHING CHOICE + TWO ENDINGS + THE WATCHER
+  // The choice lives in persistent VAR_UNUSED_0x404E (0=unchosen, 1=seal,
+  // 2=erase). Asked at the League gate after the guard's blessing; resolved
+  // in the Champion's room, replacing Wallace's post-battle speech with one
+  // of two endings. Re-entering the League re-asks, so the player can switch
+  // sides before the final battle — deliberate.
+  edit("data/maps/EverGrandeCity_PokemonLeague_1F/scripts.inc", "league gate: Kairos choice", (src) => {
+    const anchor = "\tmsgbox EverGrandeCity_PokemonLeague_1F_Text_GoForth, MSGBOX_DEFAULT\n";
+    const inject =
+      anchor +
+      "\tmsgbox SaiyanRequiem_Text_KairosOffer, MSGBOX_YESNO\n" +
+      "\tcall_if_eq VAR_RESULT, YES, SaiyanRequiem_EventScript_ChooseSeal\n" +
+      "\tcall_if_eq VAR_RESULT, NO, SaiyanRequiem_EventScript_ChooseErase\n";
+    const out = replaceOnce(src, anchor, inject);
+    if (out === null) return null;
+    return (
+      out +
+      "\nSaiyanRequiem_EventScript_ChooseSeal::\n" +
+      "\tsetvar VAR_UNUSED_0x404E, 1\n" +
+      "\tmsgbox SaiyanRequiem_Text_ChoseSeal, MSGBOX_DEFAULT\n" +
+      "\treturn\n" +
+      "\nSaiyanRequiem_EventScript_ChooseErase::\n" +
+      "\tsetvar VAR_UNUSED_0x404E, 2\n" +
+      "\tmsgbox SaiyanRequiem_Text_ChoseErase, MSGBOX_DEFAULT\n" +
+      "\treturn\n" +
+      "\nSaiyanRequiem_Text_KairosOffer:\n" +
+      '\t.string "A voice like torn paper fills the\\nhall.\\pKAIROS: One question, courier.\\nOnly one.\\pWill you stand with the elder\'s\\nseal against me?$"\n' +
+      "\nSaiyanRequiem_Text_ChoseSeal:\n" +
+      '\t.string "The bell in your bag hums warm.\\pThe elder\'s seal accepts you.\\nSomewhere ahead, KAIROS screams.$"\n' +
+      "\nSaiyanRequiem_Text_ChoseErase:\n" +
+      '\t.string "Cold washes down your spine.\\pKAIROS: Then help me end the thing\\nthat ends us. Come, co-author.$"\n'
+    );
+  });
+
+  edit("data/maps/EverGrandeCity_ChampionsRoom/scripts.inc", "champion room: branching endings", (src) => {
+    const anchor = "\tmsgbox EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT\n";
+    const inject =
+      "\tcall_if_eq VAR_UNUSED_0x404E, 1, SaiyanRequiem_EventScript_EndingSeal\n" +
+      "\tcall_if_ne VAR_UNUSED_0x404E, 1, SaiyanRequiem_EventScript_EndingErase\n";
+    const out = replaceOnce(src, anchor, inject);
+    if (out === null) return null;
+    return (
+      out +
+      "\nSaiyanRequiem_EventScript_EndingSeal::\n" +
+      "\tmsgbox SaiyanRequiem_Text_EndingSeal, MSGBOX_DEFAULT\n" +
+      "\treturn\n" +
+      "\nSaiyanRequiem_EventScript_EndingErase::\n" +
+      "\tmsgbox SaiyanRequiem_Text_EndingErase, MSGBOX_DEFAULT\n" +
+      "\treturn\n" +
+      "\nSaiyanRequiem_Text_EndingSeal:\n" +
+      '\t.string "WALLACE: The seal holds.\\pKAIROS is unwritten - and somewhere,\\na future you will never see forgives\\nyou.\\pChampion of two worlds...\\nwelcome home.$"\n' +
+      "\nSaiyanRequiem_Text_EndingErase:\n" +
+      '\t.string "WALLACE: ...So the seal breaks.\\pThe timeline folds itself neat as\\na letter. KAIROS bows to his new\\nco-author.\\pChampion... what did we just do?$"\n'
+    );
+  });
+
+  // The Watcher — one hooded figure, three places, counting your versions.
+  {
+    const WATCHERS = [
+      {
+        map: "RustboroCity",
+        x: 20, y: 13, elevation: 3,
+        text: "WATCHER: Two teams, one leash.\\pCount the hands on the KI-CORE and\\nsubtract the honest ones.\\pZero. The answer is always zero.",
+      },
+      {
+        map: "SlateportCity",
+        x: 27, y: 29, elevation: 3,
+        text: "WATCHER: The sub sails where the\\nseal sleeps.\\pYou have met the thief and the\\nshowman. The believer is next.\\pWhich one are you?",
+      },
+      {
+        map: "EverGrandeCity_PokemonLeague_1F",
+        x: 13, y: 2, elevation: 3,
+        text: "WATCHER: I have watched seventeen\\nversions of this hallway.\\pIn sixteen of them, you choose\\nwrong.\\pNo pressure.",
+      },
+    ];
+    let placed = 0;
+    for (const w of WATCHERS) {
+      const scriptsPath = path.join(expansionRoot, "data", "maps", w.map, "scripts.inc");
+      const mapPath = path.join(expansionRoot, "data", "maps", w.map, "map.json");
+      if (!fs.existsSync(scriptsPath) || !fs.existsSync(mapPath)) {
+        errors.push(`watcher: ${w.map} files missing`);
+        continue;
+      }
+      const scriptLabel = `SaiyanRequiem_EventScript_Watcher${w.map.replace(/[^A-Za-z]/g, "")}`;
+      const textLabel = `SaiyanRequiem_Text_Watcher${w.map.replace(/[^A-Za-z]/g, "")}`;
+      fs.appendFileSync(
+        scriptsPath,
+        `\n${scriptLabel}::\n\tmsgbox ${textLabel}, MSGBOX_NPC\n\tend\n\n${textLabel}:\n\t.string "${w.text}$"\n`,
+      );
+      const mj = JSON.parse(fs.readFileSync(mapPath, "utf8"));
+      mj.object_events.push({
+        graphics_id: "OBJ_EVENT_GFX_HEX_MANIAC",
+        x: w.x,
+        y: w.y,
+        elevation: w.elevation,
+        movement_type: "MOVEMENT_TYPE_FACE_DOWN",
+        movement_range_x: 0,
+        movement_range_y: 0,
+        trainer_type: "TRAINER_TYPE_NONE",
+        trainer_sight_or_berry_tree_id: "0",
+        script: scriptLabel,
+        flag: "0",
+      });
+      fs.writeFileSync(mapPath, JSON.stringify(mj, null, 2) + "\n");
+      placed++;
+    }
+    if (placed === WATCHERS.length) {
+      editCount++;
+      bulkCount += placed;
+      console.log(`ok: the Watcher placed in ${placed} locations`);
+    } else {
+      errors.push(`watcher: only ${placed}/${WATCHERS.length} placed`);
+    }
+  }
+
+  // -------------------------------------------------------------------------
   // GLOBAL NPC FLAVOR PASS — every town/route's background chatter gets a
   // rumor about the merged Pokemon/DBZ world and the thing rewriting the
   // timeline. Appends one sentence to existing dialogue (never replaces),
