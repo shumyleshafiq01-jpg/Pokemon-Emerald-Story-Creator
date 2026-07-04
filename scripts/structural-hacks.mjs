@@ -157,7 +157,145 @@ export function applyStructuralHacks(expansionRoot) {
   });
 
   // -------------------------------------------------------------------------
-  console.log(`Structural hacks: ${editCount} applied, ${errors.length} failed.`);
+  // GLOBAL CONVERSION — the whole region, not just Act 1.
+  // Every wild encounter slot, every trainer's Pokémon, and every outdoor
+  // map's weather+music is converted to the Saiyan Requiem palette.
+  // Each individual change is counted.
+  let bulkCount = 0;
+
+  // Species palette: husks (fighting), wraiths (ghost), androids (steel/elec),
+  // hellhounds (dark/fire). Levels are untouched, so difficulty curve holds.
+  // Slaking line (Norman), Ralts line, Makuhita line, legendaries and HM-water
+  // staples are deliberately left alone.
+  const SPECIES_CONVERT = {
+    ZIGZAGOON: "SHUPPET",
+    LINOONE: "BANETTE",
+    POOCHYENA: "MACHOP",
+    MIGHTYENA: "MACHOKE",
+    WURMPLE: "GASTLY",
+    SILCOON: "SHUPPET",
+    CASCOON: "DUSKULL",
+    BEAUTIFLY: "HAUNTER",
+    DUSTOX: "DUSCLOPS",
+    TAILLOW: "MEDITITE",
+    SWELLOW: "MEDICHAM",
+    WINGULL: "GASTLY",
+    PELIPPER: "HAUNTER",
+    WHISMUR: "LITWICK",
+    LOUDRED: "LAMPENT",
+    EXPLOUD: "CHANDELURE",
+    ARON: "BELDUM",
+    LAIRON: "METANG",
+    NUMEL: "HOUNDOUR",
+    CAMERUPT: "HOUNDOOM",
+    ELECTRIKE: "MAGNEMITE",
+    MANECTRIC: "MAGNETON",
+    ZUBAT: "GASTLY",
+    GOLBAT: "HAUNTER",
+    TENTACOOL: "FRILLISH",
+    TENTACRUEL: "JELLICENT",
+    GEODUDE: "GOLETT",
+    NOSEPASS: "BRONZOR",
+    SHROOMISH: "BALTOY",
+    BRELOOM: "CLAYDOL",
+    SEEDOT: "SHUPPET",
+    NUZLEAF: "SABLEYE",
+    SHIFTRY: "DUSKNOIR",
+  };
+  const properCase = (s) => s[0] + s.slice(1).toLowerCase();
+
+  // 1) Wild encounters, region-wide (species names only ever appear as values here)
+  edit("src/data/wild_encounters.json", "GLOBAL wild encounters -> Requiem palette", (src) => {
+    let out = src;
+    let n = 0;
+    for (const [from, to] of Object.entries(SPECIES_CONVERT)) {
+      const re = new RegExp(`"SPECIES_${from}"`, "g");
+      out = out.replace(re, () => {
+        n++;
+        return `"SPECIES_${to}"`;
+      });
+    }
+    if (n === 0) return null;
+    bulkCount += n;
+    console.log(`   ${n} wild encounter slots converted`);
+    return out;
+  });
+
+  // 2) Every trainer party in the game (Showdown syntax: species as proper-case words)
+  edit("src/data/trainers.party", "GLOBAL trainer parties -> Requiem palette", (src) => {
+    let out = src;
+    let n = 0;
+    for (const [from, to] of Object.entries(SPECIES_CONVERT)) {
+      const nameRe = new RegExp(`\\b${properCase(from)}\\b`, "g");
+      out = out.replace(nameRe, () => {
+        n++;
+        return properCase(to);
+      });
+      const constRe = new RegExp(`\\bSPECIES_${from}\\b`, "g");
+      out = out.replace(constRe, () => {
+        n++;
+        return `SPECIES_${to}`;
+      });
+    }
+    if (n === 0) return null;
+    bulkCount += n;
+    console.log(`   ${n} trainer Pokemon converted`);
+    return out;
+  });
+
+  // 3) Every outdoor map: dread weather + eerie music (indoor maps untouched)
+  {
+    const routeMusic = ["MUS_MT_PYRE_EXTERIOR", "MUS_SEALED_CHAMBER", "MUS_ABNORMAL_WEATHER"];
+    const townMusic = ["MUS_SEALED_CHAMBER", "MUS_CAVE_OF_ORIGIN"];
+    const eerieSet = new Set([...routeMusic, ...townMusic]);
+    const mapsDir = path.join(expansionRoot, "data", "maps");
+    let mapsTouched = 0;
+    let fieldEdits = 0;
+    const dirs = fs.existsSync(mapsDir) ? fs.readdirSync(mapsDir) : [];
+    dirs.forEach((dir, i) => {
+      const mj = path.join(mapsDir, dir, "map.json");
+      if (!fs.existsSync(mj)) return;
+      let src = fs.readFileSync(mj, "utf8");
+      const isRoute = src.includes('"map_type": "MAP_TYPE_ROUTE"');
+      const isTown =
+        src.includes('"map_type": "MAP_TYPE_TOWN"') || src.includes('"map_type": "MAP_TYPE_CITY"');
+      if (!isRoute && !isTown) return;
+      let changed = false;
+      if (src.includes('"weather": "WEATHER_SUNNY"')) {
+        src = src.replace(
+          '"weather": "WEATHER_SUNNY"',
+          `"weather": "${isRoute ? "WEATHER_FOG_HORIZONTAL" : "WEATHER_SHADE"}"`,
+        );
+        fieldEdits++;
+        changed = true;
+      }
+      const musMatch = src.match(/"music": "(MUS_[A-Z0-9_]+)"/);
+      if (musMatch && !eerieSet.has(musMatch[1])) {
+        const pool = isRoute ? routeMusic : townMusic;
+        src = src.replace(musMatch[0], `"music": "${pool[i % pool.length]}"`);
+        fieldEdits++;
+        changed = true;
+      }
+      if (changed) {
+        fs.writeFileSync(mj, src);
+        mapsTouched++;
+      }
+    });
+    if (mapsTouched > 0) {
+      bulkCount += fieldEdits;
+      editCount++;
+      console.log(
+        `ok: GLOBAL atmosphere -> ${mapsTouched} outdoor maps re-themed (${fieldEdits} weather/music fields)`,
+      );
+    } else {
+      errors.push("map atmosphere pass touched nothing");
+    }
+  }
+
+  // -------------------------------------------------------------------------
+  console.log(
+    `Structural hacks: ${editCount} systems changed, ${bulkCount} individual gameplay edits, ${errors.length} failed.`,
+  );
   for (const e of errors) console.error(`  - ${e}`);
   if (errors.length > 0) {
     console.error(
