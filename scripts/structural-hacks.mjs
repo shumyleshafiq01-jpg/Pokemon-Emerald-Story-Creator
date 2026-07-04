@@ -404,6 +404,39 @@ export function applyStructuralHacks(expansionRoot) {
   }
 
   // -------------------------------------------------------------------------
+  // DBZ BATTLE SPRITES — ripped from Team Training (FireRed hack, standard
+  // Gen-3 format) and pre-converted to expansion format in assets/dbz-sprites/.
+  // Overwrites each mapped species' front sprite + palette so the converted
+  // monsters LOOK like DBZ fighters in battle. Back sprite left intact.
+  {
+    const here = path.dirname(fileURLToPath(import.meta.url));
+    const srcRoot = path.join(here, "..", "assets", "dbz-sprites");
+    let sprited = 0;
+    if (fs.existsSync(srcRoot)) {
+      for (const species of fs.readdirSync(srcRoot)) {
+        if (!fs.statSync(path.join(srcRoot, species)).isDirectory()) continue;
+        const gfxSrc = path.join(srcRoot, species, "anim_front.png");
+        const palSrc = path.join(srcRoot, species, "normal.pal");
+        const dstDir = path.join(expansionRoot, "graphics", "pokemon", species);
+        if (fs.existsSync(gfxSrc) && fs.existsSync(palSrc) && fs.existsSync(dstDir)) {
+          fs.copyFileSync(gfxSrc, path.join(dstDir, "anim_front.png"));
+          fs.copyFileSync(palSrc, path.join(dstDir, "normal.pal"));
+          sprited++;
+        } else {
+          errors.push(`dbz sprite: ${species} src/dst missing`);
+        }
+      }
+    }
+    if (sprited > 0) {
+      editCount++;
+      bulkCount += sprited;
+      console.log(`ok: DBZ battle sprites -> ${sprited} species now look like DBZ fighters`);
+    } else {
+      errors.push("dbz sprite pass touched nothing");
+    }
+  }
+
+  // -------------------------------------------------------------------------
   // The Rusturf thief SPEAKS Team Rocket (Kairos arc) — now he LOOKS it too.
   // The expansion ships FRLG Rocket assets natively; no sprite ripping needed.
   edit("src/data/trainers.party", "Rusturf grunt -> real Team Rocket sprite", (src) =>
