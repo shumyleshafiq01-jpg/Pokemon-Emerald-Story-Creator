@@ -72,14 +72,16 @@ export function applyStructuralHacks(expansionRoot) {
       : null;
   });
 
-  // First battle: a lv3 Machop husk savages the professor
-  edit("src/battle_controllers.c", "first battle -> Machop lv3", (src) =>
-    replaceOnce(src, "CreateWildMon(SPECIES_ZIGZAGOON, 2);", "CreateWildMon(SPECIES_MACHOP, 3);"),
+  // First battle: a lv3 Hollowed hound savages the professor.
+  // Poochyena sprite+species is the combination proven to play through the
+  // rescue without hanging (the Machop OW object froze the cutscene in v1).
+  edit("src/battle_controllers.c", "first battle -> Poochyena lv3", (src) =>
+    replaceOnce(src, "CreateWildMon(SPECIES_ZIGZAGOON, 2);", "CreateWildMon(SPECIES_POOCHYENA, 3);"),
   );
 
   // Overworld sprite chasing the professor matches the battle
-  edit("data/maps/Route101/map.json", "chaser sprite -> Machop", (src) =>
-    replaceOnce(src, '"OBJ_EVENT_GFX_ZIGZAGOON_1"', '"OBJ_EVENT_GFX_MACHOP"'),
+  edit("data/maps/Route101/map.json", "chaser sprite -> Poochyena (proven)", (src) =>
+    replaceOnce(src, '"OBJ_EVENT_GFX_ZIGZAGOON_1"', '"OBJ_EVENT_GFX_POOCHYENA"'),
   );
 
   // Route 101 atmosphere: fog + eerie Mt. Pyre music
@@ -289,6 +291,84 @@ export function applyStructuralHacks(expansionRoot) {
       );
     } else {
       errors.push("map atmosphere pass touched nothing");
+    }
+  }
+
+  // -------------------------------------------------------------------------
+  // 4) GLOBAL CAST RENAME — every piece of game text, not just story scenes.
+  // BIRCH -> GOHAN everywhere; the rival is VEGETA (male sprite, girl player)
+  // or BULMA (female sprite, boy player). Replacements happen ONLY inside
+  // double-quoted string literals, so code identifiers (FLAG_..._BIRCH,
+  // TRAINER_MAY_..., LOCALID_ROUTE101_BIRCH) can never be touched.
+  {
+    const CAST = [
+      [/\bBIRCH\b/g, "GOHAN"],
+      [/\bBRENDAN\b/g, "VEGETA"],
+      [/\bMAY\b/g, "BULMA"],
+    ];
+    let renameCount = 0;
+    const renameInQuotes = (line) =>
+      line.replace(/"([^"]*)"/g, (m, inner) => {
+        let out = inner;
+        for (const [re, to] of CAST) {
+          out = out.replace(re, () => {
+            renameCount++;
+            return to;
+          });
+        }
+        return `"${out}"`;
+      });
+
+    const renameFile = (absPath) => {
+      const before = fs.readFileSync(absPath, "utf8");
+      const after = before.split("\n").map(renameInQuotes).join("\n");
+      if (after !== before) fs.writeFileSync(absPath, after);
+    };
+
+    // All script/text .inc files under data/
+    const walk = (dir) => {
+      for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+        const p = path.join(dir, e.name);
+        if (e.isDirectory()) walk(p);
+        else if (e.name.endsWith(".inc")) renameFile(p);
+      }
+    };
+    walk(path.join(expansionRoot, "data"));
+
+    // The C sources that hold the intro speech, match-call and battle strings
+    for (const f of [
+      "src/strings.c",
+      "src/main_menu.c",
+      "src/pokenav_match_call_data.c",
+      "src/field_screen_effect.c",
+      "src/battle_message.c",
+      "src/battle_main.c",
+      "src/field_effect.c",
+    ]) {
+      const p = path.join(expansionRoot, f);
+      if (fs.existsSync(p)) renameFile(p);
+    }
+
+    // Rival trainer names shown in battle (“BULMA would like to battle!”)
+    const partyPath = path.join(expansionRoot, "src", "data", "trainers.party");
+    let party = fs.readFileSync(partyPath, "utf8");
+    party = party
+      .replace(/^Name: MAY$/gm, () => {
+        renameCount++;
+        return "Name: BULMA";
+      })
+      .replace(/^Name: BRENDAN$/gm, () => {
+        renameCount++;
+        return "Name: VEGETA";
+      });
+    fs.writeFileSync(partyPath, party);
+
+    if (renameCount > 0) {
+      bulkCount += renameCount;
+      editCount++;
+      console.log(`ok: GLOBAL cast rename -> ${renameCount} name occurrences (BIRCH>GOHAN, BRENDAN>VEGETA, MAY>BULMA)`);
+    } else {
+      errors.push("cast rename pass touched nothing");
     }
   }
 
