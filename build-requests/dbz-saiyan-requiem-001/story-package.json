@@ -310,6 +310,312 @@
       ],
       "flags": [],
       "rawBody": ""
+    },
+    {
+      "id": "kairos-gym1-roxanne",
+      "title": "The Scholar's Warning",
+      "map": "RustboroCity_Gym",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "ROXANNE",
+          "line": "You came by the tunnel road... My GOLETT were excavated, not caught. Lately the fossils remember wrong - strata out of order, tomorrow buried under yesterday. Show me your discipline, courier of DEVON."
+        },
+        {
+          "speaker": "ROXANNE",
+          "line": "Splendid. The STONE BADGE is yours. And a warning, from one scholar to one student: history is being edited. Check your sources before you trust them."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-gym2-brawly",
+      "title": "The Quiet Tide",
+      "map": "DewfordTown_Gym",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "BRAWLY",
+          "line": "Feel that? The tide's gone quiet. I train in the dark of GRANITE CAVE so the hollow can't take my center. Ki, they called it in the old world. Show me yours!"
+        },
+        {
+          "speaker": "BRAWLY",
+          "line": "Whoa - your aura hits like a wave! The KNUCKLE BADGE is yours. Keep your stance low when the sky goes silent, friend."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-gym3-wattson",
+      "title": "Static Songs",
+      "map": "MauvilleCity_Gym",
+      "act": 2,
+      "dialogue": [
+        {
+          "speaker": "WATTSON",
+          "line": "Wahahaha! My magnetic friends have been singing static all week - readings spike at dawn, flatline at dusk. Time hiccups, they tell me! Let old WATTSON test whether YOU are real!"
+        },
+        {
+          "speaker": "WATTSON",
+          "line": "Wahahaha! Beaten! You're real all right - realer than most of this town lately. The DYNAMO BADGE! May your current never read zero."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-gym4-flannery",
+      "title": "Burnt Tomorrow",
+      "map": "LavaridgeTown_Gym_1F",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "FLANNERY",
+          "line": "The spring's gone cold. Grandfather's mountain smells like burnt tomorrow - ash that falls UP. I'm new at this, but my HOUNDOUR know an enemy when the wind changes. Let's see if it's you!"
+        },
+        {
+          "speaker": "FLANNERY",
+          "line": "You're... not the enemy, are you. Take the HEAT BADGE. And if you climb MT. CHIMNEY - don't trust anyone in a uniform. Either uniform."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-gym5-norman",
+      "title": "Father and Child",
+      "map": "PetalburgCity_Gym",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "NORMAN",
+          "line": "...You've grown. When we moved here, I promised your mother Hoenn would be quieter than Olivine. I was wrong. Whatever DEVON has you carrying - after this battle, we talk as father and child. First: show me everything I taught you."
+        },
+        {
+          "speaker": "NORMAN",
+          "line": "...Magnificent. The BALANCE BADGE - earned, not given. Listen to me. If a man named KAIROS ever offers you a kinder future... remember your mother and I chose THIS one. With you in it."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-gym6-winona",
+      "title": "The Wrong Horizon",
+      "map": "FortreeCity_Gym",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "WINONA",
+          "line": "My birds refuse the eastern sky. They circle MT. PYRE and scream at nothing. A flock has one mind - and that mind says the horizon is wrong. Prove you fly truer, challenger."
+        },
+        {
+          "speaker": "WINONA",
+          "line": "Such grace... The FEATHER BADGE is yours. Take the eastern sky for me - and whatever my birds saw out there, land on the side of the living."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-gym7-twins",
+      "title": "Dreamed Twice",
+      "map": "MossdeepCity_Gym",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "TATE",
+          "line": "We dreamed you... LIZA: ...twice. TATE: In one dream you carry a bell... LIZA: ...in the other, a blade. BOTH: Which {PLAYER} are you today? Show us!"
+        },
+        {
+          "speaker": "TATE",
+          "line": "Even our combination... LIZA: ...couldn't split you in two. BOTH: The MIND BADGE! When the question comes at the LEAGUE... the dream where you carried the bell ended kinder."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-gym8-juan",
+      "title": "The Seal Beneath",
+      "map": "SootopolisCity_Gym_1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "JUAN",
+          "line": "Elegance, at the end of the world? Especially then. Beneath this city sleeps a seal older than either universe - and my water whispers of cracks. Dance with me, challenger, while the floor still holds."
+        },
+        {
+          "speaker": "JUAN",
+          "line": "Magnifique... The RAIN BADGE, and a truth: SOOTOPOLIS does not fear GROUDON or KYOGRE. It fears the silence wearing their names. Hurry to the LEAGUE."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-e4-sidney",
+      "title": "The Willing Hollow",
+      "map": "EverGrandeCity_SidneysRoom",
+      "act": 6,
+      "dialogue": [
+        {
+          "speaker": "SIDNEY",
+          "line": "Heh. You smell it too, right? The world going hollow at the edges. And honestly? I LIKE it. No rules in a timeline nobody's writing. Come on - let's tear it up together!"
+        },
+        {
+          "speaker": "SIDNEY",
+          "line": "Ahahaha! Torn up by the best! You're the real thing, kid. Go on - the next room dreams darker than I do."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-e4-phoebe",
+      "title": "Refugee Ghosts",
+      "map": "EverGrandeCity_PhoebesRoom",
+      "act": 6,
+      "dialogue": [
+        {
+          "speaker": "PHOEBE",
+          "line": "My grandma at MT. PYRE says the ghosts are crowding lately. Refugees, she calls them - souls from a future that got erased. My friends and I keep them company. Will you?"
+        },
+        {
+          "speaker": "PHOEBE",
+          "line": "The ghosts like you... they're all pointing at the door. Grandma said to tell the bell-carrier: 'The seal knows your name.' I hope that means something nice!"
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-e4-glacia",
+      "title": "Amber",
+      "map": "EverGrandeCity_GlaciasRoom",
+      "act": 6,
+      "dialogue": [
+        {
+          "speaker": "GLACIA",
+          "line": "I came from a distant land seeking cold that preserves. If time must end, let it end FROZEN - every moment kept perfect, like an insect in amber. Would that be so cruel, child?"
+        },
+        {
+          "speaker": "GLACIA",
+          "line": "...Warmth wins. It always wins, and I always forget. Go - melt what he froze. And take my respect with you. It keeps."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-e4-drake",
+      "title": "A Dragon's Oath",
+      "map": "EverGrandeCity_DrakesRoom",
+      "act": 6,
+      "dialogue": [
+        {
+          "speaker": "DRAKE",
+          "line": "Dragons remember what maps forget. Mine dream of a green one coiled around a wish - SHENRON, the old world called it. A dragon's oath outlives its timeline, sailor's honor. Show me YOUR oath!"
+        },
+        {
+          "speaker": "DRAKE",
+          "line": "By every sea I've sailed... your oath holds. The CHAMPION waits - and so does the question. Answer it like a dragon: with your whole life at once."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-rival110-m",
+      "title": "Scouter Readings",
+      "map": "Route110",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "BULMA",
+          "line": "There you are! My scouter's tracked you since SLATEPORT - your readings keep climbing, and it worries me in a way I can't graph. Battle me. Data doesn't lie!"
+        },
+        {
+          "speaker": "BULMA",
+          "line": "Off the charts... {PLAYER}, listen. The numbers put you at the center of whatever's coming. Please - be at the center of the GOOD part."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-rival110-f",
+      "title": "Two Tenses",
+      "map": "Route110",
+      "act": 3,
+      "dialogue": [
+        {
+          "speaker": "VEGETA",
+          "line": "Courier. Your power grows - annoyingly. KAIROS's people whisper your name in two tenses. Draw your partner. I'll measure what the timeline wants with you."
+        },
+        {
+          "speaker": "VEGETA",
+          "line": "Tch. Stronger than the measurement. Good. Whatever they made you carry... make them regret the delivery."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-rival119-m",
+      "title": "Friendship Math",
+      "map": "Route119",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "BULMA",
+          "line": "{PLAYER}! Don't move - the radar says something followed you in through the rain... gone now. Battle me. If you've gotten stronger, I'll worry less. That's how friendship math works."
+        },
+        {
+          "speaker": "BULMA",
+          "line": "Stronger. Good. ...I decrypted the letter you delivered for DEVON. {PLAYER}... it was a list of names. Yours is third."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-rival119-f",
+      "title": "The Bruised Timeline",
+      "map": "Route119",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "VEGETA",
+          "line": "Still climbing, courier? The rain here falls a half-second late - the timeline is bruising. Fight me. I think better with my fists."
+        },
+        {
+          "speaker": "VEGETA",
+          "line": "Hmph. The bruise deepens and you strengthen. Fine. When KAIROS asks his question - and he will - answer as a warrior. Not as anyone's courier."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "kairos-wally",
+      "title": "Losing Full",
+      "map": "VictoryRoad_1F",
+      "act": 5,
+      "dialogue": [
+        {
+          "speaker": "WALLY",
+          "line": "{PLAYER}! I made it - through the fog, through the whispers. When the hollow came for my RALTS, we drove it off TOGETHER. I'm not going to lose anymore! Not to sickness, not to silence - not even to you!"
+        },
+        {
+          "speaker": "WALLY",
+          "line": "I lost... but nothing about it is hollow. That's the secret, isn't it? Losing FULL. Go, {PLAYER}. The elder's bell... I can hear it ringing for you."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
     }
   ],
   "files": []

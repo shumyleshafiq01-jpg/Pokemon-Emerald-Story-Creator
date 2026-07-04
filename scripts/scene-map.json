@@ -111,6 +111,74 @@
         "EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex",
         "EverGrandeCity_ChampionsRoom_Text_BirchCongratulations"
       ]
+    },
+    "kairos-gym1-roxanne": {
+      "file": "data/maps/RustboroCity_Gym/scripts.inc",
+      "anchors": ["RustboroCity_Gym_Text_RoxanneIntro", "RustboroCity_Gym_Text_RoxanneDefeat"]
+    },
+    "kairos-gym2-brawly": {
+      "file": "data/maps/DewfordTown_Gym/scripts.inc",
+      "anchors": ["DewfordTown_Gym_Text_BrawlyIntro", "DewfordTown_Gym_Text_BrawlyDefeat"]
+    },
+    "kairos-gym3-wattson": {
+      "file": "data/maps/MauvilleCity_Gym/scripts.inc",
+      "anchors": ["MauvilleCity_Gym_Text_WattsonIntro", "MauvilleCity_Gym_Text_WattsonDefeat"]
+    },
+    "kairos-gym4-flannery": {
+      "file": "data/maps/LavaridgeTown_Gym_1F/scripts.inc",
+      "anchors": ["LavaridgeTown_Gym_1F_Text_FlanneryIntro", "LavaridgeTown_Gym_1F_Text_FlanneryDefeat"]
+    },
+    "kairos-gym5-norman": {
+      "file": "data/maps/PetalburgCity_Gym/scripts.inc",
+      "anchors": ["PetalburgCity_Gym_Text_NormanIntro", "PetalburgCity_Gym_Text_NormanDefeat"]
+    },
+    "kairos-gym6-winona": {
+      "file": "data/maps/FortreeCity_Gym/scripts.inc",
+      "anchors": ["FortreeCity_Gym_Text_WinonaIntro", "FortreeCity_Gym_Text_WinonaDefeat"]
+    },
+    "kairos-gym7-twins": {
+      "file": "data/maps/MossdeepCity_Gym/scripts.inc",
+      "anchors": ["MossdeepCity_Gym_Text_TateAndLizaIntro", "MossdeepCity_Gym_Text_TateAndLizaDefeat"]
+    },
+    "kairos-gym8-juan": {
+      "file": "data/maps/SootopolisCity_Gym_1F/scripts.inc",
+      "anchors": ["SootopolisCity_Gym_1F_Text_JuanIntro", "SootopolisCity_Gym_1F_Text_JuanDefeat"]
+    },
+    "kairos-e4-sidney": {
+      "file": "data/maps/EverGrandeCity_SidneysRoom/scripts.inc",
+      "anchors": ["EverGrandeCity_SidneysRoom_Text_IntroSpeech", "EverGrandeCity_SidneysRoom_Text_Defeat"]
+    },
+    "kairos-e4-phoebe": {
+      "file": "data/maps/EverGrandeCity_PhoebesRoom/scripts.inc",
+      "anchors": ["EverGrandeCity_PhoebesRoom_Text_IntroSpeech", "EverGrandeCity_PhoebesRoom_Text_Defeat"]
+    },
+    "kairos-e4-glacia": {
+      "file": "data/maps/EverGrandeCity_GlaciasRoom/scripts.inc",
+      "anchors": ["EverGrandeCity_GlaciasRoom_Text_IntroSpeech", "EverGrandeCity_GlaciasRoom_Text_Defeat"]
+    },
+    "kairos-e4-drake": {
+      "file": "data/maps/EverGrandeCity_DrakesRoom/scripts.inc",
+      "anchors": ["EverGrandeCity_DrakesRoom_Text_IntroSpeech", "EverGrandeCity_DrakesRoom_Text_Defeat"]
+    },
+    "kairos-rival110-m": {
+      "file": "data/maps/Route110/scripts.inc",
+      "anchors": ["Route110_Text_MayLetsBattle", "Route110_Text_MayDefeated"]
+    },
+    "kairos-rival110-f": {
+      "file": "data/maps/Route110/scripts.inc",
+      "anchors": ["Route110_Text_BrendanLetsBattle", "Route110_Text_BrendanDefeated"]
+    },
+    "kairos-rival119-m": {
+      "file": "data/maps/Route119/scripts.inc",
+      "anchors": ["Route119_Text_MayIntro", "Route119_Text_MayDefeat"]
+    },
+    "kairos-rival119-f": {
+      "file": "data/maps/Route119/scripts.inc",
+      "anchors": ["Route119_Text_BrendanIntro", "Route119_Text_BrendanDefeat"]
+    },
+    "kairos-wally": {
+      "file": "data/maps/VictoryRoad_1F/scripts.inc",
+      "anchors": ["VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore", "VictoryRoad_1F_Text_WallyEntranceDefeat"]
     }
   }
 }
