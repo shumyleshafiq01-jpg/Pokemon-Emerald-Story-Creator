@@ -295,6 +295,21 @@ export function applyStructuralHacks(expansionRoot) {
   }
 
   // -------------------------------------------------------------------------
+  // EXP gain x2.5 — applied to the base calculatedExp, before the trainer-
+  // battle 1.5x bonus and exp-share split, so every source of EXP scales
+  // together instead of compounding unevenly.
+  edit("src/battle_script_commands.c", "EXP gain -> x2.5", (src) => {
+    const anchor =
+      "            if (B_SCALED_EXP >= GEN_5 && B_SCALED_EXP != GEN_6)\n" +
+      "                calculatedExp /= 5;\n" +
+      "            else\n" +
+      "                calculatedExp /= 7;\n";
+    if (!src.includes(anchor)) return null;
+    const inject = anchor + "            calculatedExp = (calculatedExp * 5) / 2; // Saiyan Requiem: 2.5x EXP gain\n";
+    return replaceOnce(src, anchor, inject);
+  });
+
+  // -------------------------------------------------------------------------
   // Buu's Fury dialog-box skin: drop the composed green BF frame over the
   // selectable text-window "Type 1". Ships the graphic in-repo so CI has it.
   {
@@ -385,6 +400,77 @@ export function applyStructuralHacks(expansionRoot) {
       console.log(`ok: GLOBAL cast rename -> ${renameCount} name occurrences (BIRCH>GOHAN, BRENDAN>VEGETA, MAY>BULMA)`);
     } else {
       errors.push("cast rename pass touched nothing");
+    }
+  }
+
+  // -------------------------------------------------------------------------
+  // GLOBAL NPC FLAVOR PASS — every town/route's background chatter gets a
+  // rumor about the merged Pokemon/DBZ world and the thing rewriting the
+  // timeline. Appends one sentence to existing dialogue (never replaces),
+  // so nothing that scripts branch on can break.
+  {
+    const here = path.dirname(fileURLToPath(import.meta.url));
+    const sceneMapPath = path.join(here, "scene-map.json");
+    const excludeLabels = new Set();
+    if (fs.existsSync(sceneMapPath)) {
+      const sm = JSON.parse(fs.readFileSync(sceneMapPath, "utf8")).scenes || {};
+      for (const entry of Object.values(sm)) for (const a of entry.anchors || []) excludeLabels.add(a);
+    }
+
+    const FLAVOR = [
+      "\\pOld folks say the sky cracked open the day the Saiyans fell out of it - now our Pokemon dream in two worlds at once.",
+      "\\pThere's a rift out past the badlands. Pokemon go quiet near it, like they remember something that hasn't happened yet.",
+      "\\pA hooded stranger asked me about a Dragon Ball last week. I didn't like his eyes. Didn't like that my Pokemon didn't either.",
+      "\\pMy grandmother says time used to run straight before the crater opened. Now it loops, just a little, right around Mt. Pyre.",
+      "\\pSomeone's rewriting the timeline, mark my words. My scouter reads zero one second, infinite the next.",
+      "\\pKids say a Namekian elder lives past the routes, keeping some old seal shut. I believe them more every year.",
+    ];
+    const SKIP_LABEL = /_(Sign|PC|Mart|Shop|Move|TM|HM|Egg|Nickname|Naming|Save|Options?|Register|Trade|Contest|Item|Tutor|Description|Wonder|Union|Cable|Berry|Whisper|RegisterMatchCall)_?/i;
+    const SKIP_BODY = /(Saiyan|Namekian|scouter|Dragon Ball|rift out|timeline|Requiem|%|\{STR_VAR_[23]\})/i;
+    const blockRe = /^([A-Za-z0-9_]+):\n((?:\t\.string "[^\n]*"\n)+)/gm;
+
+    const mapsDir = path.join(expansionRoot, "data", "maps");
+    let flavorCount = 0;
+    let mapsFlavored = 0;
+    for (const dir of fs.existsSync(mapsDir) ? fs.readdirSync(mapsDir) : []) {
+      const sp = path.join(mapsDir, dir, "scripts.inc");
+      if (!fs.existsSync(sp)) continue;
+      const src = fs.readFileSync(sp, "utf8");
+      let fileCount = 0;
+      let hash = 0;
+      for (const ch of dir) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
+
+      const out = src.replace(blockRe, (full, label, body) => {
+        if (fileCount >= 2) return full;
+        if (excludeLabels.has(label) || SKIP_LABEL.test(label)) return full;
+        const plainLen = body.replace(/\\[np]/g, "").replace(/["\t\n]/g, "").length;
+        if (plainLen < 40 || plainLen > 260) return full;
+        if (SKIP_BODY.test(body)) return full;
+
+        const lines = body.split("\n").filter(Boolean);
+        const last = lines[lines.length - 1];
+        const m = last.match(/^(\t\.string ")(.*)\$"$/);
+        if (!m) return full;
+
+        const flavor = FLAVOR[(hash + fileCount) % FLAVOR.length];
+        lines[lines.length - 1] = `${m[1]}${m[2]}${flavor}$"`;
+        fileCount++;
+        flavorCount++;
+        return `${label}:\n${lines.join("\n")}\n`;
+      });
+
+      if (out !== src) {
+        fs.writeFileSync(sp, out);
+        mapsFlavored++;
+      }
+    }
+
+    if (flavorCount > 0) {
+      bulkCount += flavorCount;
+      editCount++;
+      console.log(`ok: GLOBAL NPC flavor -> ${flavorCount} dialogue lines across ${mapsFlavored} maps (merged-timeline rumors)`);
+    } else {
+      errors.push("NPC flavor pass touched nothing");
     }
   }
 
