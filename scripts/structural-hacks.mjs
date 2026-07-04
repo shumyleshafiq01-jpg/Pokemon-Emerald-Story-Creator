@@ -295,6 +295,22 @@ export function applyStructuralHacks(expansionRoot) {
   }
 
   // -------------------------------------------------------------------------
+  // Buu's Fury dialog-box skin: drop the composed green BF frame over the
+  // selectable text-window "Type 1". Ships the graphic in-repo so CI has it.
+  {
+    const here = path.dirname(fileURLToPath(import.meta.url));
+    const bfFrame = path.join(here, "..", "assets", "bf_textbox_frame.png");
+    const dstFrame = path.join(expansionRoot, "graphics", "text_window", "1.png");
+    if (fs.existsSync(bfFrame) && fs.existsSync(dstFrame)) {
+      fs.copyFileSync(bfFrame, dstFrame);
+      editCount++;
+      console.log("ok: text-window Type 1 -> Buu's Fury green dialog frame");
+    } else {
+      errors.push("BF dialog frame asset missing");
+    }
+  }
+
+  // -------------------------------------------------------------------------
   // 4) GLOBAL CAST RENAME — every piece of game text, not just story scenes.
   // BIRCH -> GOHAN everywhere; the rival is VEGETA (male sprite, girl player)
   // or BULMA (female sprite, boy player). Replacements happen ONLY inside
