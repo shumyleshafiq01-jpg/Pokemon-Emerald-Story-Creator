@@ -131,7 +131,7 @@ export function applyStructuralHacks(expansionRoot) {
     return (
       out +
       "\nLittlerootTown_Text_PowerLevelWhisper:\n" +
-      '\t.string "Out over the water, a power erupts -\\nvast, screaming, alive.\\pThen it drops to zero. Something\\nout there just went hollow.$"\n'
+      '\t.string "Out over the water, a power\\nerupts - vast, screaming, alive.\\pThen it drops to zero. Something\\nout there just went hollow.$"\n'
     );
   });
 
@@ -448,7 +448,7 @@ export function applyStructuralHacks(expansionRoot) {
       "\nSaiyanRequiem_Text_ChoseSeal:\n" +
       '\t.string "The bell in your bag hums warm.\\pThe elder\'s seal accepts you.\\nSomewhere ahead, KAIROS screams.$"\n' +
       "\nSaiyanRequiem_Text_ChoseErase:\n" +
-      '\t.string "Cold washes down your spine.\\pKAIROS: Then help me end the thing\\nthat ends us. Come, co-author.$"\n'
+      '\t.string "Cold washes down your spine.\\pKAIROS: Then help me end the\\nthing that ends us, co-author.$"\n'
     );
   });
 
@@ -468,9 +468,9 @@ export function applyStructuralHacks(expansionRoot) {
       "\tmsgbox SaiyanRequiem_Text_EndingErase, MSGBOX_DEFAULT\n" +
       "\treturn\n" +
       "\nSaiyanRequiem_Text_EndingSeal:\n" +
-      '\t.string "WALLACE: The seal holds.\\pKAIROS is unwritten - and somewhere,\\na future you will never see forgives\\nyou.\\pChampion of two worlds...\\nwelcome home.$"\n' +
+      '\t.string "WALLACE: The seal holds.\\pKAIROS is unwritten - and\\nsomewhere, a future you will\\pnever see forgives you.\\pChampion of two worlds...\\nwelcome home.$"\n' +
       "\nSaiyanRequiem_Text_EndingErase:\n" +
-      '\t.string "WALLACE: ...So the seal breaks.\\pThe timeline folds itself neat as\\na letter. KAIROS bows to his new\\nco-author.\\pChampion... what did we just do?$"\n'
+      '\t.string "WALLACE: ...So the seal breaks.\\pThe timeline folds itself neat\\nas a letter. KAIROS bows to\\phis new co-author.\\pChampion... what did we just do?$"\n'
     );
   });
 
@@ -480,7 +480,7 @@ export function applyStructuralHacks(expansionRoot) {
       {
         map: "RustboroCity",
         x: 20, y: 13, elevation: 3,
-        text: "WATCHER: Two teams, one leash.\\pCount the hands on the KI-CORE and\\nsubtract the honest ones.\\pZero. The answer is always zero.",
+        text: "WATCHER: Two teams, one leash.\\pCount the hands on the KI-CORE\\nand subtract the honest ones.\\pZero. The answer is always zero.",
       },
       {
         map: "SlateportCity",
@@ -547,14 +547,34 @@ export function applyStructuralHacks(expansionRoot) {
       for (const entry of Object.values(sm)) for (const a of entry.anchors || []) excludeLabels.add(a);
     }
 
+    // GBA textboxes do NOT auto-wrap: every visual line needs an explicit \n
+    // and every 2-line page needs \p (click to continue), or the renderer
+    // draws new glyphs over old ones and produces garbage.
+    const wrapGba = (text, width = 32) => {
+      const words = text.split(" ");
+      const lines = [];
+      let line = "";
+      for (const w of words) {
+        if (!line) line = w;
+        else if (line.length + 1 + w.length <= width) line += " " + w;
+        else {
+          lines.push(line);
+          line = w;
+        }
+      }
+      if (line) lines.push(line);
+      const pages = [];
+      for (let i = 0; i < lines.length; i += 2) pages.push(lines.slice(i, i + 2).join("\\n"));
+      return pages.join("\\p");
+    };
     const FLAVOR = [
-      "\\pOld folks say the sky cracked open the day the Saiyans fell out of it - now our Pokemon dream in two worlds at once.",
-      "\\pThere's a rift out past the badlands. Pokemon go quiet near it, like they remember something that hasn't happened yet.",
-      "\\pA hooded stranger asked me about a Dragon Ball last week. I didn't like his eyes. Didn't like that my Pokemon didn't either.",
-      "\\pMy grandmother says time used to run straight before the crater opened. Now it loops, just a little, right around Mt. Pyre.",
-      "\\pSomeone's rewriting the timeline, mark my words. My scouter reads zero one second, infinite the next.",
-      "\\pKids say a Namekian elder lives past the routes, keeping some old seal shut. I believe them more every year.",
-    ];
+      "Old folks say the sky cracked open the day the Saiyans fell out of it - now our Pokemon dream in two worlds at once.",
+      "There's a rift out past the badlands. Pokemon go quiet near it, like they remember something that hasn't happened yet.",
+      "A hooded stranger asked me about a Dragon Ball last week. I didn't like his eyes. Didn't like that my Pokemon didn't either.",
+      "My grandmother says time used to run straight before the crater opened. Now it loops, just a little, right around Mt. Pyre.",
+      "Someone's rewriting the timeline, mark my words. My scouter reads zero one second, infinite the next.",
+      "Kids say a Namekian elder lives past the routes, keeping some old seal shut. I believe them more every year.",
+    ].map((s) => "\\p" + wrapGba(s));
     const SKIP_LABEL = /_(Sign|PC|Mart|Shop|Move|TM|HM|Egg|Nickname|Naming|Save|Options?|Register|Trade|Contest|Item|Tutor|Description|Wonder|Union|Cable|Berry|Whisper|RegisterMatchCall)_?/i;
     const SKIP_BODY = /(Saiyan|Namekian|scouter|Dragon Ball|rift out|timeline|Requiem|%|\{STR_VAR_[23]\})/i;
     const blockRe = /^([A-Za-z0-9_]+):\n((?:\t\.string "[^\n]*"\n)+)/gm;
