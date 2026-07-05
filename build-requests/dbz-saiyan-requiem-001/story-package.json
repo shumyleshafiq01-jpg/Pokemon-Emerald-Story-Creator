@@ -616,6 +616,1014 @@
       ],
       "flags": [],
       "rawBody": ""
+    },
+    {
+      "id": "req-SlateportCity_OceanicMuseum_2F-SlateportCity_OceanicMuse",
+      "title": "req-SlateportCity_OceanicMuseum_2F-SlateportCity_OceanicMuse",
+      "map": "SlateportCity_OceanicMuseum_2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The ki-core powers the sub, powers the pumps, powers HIM. You didn't see us."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt1Intro",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt1Intro",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "We're not grave-robbing. We're grave-FEEDING. Big difference, smaller conscience."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt1Defeat",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt1Defeat",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The ghosts followed us from a future that never got to happen. Rude of them."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt1PostBattle",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt1PostBattle",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Orb, shard, seal - it all goes down the same hungry throat."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt2Intro",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt2Intro",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The bell shard sings up here. It remembers a world that KAIROS ate."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt2Defeat",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt2Defeat",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "We're not grave-robbing. We're grave-FEEDING. Big difference, smaller conscience."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt2PostBattle",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt2PostBattle",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The ghosts followed us from a future that never got to happen. Rude of them."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt3Intro",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt3Intro",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Orb, shard, seal - it all goes down the same hungry throat."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt3Defeat",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt3Defeat",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The bell shard sings up here. It remembers a world that KAIROS ate."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt3PostBattle",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt3PostBattle",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "We're not grave-robbing. We're grave-FEEDING. Big difference, smaller conscience."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt4Intro",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt4Intro",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The ghosts followed us from a future that never got to happen. Rude of them."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt4Defeat",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt4Defeat",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Orb, shard, seal - it all goes down the same hungry throat."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt4PostBattle",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt4PostBattle",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The bell shard sings up here. It remembers a world that KAIROS ate."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "We're not grave-robbing. We're grave-FEEDING. Big difference, smaller conscience."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_Summit-MtPyre_Summit_Text_MaxieSilence",
+      "title": "req-MtPyre_Summit-MtPyre_Summit_Text_MaxieSilence",
+      "map": "MtPyre_Summit",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The ghosts followed us from a future that never got to happen. Rude of them."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_2F-MtPyre_2F_Text_MarkIntro",
+      "title": "req-MtPyre_2F-MtPyre_2F_Text_MarkIntro",
+      "map": "MtPyre_2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_2F-MtPyre_2F_Text_MarkDefeat",
+      "title": "req-MtPyre_2F-MtPyre_2F_Text_MarkDefeat",
+      "map": "MtPyre_2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_2F-MtPyre_2F_Text_LukeIntro",
+      "title": "req-MtPyre_2F-MtPyre_2F_Text_LukeIntro",
+      "map": "MtPyre_2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_2F-MtPyre_2F_Text_LukeDefeat",
+      "title": "req-MtPyre_2F-MtPyre_2F_Text_LukeDefeat",
+      "map": "MtPyre_2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_2F-MtPyre_2F_Text_DezIntro",
+      "title": "req-MtPyre_2F-MtPyre_2F_Text_DezIntro",
+      "map": "MtPyre_2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_2F-MtPyre_2F_Text_DezDefeat",
+      "title": "req-MtPyre_2F-MtPyre_2F_Text_DezDefeat",
+      "map": "MtPyre_2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_2F-MtPyre_2F_Text_LeahIntro",
+      "title": "req-MtPyre_2F-MtPyre_2F_Text_LeahIntro",
+      "map": "MtPyre_2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_2F-MtPyre_2F_Text_LeahDefeat",
+      "title": "req-MtPyre_2F-MtPyre_2F_Text_LeahDefeat",
+      "map": "MtPyre_2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_2F-MtPyre_2F_Text_ZanderIntro",
+      "title": "req-MtPyre_2F-MtPyre_2F_Text_ZanderIntro",
+      "map": "MtPyre_2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_2F-MtPyre_2F_Text_ZanderDefeat",
+      "title": "req-MtPyre_2F-MtPyre_2F_Text_ZanderDefeat",
+      "map": "MtPyre_2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_3F-MtPyre_3F_Text_WilliamIntro",
+      "title": "req-MtPyre_3F-MtPyre_3F_Text_WilliamIntro",
+      "map": "MtPyre_3F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_3F-MtPyre_3F_Text_WilliamDefeat",
+      "title": "req-MtPyre_3F-MtPyre_3F_Text_WilliamDefeat",
+      "map": "MtPyre_3F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_3F-MtPyre_3F_Text_KaylaIntro",
+      "title": "req-MtPyre_3F-MtPyre_3F_Text_KaylaIntro",
+      "map": "MtPyre_3F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_3F-MtPyre_3F_Text_KaylaDefeat",
+      "title": "req-MtPyre_3F-MtPyre_3F_Text_KaylaDefeat",
+      "map": "MtPyre_3F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_3F-MtPyre_3F_Text_GabrielleIntro",
+      "title": "req-MtPyre_3F-MtPyre_3F_Text_GabrielleIntro",
+      "map": "MtPyre_3F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_3F-MtPyre_3F_Text_GabrielleDefeat",
+      "title": "req-MtPyre_3F-MtPyre_3F_Text_GabrielleDefeat",
+      "map": "MtPyre_3F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_3F-MtPyre_3F_Text_GabrielleRematchIntro",
+      "title": "req-MtPyre_3F-MtPyre_3F_Text_GabrielleRematchIntro",
+      "map": "MtPyre_3F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_3F-MtPyre_3F_Text_GabrielleRematchDefeat",
+      "title": "req-MtPyre_3F-MtPyre_3F_Text_GabrielleRematchDefeat",
+      "map": "MtPyre_3F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_4F-MtPyre_5F_Text_AtsushiIntro",
+      "title": "req-MtPyre_4F-MtPyre_5F_Text_AtsushiIntro",
+      "map": "MtPyre_4F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_4F-MtPyre_5F_Text_AtsushiDefeat",
+      "title": "req-MtPyre_4F-MtPyre_5F_Text_AtsushiDefeat",
+      "map": "MtPyre_4F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_5F-MtPyre_4F_Text_TashaIntro",
+      "title": "req-MtPyre_5F-MtPyre_4F_Text_TashaIntro",
+      "map": "MtPyre_5F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_5F-MtPyre_4F_Text_TashaDefeat",
+      "title": "req-MtPyre_5F-MtPyre_4F_Text_TashaDefeat",
+      "map": "MtPyre_5F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_6F-MtPyre_6F_Text_ValerieIntro",
+      "title": "req-MtPyre_6F-MtPyre_6F_Text_ValerieIntro",
+      "map": "MtPyre_6F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_6F-MtPyre_6F_Text_ValerieDefeat",
+      "title": "req-MtPyre_6F-MtPyre_6F_Text_ValerieDefeat",
+      "map": "MtPyre_6F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_6F-MtPyre_6F_Text_ValerieRematchIntro",
+      "title": "req-MtPyre_6F-MtPyre_6F_Text_ValerieRematchIntro",
+      "map": "MtPyre_6F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_6F-MtPyre_6F_Text_ValerieRematchDefeat",
+      "title": "req-MtPyre_6F-MtPyre_6F_Text_ValerieRematchDefeat",
+      "map": "MtPyre_6F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_6F-MtPyre_6F_Text_CedricIntro",
+      "title": "req-MtPyre_6F-MtPyre_6F_Text_CedricIntro",
+      "map": "MtPyre_6F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "Turn back. The summit belongs to the counted dead now."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MtPyre_6F-MtPyre_6F_Text_CedricDefeat",
+      "title": "req-MtPyre_6F-MtPyre_6F_Text_CedricDefeat",
+      "map": "MtPyre_6F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "GRUNT",
+          "line": "The shard's yours. Its silence isn't."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_1F-AquaHideout_1F_Text_Grunt1Intro",
+      "title": "req-AquaHideout_1F-AquaHideout_1F_Text_Grunt1Intro",
+      "map": "AquaHideout_1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "We took the sub for the boss. Which boss? ...Good question. Wish I knew."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_1F-AquaHideout_1F_Text_Grunt1Defeat",
+      "title": "req-AquaHideout_1F-AquaHideout_1F_Text_Grunt1Defeat",
+      "map": "AquaHideout_1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Aqua and Magma drink together now. Turns out the enemy was never each other."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_1F-AquaHideout_1F_Text_Grunt1PostBattle",
+      "title": "req-AquaHideout_1F-AquaHideout_1F_Text_Grunt1PostBattle",
+      "map": "AquaHideout_1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Master ARCHIE says flood the world. KAIROS says empty it. Same wet grave."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt2Intro",
+      "title": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt2Intro",
+      "map": "AquaHideout_B1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "We took the sub for the boss. Which boss? ...Good question. Wish I knew."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt2Defeat",
+      "title": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt2Defeat",
+      "map": "AquaHideout_B1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Aqua and Magma drink together now. Turns out the enemy was never each other."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt2PostBattle",
+      "title": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt2PostBattle",
+      "map": "AquaHideout_B1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Master ARCHIE says flood the world. KAIROS says empty it. Same wet grave."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt3Intro",
+      "title": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt3Intro",
+      "map": "AquaHideout_B1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "We took the sub for the boss. Which boss? ...Good question. Wish I knew."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt3Defeat",
+      "title": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt3Defeat",
+      "map": "AquaHideout_B1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Aqua and Magma drink together now. Turns out the enemy was never each other."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt3PostBattle",
+      "title": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt3PostBattle",
+      "map": "AquaHideout_B1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Master ARCHIE says flood the world. KAIROS says empty it. Same wet grave."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt5Intro",
+      "title": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt5Intro",
+      "map": "AquaHideout_B1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "We took the sub for the boss. Which boss? ...Good question. Wish I knew."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt5Defeat",
+      "title": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt5Defeat",
+      "map": "AquaHideout_B1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Aqua and Magma drink together now. Turns out the enemy was never each other."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt5PostBattle",
+      "title": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt5PostBattle",
+      "map": "AquaHideout_B1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Master ARCHIE says flood the world. KAIROS says empty it. Same wet grave."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt7Intro",
+      "title": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt7Intro",
+      "map": "AquaHideout_B1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "We took the sub for the boss. Which boss? ...Good question. Wish I knew."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt7Defeat",
+      "title": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt7Defeat",
+      "map": "AquaHideout_B1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Aqua and Magma drink together now. Turns out the enemy was never each other."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt7PostBattle",
+      "title": "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt7PostBattle",
+      "map": "AquaHideout_B1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Master ARCHIE says flood the world. KAIROS says empty it. Same wet grave."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B2F-AquaHideout_B2F_Text_MattIntro",
+      "title": "req-AquaHideout_B2F-AquaHideout_B2F_Text_MattIntro",
+      "map": "AquaHideout_B2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Landlubber! This hideout's ours - and someone else's."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B2F-AquaHideout_B2F_Text_MattDefeat",
+      "title": "req-AquaHideout_B2F-AquaHideout_B2F_Text_MattDefeat",
+      "map": "AquaHideout_B2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Blast it! Tell the tide I tried."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt4Intro",
+      "title": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt4Intro",
+      "map": "AquaHideout_B2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Master ARCHIE says flood the world. KAIROS says empty it. Same wet grave."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt4Defeat",
+      "title": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt4Defeat",
+      "map": "AquaHideout_B2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "We took the sub for the boss. Which boss? ...Good question. Wish I knew."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt4PostBattle",
+      "title": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt4PostBattle",
+      "map": "AquaHideout_B2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Aqua and Magma drink together now. Turns out the enemy was never each other."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt6Intro",
+      "title": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt6Intro",
+      "map": "AquaHideout_B2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Master ARCHIE says flood the world. KAIROS says empty it. Same wet grave."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt6Defeat",
+      "title": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt6Defeat",
+      "map": "AquaHideout_B2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "We took the sub for the boss. Which boss? ...Good question. Wish I knew."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt6PostBattle",
+      "title": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt6PostBattle",
+      "map": "AquaHideout_B2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Aqua and Magma drink together now. Turns out the enemy was never each other."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt8Intro",
+      "title": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt8Intro",
+      "map": "AquaHideout_B2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Master ARCHIE says flood the world. KAIROS says empty it. Same wet grave."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt8Defeat",
+      "title": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt8Defeat",
+      "map": "AquaHideout_B2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "We took the sub for the boss. Which boss? ...Good question. Wish I knew."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt8PostBattle",
+      "title": "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt8PostBattle",
+      "map": "AquaHideout_B2F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "AQUA GRUNT",
+          "line": "Aqua and Magma drink together now. Turns out the enemy was never each other."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MagmaHideout_1F-MagmaHideout_1F_Text_Grunt1Intro",
+      "title": "req-MagmaHideout_1F-MagmaHideout_1F_Text_Grunt1Intro",
+      "map": "MagmaHideout_1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "MAGMA GRUNT",
+          "line": "MAXIE preaches land. KAIROS preaches nothing - literally nothing, forever."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MagmaHideout_1F-MagmaHideout_1F_Text_Grunt1Defeat",
+      "title": "req-MagmaHideout_1F-MagmaHideout_1F_Text_Grunt1Defeat",
+      "map": "MagmaHideout_1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "MAGMA GRUNT",
+          "line": "We dig for the orb. We find only the same cold whisper, deeper down."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
+    },
+    {
+      "id": "req-MagmaHideout_1F-MagmaHideout_1F_Text_Grunt1PostBattle",
+      "title": "req-MagmaHideout_1F-MagmaHideout_1F_Text_Grunt1PostBattle",
+      "map": "MagmaHideout_1F",
+      "act": 4,
+      "dialogue": [
+        {
+          "speaker": "MAGMA GRUNT",
+          "line": "You think we're the villains? Cute. We're just the ones who noticed first."
+        }
+      ],
+      "flags": [],
+      "rawBody": ""
     }
   ],
   "files": []

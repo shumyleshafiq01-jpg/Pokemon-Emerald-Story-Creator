@@ -3,7 +3,9 @@
   "scenes": {
     "act1-01-truck-intro": {
       "file": "data/maps/LittlerootTown/scripts.inc",
-      "anchors": ["LittlerootTown_Text_OurNewHomeLetsGoInside"]
+      "anchors": [
+        "LittlerootTown_Text_OurNewHomeLetsGoInside"
+      ]
     },
     "act1-02-clock-rival": {
       "file": "data/maps/LittlerootTown_BrendansHouse_2F/scripts.inc",
@@ -114,71 +116,554 @@
     },
     "kairos-gym1-roxanne": {
       "file": "data/maps/RustboroCity_Gym/scripts.inc",
-      "anchors": ["RustboroCity_Gym_Text_RoxanneIntro", "RustboroCity_Gym_Text_RoxanneDefeat"]
+      "anchors": [
+        "RustboroCity_Gym_Text_RoxanneIntro",
+        "RustboroCity_Gym_Text_RoxanneDefeat"
+      ]
     },
     "kairos-gym2-brawly": {
       "file": "data/maps/DewfordTown_Gym/scripts.inc",
-      "anchors": ["DewfordTown_Gym_Text_BrawlyIntro", "DewfordTown_Gym_Text_BrawlyDefeat"]
+      "anchors": [
+        "DewfordTown_Gym_Text_BrawlyIntro",
+        "DewfordTown_Gym_Text_BrawlyDefeat"
+      ]
     },
     "kairos-gym3-wattson": {
       "file": "data/maps/MauvilleCity_Gym/scripts.inc",
-      "anchors": ["MauvilleCity_Gym_Text_WattsonIntro", "MauvilleCity_Gym_Text_WattsonDefeat"]
+      "anchors": [
+        "MauvilleCity_Gym_Text_WattsonIntro",
+        "MauvilleCity_Gym_Text_WattsonDefeat"
+      ]
     },
     "kairos-gym4-flannery": {
       "file": "data/maps/LavaridgeTown_Gym_1F/scripts.inc",
-      "anchors": ["LavaridgeTown_Gym_1F_Text_FlanneryIntro", "LavaridgeTown_Gym_1F_Text_FlanneryDefeat"]
+      "anchors": [
+        "LavaridgeTown_Gym_1F_Text_FlanneryIntro",
+        "LavaridgeTown_Gym_1F_Text_FlanneryDefeat"
+      ]
     },
     "kairos-gym5-norman": {
       "file": "data/maps/PetalburgCity_Gym/scripts.inc",
-      "anchors": ["PetalburgCity_Gym_Text_NormanIntro", "PetalburgCity_Gym_Text_NormanDefeat"]
+      "anchors": [
+        "PetalburgCity_Gym_Text_NormanIntro",
+        "PetalburgCity_Gym_Text_NormanDefeat"
+      ]
     },
     "kairos-gym6-winona": {
       "file": "data/maps/FortreeCity_Gym/scripts.inc",
-      "anchors": ["FortreeCity_Gym_Text_WinonaIntro", "FortreeCity_Gym_Text_WinonaDefeat"]
+      "anchors": [
+        "FortreeCity_Gym_Text_WinonaIntro",
+        "FortreeCity_Gym_Text_WinonaDefeat"
+      ]
     },
     "kairos-gym7-twins": {
       "file": "data/maps/MossdeepCity_Gym/scripts.inc",
-      "anchors": ["MossdeepCity_Gym_Text_TateAndLizaIntro", "MossdeepCity_Gym_Text_TateAndLizaDefeat"]
+      "anchors": [
+        "MossdeepCity_Gym_Text_TateAndLizaIntro",
+        "MossdeepCity_Gym_Text_TateAndLizaDefeat"
+      ]
     },
     "kairos-gym8-juan": {
       "file": "data/maps/SootopolisCity_Gym_1F/scripts.inc",
-      "anchors": ["SootopolisCity_Gym_1F_Text_JuanIntro", "SootopolisCity_Gym_1F_Text_JuanDefeat"]
+      "anchors": [
+        "SootopolisCity_Gym_1F_Text_JuanIntro",
+        "SootopolisCity_Gym_1F_Text_JuanDefeat"
+      ]
     },
     "kairos-e4-sidney": {
       "file": "data/maps/EverGrandeCity_SidneysRoom/scripts.inc",
-      "anchors": ["EverGrandeCity_SidneysRoom_Text_IntroSpeech", "EverGrandeCity_SidneysRoom_Text_Defeat"]
+      "anchors": [
+        "EverGrandeCity_SidneysRoom_Text_IntroSpeech",
+        "EverGrandeCity_SidneysRoom_Text_Defeat"
+      ]
     },
     "kairos-e4-phoebe": {
       "file": "data/maps/EverGrandeCity_PhoebesRoom/scripts.inc",
-      "anchors": ["EverGrandeCity_PhoebesRoom_Text_IntroSpeech", "EverGrandeCity_PhoebesRoom_Text_Defeat"]
+      "anchors": [
+        "EverGrandeCity_PhoebesRoom_Text_IntroSpeech",
+        "EverGrandeCity_PhoebesRoom_Text_Defeat"
+      ]
     },
     "kairos-e4-glacia": {
       "file": "data/maps/EverGrandeCity_GlaciasRoom/scripts.inc",
-      "anchors": ["EverGrandeCity_GlaciasRoom_Text_IntroSpeech", "EverGrandeCity_GlaciasRoom_Text_Defeat"]
+      "anchors": [
+        "EverGrandeCity_GlaciasRoom_Text_IntroSpeech",
+        "EverGrandeCity_GlaciasRoom_Text_Defeat"
+      ]
     },
     "kairos-e4-drake": {
       "file": "data/maps/EverGrandeCity_DrakesRoom/scripts.inc",
-      "anchors": ["EverGrandeCity_DrakesRoom_Text_IntroSpeech", "EverGrandeCity_DrakesRoom_Text_Defeat"]
+      "anchors": [
+        "EverGrandeCity_DrakesRoom_Text_IntroSpeech",
+        "EverGrandeCity_DrakesRoom_Text_Defeat"
+      ]
     },
     "kairos-rival110-m": {
       "file": "data/maps/Route110/scripts.inc",
-      "anchors": ["Route110_Text_MayLetsBattle", "Route110_Text_MayDefeated"]
+      "anchors": [
+        "Route110_Text_MayLetsBattle",
+        "Route110_Text_MayDefeated"
+      ]
     },
     "kairos-rival110-f": {
       "file": "data/maps/Route110/scripts.inc",
-      "anchors": ["Route110_Text_BrendanLetsBattle", "Route110_Text_BrendanDefeated"]
+      "anchors": [
+        "Route110_Text_BrendanLetsBattle",
+        "Route110_Text_BrendanDefeated"
+      ]
     },
     "kairos-rival119-m": {
       "file": "data/maps/Route119/scripts.inc",
-      "anchors": ["Route119_Text_MayIntro", "Route119_Text_MayDefeat"]
+      "anchors": [
+        "Route119_Text_MayIntro",
+        "Route119_Text_MayDefeat"
+      ]
     },
     "kairos-rival119-f": {
       "file": "data/maps/Route119/scripts.inc",
-      "anchors": ["Route119_Text_BrendanIntro", "Route119_Text_BrendanDefeat"]
+      "anchors": [
+        "Route119_Text_BrendanIntro",
+        "Route119_Text_BrendanDefeat"
+      ]
     },
     "kairos-wally": {
       "file": "data/maps/VictoryRoad_1F/scripts.inc",
-      "anchors": ["VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore", "VictoryRoad_1F_Text_WallyEntranceDefeat"]
+      "anchors": [
+        "VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore",
+        "VictoryRoad_1F_Text_WallyEntranceDefeat"
+      ]
+    },
+    "req-SlateportCity_OceanicMuseum_2F-SlateportCity_OceanicMuse": {
+      "file": "data/maps/SlateportCity_OceanicMuseum_2F/scripts.inc",
+      "anchors": [
+        "SlateportCity_OceanicMuseum_2F_Text_Grunt1Defeat"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt1Intro": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_Grunt1Intro"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt1Defeat": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_Grunt1Defeat"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt1PostBattle": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_Grunt1PostBattle"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt2Intro": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_Grunt2Intro"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt2Defeat": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_Grunt2Defeat"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt2PostBattle": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_Grunt2PostBattle"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt3Intro": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_Grunt3Intro"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt3Defeat": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_Grunt3Defeat"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt3PostBattle": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_Grunt3PostBattle"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt4Intro": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_Grunt4Intro"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt4Defeat": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_Grunt4Defeat"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_Grunt4PostBattle": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_Grunt4PostBattle"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo"
+      ]
+    },
+    "req-MtPyre_Summit-MtPyre_Summit_Text_MaxieSilence": {
+      "file": "data/maps/MtPyre_Summit/scripts.inc",
+      "anchors": [
+        "MtPyre_Summit_Text_MaxieSilence"
+      ]
+    },
+    "req-MtPyre_2F-MtPyre_2F_Text_MarkIntro": {
+      "file": "data/maps/MtPyre_2F/scripts.inc",
+      "anchors": [
+        "MtPyre_2F_Text_MarkIntro"
+      ]
+    },
+    "req-MtPyre_2F-MtPyre_2F_Text_MarkDefeat": {
+      "file": "data/maps/MtPyre_2F/scripts.inc",
+      "anchors": [
+        "MtPyre_2F_Text_MarkDefeat"
+      ]
+    },
+    "req-MtPyre_2F-MtPyre_2F_Text_LukeIntro": {
+      "file": "data/maps/MtPyre_2F/scripts.inc",
+      "anchors": [
+        "MtPyre_2F_Text_LukeIntro"
+      ]
+    },
+    "req-MtPyre_2F-MtPyre_2F_Text_LukeDefeat": {
+      "file": "data/maps/MtPyre_2F/scripts.inc",
+      "anchors": [
+        "MtPyre_2F_Text_LukeDefeat"
+      ]
+    },
+    "req-MtPyre_2F-MtPyre_2F_Text_DezIntro": {
+      "file": "data/maps/MtPyre_2F/scripts.inc",
+      "anchors": [
+        "MtPyre_2F_Text_DezIntro"
+      ]
+    },
+    "req-MtPyre_2F-MtPyre_2F_Text_DezDefeat": {
+      "file": "data/maps/MtPyre_2F/scripts.inc",
+      "anchors": [
+        "MtPyre_2F_Text_DezDefeat"
+      ]
+    },
+    "req-MtPyre_2F-MtPyre_2F_Text_LeahIntro": {
+      "file": "data/maps/MtPyre_2F/scripts.inc",
+      "anchors": [
+        "MtPyre_2F_Text_LeahIntro"
+      ]
+    },
+    "req-MtPyre_2F-MtPyre_2F_Text_LeahDefeat": {
+      "file": "data/maps/MtPyre_2F/scripts.inc",
+      "anchors": [
+        "MtPyre_2F_Text_LeahDefeat"
+      ]
+    },
+    "req-MtPyre_2F-MtPyre_2F_Text_ZanderIntro": {
+      "file": "data/maps/MtPyre_2F/scripts.inc",
+      "anchors": [
+        "MtPyre_2F_Text_ZanderIntro"
+      ]
+    },
+    "req-MtPyre_2F-MtPyre_2F_Text_ZanderDefeat": {
+      "file": "data/maps/MtPyre_2F/scripts.inc",
+      "anchors": [
+        "MtPyre_2F_Text_ZanderDefeat"
+      ]
+    },
+    "req-MtPyre_3F-MtPyre_3F_Text_WilliamIntro": {
+      "file": "data/maps/MtPyre_3F/scripts.inc",
+      "anchors": [
+        "MtPyre_3F_Text_WilliamIntro"
+      ]
+    },
+    "req-MtPyre_3F-MtPyre_3F_Text_WilliamDefeat": {
+      "file": "data/maps/MtPyre_3F/scripts.inc",
+      "anchors": [
+        "MtPyre_3F_Text_WilliamDefeat"
+      ]
+    },
+    "req-MtPyre_3F-MtPyre_3F_Text_KaylaIntro": {
+      "file": "data/maps/MtPyre_3F/scripts.inc",
+      "anchors": [
+        "MtPyre_3F_Text_KaylaIntro"
+      ]
+    },
+    "req-MtPyre_3F-MtPyre_3F_Text_KaylaDefeat": {
+      "file": "data/maps/MtPyre_3F/scripts.inc",
+      "anchors": [
+        "MtPyre_3F_Text_KaylaDefeat"
+      ]
+    },
+    "req-MtPyre_3F-MtPyre_3F_Text_GabrielleIntro": {
+      "file": "data/maps/MtPyre_3F/scripts.inc",
+      "anchors": [
+        "MtPyre_3F_Text_GabrielleIntro"
+      ]
+    },
+    "req-MtPyre_3F-MtPyre_3F_Text_GabrielleDefeat": {
+      "file": "data/maps/MtPyre_3F/scripts.inc",
+      "anchors": [
+        "MtPyre_3F_Text_GabrielleDefeat"
+      ]
+    },
+    "req-MtPyre_3F-MtPyre_3F_Text_GabrielleRematchIntro": {
+      "file": "data/maps/MtPyre_3F/scripts.inc",
+      "anchors": [
+        "MtPyre_3F_Text_GabrielleRematchIntro"
+      ]
+    },
+    "req-MtPyre_3F-MtPyre_3F_Text_GabrielleRematchDefeat": {
+      "file": "data/maps/MtPyre_3F/scripts.inc",
+      "anchors": [
+        "MtPyre_3F_Text_GabrielleRematchDefeat"
+      ]
+    },
+    "req-MtPyre_4F-MtPyre_5F_Text_AtsushiIntro": {
+      "file": "data/maps/MtPyre_4F/scripts.inc",
+      "anchors": [
+        "MtPyre_5F_Text_AtsushiIntro"
+      ]
+    },
+    "req-MtPyre_4F-MtPyre_5F_Text_AtsushiDefeat": {
+      "file": "data/maps/MtPyre_4F/scripts.inc",
+      "anchors": [
+        "MtPyre_5F_Text_AtsushiDefeat"
+      ]
+    },
+    "req-MtPyre_5F-MtPyre_4F_Text_TashaIntro": {
+      "file": "data/maps/MtPyre_5F/scripts.inc",
+      "anchors": [
+        "MtPyre_4F_Text_TashaIntro"
+      ]
+    },
+    "req-MtPyre_5F-MtPyre_4F_Text_TashaDefeat": {
+      "file": "data/maps/MtPyre_5F/scripts.inc",
+      "anchors": [
+        "MtPyre_4F_Text_TashaDefeat"
+      ]
+    },
+    "req-MtPyre_6F-MtPyre_6F_Text_ValerieIntro": {
+      "file": "data/maps/MtPyre_6F/scripts.inc",
+      "anchors": [
+        "MtPyre_6F_Text_ValerieIntro"
+      ]
+    },
+    "req-MtPyre_6F-MtPyre_6F_Text_ValerieDefeat": {
+      "file": "data/maps/MtPyre_6F/scripts.inc",
+      "anchors": [
+        "MtPyre_6F_Text_ValerieDefeat"
+      ]
+    },
+    "req-MtPyre_6F-MtPyre_6F_Text_ValerieRematchIntro": {
+      "file": "data/maps/MtPyre_6F/scripts.inc",
+      "anchors": [
+        "MtPyre_6F_Text_ValerieRematchIntro"
+      ]
+    },
+    "req-MtPyre_6F-MtPyre_6F_Text_ValerieRematchDefeat": {
+      "file": "data/maps/MtPyre_6F/scripts.inc",
+      "anchors": [
+        "MtPyre_6F_Text_ValerieRematchDefeat"
+      ]
+    },
+    "req-MtPyre_6F-MtPyre_6F_Text_CedricIntro": {
+      "file": "data/maps/MtPyre_6F/scripts.inc",
+      "anchors": [
+        "MtPyre_6F_Text_CedricIntro"
+      ]
+    },
+    "req-MtPyre_6F-MtPyre_6F_Text_CedricDefeat": {
+      "file": "data/maps/MtPyre_6F/scripts.inc",
+      "anchors": [
+        "MtPyre_6F_Text_CedricDefeat"
+      ]
+    },
+    "req-AquaHideout_1F-AquaHideout_1F_Text_Grunt1Intro": {
+      "file": "data/maps/AquaHideout_1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_1F_Text_Grunt1Intro"
+      ]
+    },
+    "req-AquaHideout_1F-AquaHideout_1F_Text_Grunt1Defeat": {
+      "file": "data/maps/AquaHideout_1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_1F_Text_Grunt1Defeat"
+      ]
+    },
+    "req-AquaHideout_1F-AquaHideout_1F_Text_Grunt1PostBattle": {
+      "file": "data/maps/AquaHideout_1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_1F_Text_Grunt1PostBattle"
+      ]
+    },
+    "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt2Intro": {
+      "file": "data/maps/AquaHideout_B1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B1F_Text_Grunt2Intro"
+      ]
+    },
+    "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt2Defeat": {
+      "file": "data/maps/AquaHideout_B1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B1F_Text_Grunt2Defeat"
+      ]
+    },
+    "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt2PostBattle": {
+      "file": "data/maps/AquaHideout_B1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B1F_Text_Grunt2PostBattle"
+      ]
+    },
+    "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt3Intro": {
+      "file": "data/maps/AquaHideout_B1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B1F_Text_Grunt3Intro"
+      ]
+    },
+    "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt3Defeat": {
+      "file": "data/maps/AquaHideout_B1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B1F_Text_Grunt3Defeat"
+      ]
+    },
+    "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt3PostBattle": {
+      "file": "data/maps/AquaHideout_B1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B1F_Text_Grunt3PostBattle"
+      ]
+    },
+    "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt5Intro": {
+      "file": "data/maps/AquaHideout_B1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B1F_Text_Grunt5Intro"
+      ]
+    },
+    "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt5Defeat": {
+      "file": "data/maps/AquaHideout_B1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B1F_Text_Grunt5Defeat"
+      ]
+    },
+    "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt5PostBattle": {
+      "file": "data/maps/AquaHideout_B1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B1F_Text_Grunt5PostBattle"
+      ]
+    },
+    "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt7Intro": {
+      "file": "data/maps/AquaHideout_B1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B1F_Text_Grunt7Intro"
+      ]
+    },
+    "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt7Defeat": {
+      "file": "data/maps/AquaHideout_B1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B1F_Text_Grunt7Defeat"
+      ]
+    },
+    "req-AquaHideout_B1F-AquaHideout_B1F_Text_Grunt7PostBattle": {
+      "file": "data/maps/AquaHideout_B1F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B1F_Text_Grunt7PostBattle"
+      ]
+    },
+    "req-AquaHideout_B2F-AquaHideout_B2F_Text_MattIntro": {
+      "file": "data/maps/AquaHideout_B2F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B2F_Text_MattIntro"
+      ]
+    },
+    "req-AquaHideout_B2F-AquaHideout_B2F_Text_MattDefeat": {
+      "file": "data/maps/AquaHideout_B2F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B2F_Text_MattDefeat"
+      ]
+    },
+    "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt4Intro": {
+      "file": "data/maps/AquaHideout_B2F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B2F_Text_Grunt4Intro"
+      ]
+    },
+    "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt4Defeat": {
+      "file": "data/maps/AquaHideout_B2F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B2F_Text_Grunt4Defeat"
+      ]
+    },
+    "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt4PostBattle": {
+      "file": "data/maps/AquaHideout_B2F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B2F_Text_Grunt4PostBattle"
+      ]
+    },
+    "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt6Intro": {
+      "file": "data/maps/AquaHideout_B2F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B2F_Text_Grunt6Intro"
+      ]
+    },
+    "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt6Defeat": {
+      "file": "data/maps/AquaHideout_B2F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B2F_Text_Grunt6Defeat"
+      ]
+    },
+    "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt6PostBattle": {
+      "file": "data/maps/AquaHideout_B2F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B2F_Text_Grunt6PostBattle"
+      ]
+    },
+    "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt8Intro": {
+      "file": "data/maps/AquaHideout_B2F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B2F_Text_Grunt8Intro"
+      ]
+    },
+    "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt8Defeat": {
+      "file": "data/maps/AquaHideout_B2F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B2F_Text_Grunt8Defeat"
+      ]
+    },
+    "req-AquaHideout_B2F-AquaHideout_B2F_Text_Grunt8PostBattle": {
+      "file": "data/maps/AquaHideout_B2F/scripts.inc",
+      "anchors": [
+        "AquaHideout_B2F_Text_Grunt8PostBattle"
+      ]
+    },
+    "req-MagmaHideout_1F-MagmaHideout_1F_Text_Grunt1Intro": {
+      "file": "data/maps/MagmaHideout_1F/scripts.inc",
+      "anchors": [
+        "MagmaHideout_1F_Text_Grunt1Intro"
+      ]
+    },
+    "req-MagmaHideout_1F-MagmaHideout_1F_Text_Grunt1Defeat": {
+      "file": "data/maps/MagmaHideout_1F/scripts.inc",
+      "anchors": [
+        "MagmaHideout_1F_Text_Grunt1Defeat"
+      ]
+    },
+    "req-MagmaHideout_1F-MagmaHideout_1F_Text_Grunt1PostBattle": {
+      "file": "data/maps/MagmaHideout_1F/scripts.inc",
+      "anchors": [
+        "MagmaHideout_1F_Text_Grunt1PostBattle"
+      ]
     }
   }
 }
