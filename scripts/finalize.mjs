@@ -254,7 +254,7 @@ export function applyFinalize(expansionRoot) {
     }
     const o = getMap(t.map).object_events[i];
     o.graphics_id = T;
-    o.movement_type = "MOVEMENT_TYPE_WANDER_AROUND";
+    o.movement_type = "MOVEMENT_TYPE_LOOK_AROUND"; // never walks: safe with static-only sprites + can't block paths
     o.script = `SR_Titan${k}`;
     appendScript(
       t.map,
@@ -300,7 +300,7 @@ export function applyFinalize(expansionRoot) {
       if (idx < 0) continue;
       const o = getMap(m).object_events[idx];
       o.graphics_id = CAMEO_GFX[cameos % CAMEO_GFX.length];
-      o.movement_type = "MOVEMENT_TYPE_WANDER_AROUND";
+      o.movement_type = "MOVEMENT_TYPE_LOOK_AROUND"; // never walks: safe with static-only sprites + can't block paths
       const label = `SR_Cameo_${cameos}`;
       o.script = label;
       appendScript(m, `\n${label}::\n\tmsgbox ${label}_Text, MSGBOX_NPC\n\tend\n\n${label}_Text:\n\t.string "${line.replace(/"/g, "'")}$"\n`);

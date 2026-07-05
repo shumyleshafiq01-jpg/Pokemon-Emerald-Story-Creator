@@ -418,9 +418,11 @@ export function applyStructuralHacks(expansionRoot) {
       "=== TRAINER_GRUNT_RUSTURF_TUNNEL ===\nName: GRUNT\nClass: Team Rocket Frlg\nPic: Rocket Grunt M Frlg\n",
     ),
   );
-  edit("data/maps/RusturfTunnel/map.json", "Rusturf grunt overworld -> Rocket sprite", (src) =>
-    replaceOnce(src, '"OBJ_EVENT_GFX_AQUA_MEMBER_M"', '"OBJ_EVENT_GFX_ROCKET_M"'),
-  );
+  // NOTE: the Rusturf grunt's OVERWORLD sprite stays AQUA_MEMBER_M on purpose.
+  // That grunt WALKS in the Peeko back-up cutscene, and rocket_m.png (a FRLG
+  // static NPC) lacks Emerald's full walk-frame set -> walk_right never
+  // completes -> waitmovement hangs the game. The Rocket reveal still lands via
+  // the battle sprite (static front pic) + the ROCKET GRUNT dialogue.
 
   // -------------------------------------------------------------------------
   // KAIROS ARC: BRANCHING CHOICE + TWO ENDINGS + THE WATCHER
@@ -832,7 +834,7 @@ export function applyStructuralHacks(expansionRoot) {
       "Someone's rewriting the timeline, mark my words. My scouter reads zero one second, infinite the next.",
       "Kids say a Namekian elder lives past the routes, keeping some old seal shut. I believe them more every year.",
     ].map((s) => "\\p" + wrapGba(s));
-    const SKIP_LABEL = /_(Sign|PC|Mart|Shop|Move|TM|HM|Egg|Nickname|Naming|Save|Options?|Register|Trade|Contest|Item|Tutor|Description|Wonder|Union|Cable|Berry|Whisper|RegisterMatchCall)_?/i;
+    const SKIP_LABEL = /_(Sign|PC|Mart|Shop|Move|TM|HM|Egg|Nickname|Naming|Save|Options?|Register|Trade|Contest|Item|Tutor|Description|Wonder|Union|Cable|Berry|Whisper|RegisterMatchCall|Grunt|Peeko|Briney|Wanda|Boyfriend|ComeAndGetSome|Aqua|Magma|Maxie|Archie|Steven|Intro|Defeat|Battle|Approach|Notice|Reunion|Explain|Come)/i;
     const SKIP_BODY = /(Saiyan|Namekian|scouter|Dragon Ball|rift out|timeline|Requiem|%|\{STR_VAR_[23]\})/i;
     const blockRe = /^([A-Za-z0-9_]+):\n((?:\t\.string "[^\n]*"\n)+)/gm;
 
