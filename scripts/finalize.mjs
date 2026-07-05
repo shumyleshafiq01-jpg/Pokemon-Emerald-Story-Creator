@@ -20,6 +20,31 @@ export function applyFinalize(expansionRoot) {
     cameos = 0,
     swaps = 0;
 
+  // GBA textboxes do NOT auto-wrap. Re-flow any display string to <=30 chars
+  // per line (\n) with 2 lines per page (\p), preserving intended page breaks.
+  const w = (text, width = 30) => {
+    const pages = String(text).split("\\p");
+    const out = [];
+    for (const page of pages) {
+      const plain = page.replace(/\\n/g, " ").replace(/\s+/g, " ").trim();
+      if (!plain) continue;
+      const words = plain.split(" ");
+      const lines = [];
+      let line = "";
+      for (const wd of words) {
+        if (!line) line = wd;
+        else if ((line + " " + wd).length <= width) line += " " + wd;
+        else {
+          lines.push(line);
+          line = wd;
+        }
+      }
+      if (line) lines.push(line);
+      for (let i = 0; i < lines.length; i += 2) out.push(lines.slice(i, i + 2).join("\\n"));
+    }
+    return out.join("\\p");
+  };
+
   const mdir = (m) => path.join(expansionRoot, "data", "maps", m);
   const readMap = (m) => JSON.parse(fs.readFileSync(path.join(mdir(m), "map.json"), "utf8"));
   const writeMap = (m, j) => fs.writeFileSync(path.join(mdir(m), "map.json"), JSON.stringify(j, null, 2) + "\n");
@@ -84,15 +109,15 @@ export function applyFinalize(expansionRoot) {
         `\tmsgbox SR_${tag}_Rematch, MSGBOX_DEFAULT\n\tclosemessage\n\tcall SR_${tag}_Eject\n\tend\n` +
         `\nSR_${tag}_Won::\n${reward}\tmsgbox SR_${tag}_Post, MSGBOX_DEFAULT\n\tclosemessage\n\tcall SR_${tag}_Eject\n\trelease\n\tend\n` +
         eject +
-        `\nSR_${tag}_Intro:\n\t.string "${intro}$"\n\nSR_${tag}_Defeat:\n\t.string "${defeat}$"\n` +
-        `\nSR_${tag}_Post:\n\t.string "${post}$"\n\nSR_${tag}_Rematch:\n\t.string "The chamber is quiet now.$"\n`
+        `\nSR_${tag}_Intro:\n\t.string "${w(intro)}$"\n\nSR_${tag}_Defeat:\n\t.string "${w(defeat)}$"\n` +
+        `\nSR_${tag}_Post:\n\t.string "${w(post)}$"\n\nSR_${tag}_Rematch:\n\t.string "The chamber is quiet now.$"\n`
       );
     }
     return (
       `\nSR_${tag}_Boss::\n\tlock\n\tfaceplayer\n\tmsgbox SR_${tag}_Intro, MSGBOX_DEFAULT\n\tclosemessage\n` +
       `\tsetwildbattle ${boss.species}, ${boss.level}\n\tdowildbattle\n${reward}\tmsgbox SR_${tag}_Post, MSGBOX_DEFAULT\n\tclosemessage\n\tcall SR_${tag}_Eject\n\trelease\n\tend\n` +
       eject +
-      `\nSR_${tag}_Intro:\n\t.string "${intro}$"\n\nSR_${tag}_Post:\n\t.string "${post}$"\n`
+      `\nSR_${tag}_Intro:\n\t.string "${w(intro)}$"\n\nSR_${tag}_Post:\n\t.string "${w(post)}$"\n`
     );
   }
 
@@ -163,7 +188,7 @@ export function applyFinalize(expansionRoot) {
       `\nSR_${o.const}_Gate::\n\tlock\n\tfaceplayer\n\tmsgbox SR_${o.const}_GateText, MSGBOX_YESNO\n` +
         `\tgoto_if_eq VAR_RESULT, NO, SR_${o.const}_GateNo\n\tfadescreen FADE_TO_BLACK\n\twarp MAP_${o.const}, 8, 11\n\twaitstate\n\trelease\n\tend\n` +
         `\nSR_${o.const}_GateNo::\n\tmsgbox SR_${o.const}_GateWait, MSGBOX_DEFAULT\n\trelease\n\tend\n` +
-        `\nSR_${o.const}_GateText:\n\t.string "${o.gkText}$"\n\nSR_${o.const}_GateWait:\n\t.string "${o.gkWait}$"\n`,
+        `\nSR_${o.const}_GateText:\n\t.string "${w(o.gkText)}$"\n\nSR_${o.const}_GateWait:\n\t.string "${w(o.gkWait)}$"\n`,
     );
     rooms++;
     bosses++;
@@ -260,8 +285,8 @@ export function applyFinalize(expansionRoot) {
       t.map,
       `\nSR_Titan${k}::\n\tlock\n\tfaceplayer\n\tmsgbox SR_Titan${k}_Intro, MSGBOX_DEFAULT\n\tclosemessage\n` +
         `\tsetwildbattle ${t.species}, ${t.level}\n\tdowildbattle\n\tmsgbox SR_Titan${k}_Post, MSGBOX_DEFAULT\n\trelease\n\tend\n` +
-        `\nSR_Titan${k}_Intro:\n\t.string "It wears a person's shape but its\\neyes read zero. ${t.name}, hollowed.$"\n` +
-        `\nSR_Titan${k}_Post:\n\t.string "The husk collapses into quiet ash.\\nOne less voice for the silence.$"\n`,
+        `\nSR_Titan${k}_Intro:\n\t.string "${w(`It wears a person's shape but its eyes read zero. ${t.name}, hollowed.`)}$"\n` +
+        `\nSR_Titan${k}_Post:\n\t.string "${w("The husk collapses into quiet ash. One less voice for the silence.")}$"\n`,
     );
     bosses++;
   }
@@ -303,7 +328,7 @@ export function applyFinalize(expansionRoot) {
       o.movement_type = "MOVEMENT_TYPE_LOOK_AROUND"; // never walks: safe with static-only sprites + can't block paths
       const label = `SR_Cameo_${cameos}`;
       o.script = label;
-      appendScript(m, `\n${label}::\n\tmsgbox ${label}_Text, MSGBOX_NPC\n\tend\n\n${label}_Text:\n\t.string "${line.replace(/"/g, "'")}$"\n`);
+      appendScript(m, `\n${label}::\n\tmsgbox ${label}_Text, MSGBOX_NPC\n\tend\n\n${label}_Text:\n\t.string "${w(line.replace(/"/g, "'"))}$"\n`);
       cameos++;
       placed = true;
       ci++;
