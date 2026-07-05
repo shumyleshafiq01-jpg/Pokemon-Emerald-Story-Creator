@@ -190,7 +190,7 @@ export function applyFinalize(expansionRoot) {
   // themed boss teams for the reused trainer slots
   replaceTrainer(
     "=== TRAINER_GRUNT_UNUSED ===\nName: GRUNT\nClass: Team Magma\nPic: Aqua Grunt F\n",
-    "=== TRAINER_GRUNT_UNUSED ===\nName: EXECUTIVE\nClass: Team Rocket Frlg\nPic: Rocket Grunt M Frlg\nAI: Check Bad Move / Try To Faint\n",
+    "=== TRAINER_GRUNT_UNUSED ===\nName: EXECUTIVE\nClass: Team Rocket Frlg\nPic: Rocket Grunt M Frlg\n",
     "grunt_unused",
   );
   replaceTrainer(
